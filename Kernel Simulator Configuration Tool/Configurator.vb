@@ -141,6 +141,16 @@ Public Class Configurator
                 backgroundColor.Text = LineValue.Replace("Background Color = ", "")
             ElseIf (LineValue.Contains("Input Color = ")) Then
                 inputColor.Text = LineValue.Replace("Input Color = ", "")
+            ElseIf (LineValue.Contains("Show Time/Date on Corner = ")) Then
+                If (LineValue.Replace("Show Time/Date on Corner = ", "") = "True") Then
+                    tdCorner.Checked = True
+                ElseIf (LineValue.Replace("Show Time/Date on Corner = ", "") = "False") Then
+                    tdCorner.Checked = False
+                End If
+            ElseIf (LineValue.Contains("MOTD = ")) Then
+                MOTD.Text = LineValue.Replace("MOTD = ", "")
+            ElseIf (LineValue.Contains("Host Name = ")) Then
+                HostName.Text = LineValue.Replace("Host Name = ", "")
             End If
             LineValue = KernelIni.ReadLine
         Loop
@@ -214,10 +224,14 @@ Public Class Configurator
                                 "Quiet Probe = {18}" + vbNewLine + _
                                 "Probe GPU = {19}" + vbNewLine + _
                                 "Background Color = {20}" + vbNewLine + _
-                                "Input Color = {21}", Ver, CheckBox5.Checked, userNameColor.Text, hostNameColor.Text, contError.Text, uncontError.Text, _
+                                "Input Color = {21}" + vbNewLine + _
+                                "Show Time/Date on Corner = {22}" + vbNewLine + _
+                                "MOTD = {23}" + vbNewLine + _
+                                "Host Name = {24}", Ver, CheckBox5.Checked, userNameColor.Text, hostNameColor.Text, contError.Text, uncontError.Text, _
                                                     textColor.Text, licenseColor.Text, demo.Checked, RootPC.Checked, RootPwd.Text, MaintMode.Checked, _
                                                     BootPrompt.Checked, clslogin.Checked, motdShow.Checked, simHelp.Checked, colorShell.Checked, _
-                                                    slotProbe.Checked, probeQuiet.Checked, gpuProbe.Checked, backgroundColor.Text, inputColor.Text)
+                                                    slotProbe.Checked, probeQuiet.Checked, gpuProbe.Checked, backgroundColor.Text, inputColor.Text, _
+                                                    tdCorner.Checked, MOTD.Text, HostName.Text)
             KernelIni.Close()
             KernelIni.Dispose()
         Catch ex As IO.IOException

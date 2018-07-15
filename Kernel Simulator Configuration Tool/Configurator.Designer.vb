@@ -83,6 +83,11 @@ Partial Class Configurator
         Me.inputColor = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.backgroundColor = New System.Windows.Forms.ComboBox()
+        Me.tdCorner = New System.Windows.Forms.CheckBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.MOTD = New System.Windows.Forms.TextBox()
+        Me.HostName = New System.Windows.Forms.TextBox()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.General.SuspendLayout()
@@ -114,13 +119,13 @@ Partial Class Configurator
         'SaveSettingsToolStripMenuItem
         '
         Me.SaveSettingsToolStripMenuItem.Name = "SaveSettingsToolStripMenuItem"
-        Me.SaveSettingsToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.SaveSettingsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SaveSettingsToolStripMenuItem.Text = "Save Settings"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'TabControl1
@@ -315,7 +320,7 @@ Partial Class Configurator
         Me.CheckBox5.AutoSize = True
         Me.CheckBox5.Location = New System.Drawing.Point(15, 22)
         Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(152, 17)
+        Me.CheckBox5.Size = New System.Drawing.Size(150, 17)
         Me.CheckBox5.TabIndex = 4
         Me.CheckBox5.Text = "Customized Colors on Boot" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.CheckBox5.UseVisualStyleBackColor = True
@@ -337,7 +342,7 @@ Partial Class Configurator
         Me.demo.CheckState = System.Windows.Forms.CheckState.Checked
         Me.demo.Location = New System.Drawing.Point(10, 87)
         Me.demo.Name = "demo"
-        Me.demo.Size = New System.Drawing.Size(106, 19)
+        Me.demo.Size = New System.Drawing.Size(104, 19)
         Me.demo.TabIndex = 3
         Me.demo.Text = "Demo Account"
         Me.demo.UseVisualStyleBackColor = True
@@ -347,7 +352,7 @@ Partial Class Configurator
         Me.RootPC.AutoSize = True
         Me.RootPC.Location = New System.Drawing.Point(10, 62)
         Me.RootPC.Name = "RootPC"
-        Me.RootPC.Size = New System.Drawing.Size(151, 19)
+        Me.RootPC.Size = New System.Drawing.Size(149, 19)
         Me.RootPC.TabIndex = 2
         Me.RootPC.Text = "Root Password Change:"
         Me.RootPC.UseVisualStyleBackColor = True
@@ -357,7 +362,7 @@ Partial Class Configurator
         Me.MaintMode.AutoSize = True
         Me.MaintMode.Location = New System.Drawing.Point(10, 37)
         Me.MaintMode.Name = "MaintMode"
-        Me.MaintMode.Size = New System.Drawing.Size(129, 19)
+        Me.MaintMode.Size = New System.Drawing.Size(127, 19)
         Me.MaintMode.TabIndex = 1
         Me.MaintMode.Text = "Maintenance Mode"
         Me.MaintMode.UseVisualStyleBackColor = True
@@ -367,7 +372,7 @@ Partial Class Configurator
         Me.BootPrompt.AutoSize = True
         Me.BootPrompt.Location = New System.Drawing.Point(10, 12)
         Me.BootPrompt.Name = "BootPrompt"
-        Me.BootPrompt.Size = New System.Drawing.Size(191, 19)
+        Me.BootPrompt.Size = New System.Drawing.Size(189, 19)
         Me.BootPrompt.TabIndex = 0
         Me.BootPrompt.Text = "Prompt for Arguments on Boot"
         Me.BootPrompt.UseVisualStyleBackColor = True
@@ -389,7 +394,7 @@ Partial Class Configurator
         Me.clslogin.AutoSize = True
         Me.clslogin.Location = New System.Drawing.Point(10, 37)
         Me.clslogin.Name = "clslogin"
-        Me.clslogin.Size = New System.Drawing.Size(131, 17)
+        Me.clslogin.Size = New System.Drawing.Size(129, 17)
         Me.clslogin.TabIndex = 1
         Me.clslogin.Text = "Clear Screen on Login"
         Me.clslogin.UseVisualStyleBackColor = True
@@ -401,7 +406,7 @@ Partial Class Configurator
         Me.motdShow.CheckState = System.Windows.Forms.CheckState.Checked
         Me.motdShow.Location = New System.Drawing.Point(10, 12)
         Me.motdShow.Name = "motdShow"
-        Me.motdShow.Size = New System.Drawing.Size(132, 17)
+        Me.motdShow.Size = New System.Drawing.Size(130, 17)
         Me.motdShow.TabIndex = 0
         Me.motdShow.Text = "Show MOTD on Login"
         Me.motdShow.UseVisualStyleBackColor = True
@@ -422,7 +427,7 @@ Partial Class Configurator
         Me.simHelp.AutoSize = True
         Me.simHelp.Location = New System.Drawing.Point(10, 37)
         Me.simHelp.Name = "simHelp"
-        Me.simHelp.Size = New System.Drawing.Size(145, 17)
+        Me.simHelp.Size = New System.Drawing.Size(143, 17)
         Me.simHelp.TabIndex = 1
         Me.simHelp.Text = "Simplified Help Command"
         Me.simHelp.UseVisualStyleBackColor = True
@@ -434,7 +439,7 @@ Partial Class Configurator
         Me.colorShell.CheckState = System.Windows.Forms.CheckState.Checked
         Me.colorShell.Location = New System.Drawing.Point(10, 12)
         Me.colorShell.Name = "colorShell"
-        Me.colorShell.Size = New System.Drawing.Size(88, 17)
+        Me.colorShell.Size = New System.Drawing.Size(86, 17)
         Me.colorShell.TabIndex = 0
         Me.colorShell.Text = "Colored Shell"
         Me.colorShell.UseVisualStyleBackColor = True
@@ -458,7 +463,7 @@ Partial Class Configurator
         Me.slotProbe.CheckState = System.Windows.Forms.CheckState.Checked
         Me.slotProbe.Location = New System.Drawing.Point(10, 62)
         Me.slotProbe.Name = "slotProbe"
-        Me.slotProbe.Size = New System.Drawing.Size(290, 17)
+        Me.slotProbe.Size = New System.Drawing.Size(318, 19)
         Me.slotProbe.TabIndex = 3
         Me.slotProbe.Text = "Probe Slots by Name and by Numbers (and Percentage)"
         Me.slotProbe.UseVisualStyleBackColor = True
@@ -468,7 +473,7 @@ Partial Class Configurator
         Me.probeQuiet.AutoSize = True
         Me.probeQuiet.Location = New System.Drawing.Point(10, 37)
         Me.probeQuiet.Name = "probeQuiet"
-        Me.probeQuiet.Size = New System.Drawing.Size(82, 17)
+        Me.probeQuiet.Size = New System.Drawing.Size(87, 19)
         Me.probeQuiet.TabIndex = 1
         Me.probeQuiet.Text = "Quiet Probe"
         Me.probeQuiet.UseVisualStyleBackColor = True
@@ -478,13 +483,18 @@ Partial Class Configurator
         Me.gpuProbe.AutoSize = True
         Me.gpuProbe.Location = New System.Drawing.Point(10, 12)
         Me.gpuProbe.Name = "gpuProbe"
-        Me.gpuProbe.Size = New System.Drawing.Size(80, 17)
+        Me.gpuProbe.Size = New System.Drawing.Size(81, 19)
         Me.gpuProbe.TabIndex = 0
         Me.gpuProbe.Text = "Probe GPU"
         Me.gpuProbe.UseVisualStyleBackColor = True
         '
         'Others
         '
+        Me.Others.Controls.Add(Me.HostName)
+        Me.Others.Controls.Add(Me.MOTD)
+        Me.Others.Controls.Add(Me.Label10)
+        Me.Others.Controls.Add(Me.Label11)
+        Me.Others.Controls.Add(Me.tdCorner)
         Me.Others.Controls.Add(Me.Label8)
         Me.Others.Controls.Add(Me.inputColor)
         Me.Others.Controls.Add(Me.Label7)
@@ -531,6 +541,48 @@ Partial Class Configurator
         Me.backgroundColor.Name = "backgroundColor"
         Me.backgroundColor.Size = New System.Drawing.Size(489, 23)
         Me.backgroundColor.TabIndex = 8
+        '
+        'tdCorner
+        '
+        Me.tdCorner.AutoSize = True
+        Me.tdCorner.Location = New System.Drawing.Point(13, 72)
+        Me.tdCorner.Name = "tdCorner"
+        Me.tdCorner.Size = New System.Drawing.Size(234, 19)
+        Me.tdCorner.TabIndex = 12
+        Me.tdCorner.Text = "Show Time/Date on Upper Right Corner"
+        Me.tdCorner.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(10, 133)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(70, 15)
+        Me.Label10.TabIndex = 14
+        Me.Label10.Text = "Host Name:"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(10, 104)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(45, 15)
+        Me.Label11.TabIndex = 13
+        Me.Label11.Text = "MOTD:"
+        '
+        'MOTD
+        '
+        Me.MOTD.Location = New System.Drawing.Point(140, 100)
+        Me.MOTD.Name = "MOTD"
+        Me.MOTD.Size = New System.Drawing.Size(486, 23)
+        Me.MOTD.TabIndex = 15
+        '
+        'HostName
+        '
+        Me.HostName.Location = New System.Drawing.Point(140, 129)
+        Me.HostName.Name = "HostName"
+        Me.HostName.Size = New System.Drawing.Size(486, 23)
+        Me.HostName.TabIndex = 16
         '
         'Configurator
         '
@@ -607,5 +659,10 @@ Partial Class Configurator
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents HostName As System.Windows.Forms.TextBox
+    Friend WithEvents MOTD As System.Windows.Forms.TextBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents tdCorner As System.Windows.Forms.CheckBox
 
 End Class
