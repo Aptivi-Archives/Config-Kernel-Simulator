@@ -151,6 +151,8 @@ Public Class Configurator
                 MOTD.Text = LineValue.Replace("MOTD = ", "")
             ElseIf (LineValue.Contains("Host Name = ")) Then
                 HostName.Text = LineValue.Replace("Host Name = ", "")
+            ElseIf (LineValue.Contains("MOTD After Login = ")) Then
+                MAL.Text = LineValue.Replace("MOTD After Login = ", "")
             End If
             LineValue = KernelIni.ReadLine
         Loop
@@ -227,13 +229,15 @@ Public Class Configurator
                                 "Input Color = {21}" + vbNewLine + _
                                 "Show Time/Date on Corner = {22}" + vbNewLine + _
                                 "MOTD = {23}" + vbNewLine + _
-                                "Host Name = {24}", Ver, CheckBox5.Checked, userNameColor.Text, hostNameColor.Text, contError.Text, uncontError.Text, _
-                                                    textColor.Text, licenseColor.Text, demo.Checked, RootPC.Checked, RootPwd.Text, MaintMode.Checked, _
-                                                    BootPrompt.Checked, clslogin.Checked, motdShow.Checked, simHelp.Checked, colorShell.Checked, _
-                                                    slotProbe.Checked, probeQuiet.Checked, gpuProbe.Checked, backgroundColor.Text, inputColor.Text, _
-                                                    tdCorner.Checked, MOTD.Text, HostName.Text)
+                                "Host Name = {24}" + vbNewLine + _
+                                "MOTD After Login = {25}", Ver, CheckBox5.Checked, userNameColor.Text, hostNameColor.Text, contError.Text, uncontError.Text, _
+                                                         textColor.Text, licenseColor.Text, demo.Checked, RootPC.Checked, RootPwd.Text, MaintMode.Checked, _
+                                                         BootPrompt.Checked, clslogin.Checked, motdShow.Checked, simHelp.Checked, colorShell.Checked, _
+                                                         slotProbe.Checked, probeQuiet.Checked, gpuProbe.Checked, backgroundColor.Text, inputColor.Text, _
+                                                         tdCorner.Checked, MOTD.Text, HostName.Text, MAL.Text)
             KernelIni.Close()
             KernelIni.Dispose()
+            MsgBox("Settings saved. You can:" + vbNewLine + vbNewLine + "• Use ""reloadconfig"" on Kernel Simulator to see the changes, or" + vbNewLine + "• Use ""reboot"" to see the changes, or" + vbNewLine + "• Exit and re-open Kernel Simulator (recommended)", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Settings saved successfully")
         Catch ex As IO.IOException
             MsgBox(ex.StackTrace + vbNewLine + vbNewLine + "There is an error when trying to write to a configuration file. The file might be opened by another program, or other error specified below." + vbNewLine + "Error " + CStr(Err.Number) + ": " + ex.Message, vbOKOnly + vbCritical, "Error")
         Catch ex As Exception
@@ -322,4 +326,9 @@ Public Class Configurator
             LiveColor.correctColors()
         End If
     End Sub
+
+    Private Sub HelpToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HelpToolStripMenuItem.Click
+        Help.Show()
+    End Sub
+
 End Class

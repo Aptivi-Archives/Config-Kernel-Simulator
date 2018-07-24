@@ -59,5 +59,98 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Segoe UI;}{\f1\fswiss\fcharset0 Arial;}}
+        '''{\colortbl ;\red0\green0\blue255;\red0\green128\blue128;\red0\green0\blue0;}
+        '''{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\cf1\f0\fs48 General Section\par
+        '''\fs24\par
+        '''\cf2 - Prompt for Arguments on Boot: \cf3 When enabled, there will be argument prompts when you boot to the kernel, allowing you to use arguments.\par
+        '''\par
+        '''\cf2 - Maintenance Mode: \cf0 This allows the kernel to [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property General() As String
+            Get
+                Return ResourceManager.GetString("General", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Segoe UI;}{\f1\fswiss\fcharset0 Arial;}}
+        '''{\colortbl ;\red0\green0\blue255;\red0\green128\blue128;\red0\green0\blue0;}
+        '''{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\cf1\f0\fs48 Hardware Section\par
+        '''\fs24\par
+        '''\cf2 - Probe GPU: \cf3 When enabled, GPU will be probed automatically by the probers.\par
+        '''\par
+        '''\cf2 - Quiet Probe: \cf0 When enabled, the probing will be quiet.\par
+        '''\par
+        '''\cf2 - Probe Slots by Name and by Numb [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property Hardware() As String
+            Get
+                Return ResourceManager.GetString("Hardware", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Segoe UI;}{\f1\fswiss\fcharset0 Arial;}}
+        '''{\colortbl ;\red0\green0\blue255;\red0\green128\blue128;\red0\green0\blue0;}
+        '''{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\cf1\f0\fs48 Login Section\par
+        '''\fs24\par
+        '''\cf2 - Show MOTD on Login: \cf3 When enabled, there will be a MOTD shown on the screen after logging in.\par
+        '''\par
+        '''\cf2 - Clear Screen on Login: \cf0 When enabled, the screen clears from clutter after login.\par
+        '''\ [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property Login() As String
+            Get
+                Return ResourceManager.GetString("Login", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Segoe UI;}{\f1\fswiss\fcharset0 Arial;}}
+        '''{\colortbl ;\red0\green0\blue255;}
+        '''{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\cf1\f0\fs48 Welcome to Kernel Simulator Configuration Tool!\par
+        '''\fs24\par
+        '''\cf0 This tool allows you to configure Kernel Simulator in an easy way rather than the text way of editing. This tool has the available options, or checking and clearing the box, or editing the text like MOTD, MAL, etc.\par [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property Main() As String
+            Get
+                Return ResourceManager.GetString("Main", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Segoe UI;}{\f1\fswiss\fcharset0 Arial;}}
+        '''{\colortbl ;\red0\green0\blue255;\red0\green128\blue128;\red0\green0\blue0;}
+        '''{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\cf1\f0\fs48 Others Section\par
+        '''\fs24\par
+        '''\cf2 - Background Color: \cf3 This shows you available colorsfor the background.\par
+        '''\par
+        '''\cf2 - Input Color: \cf0 The color for things you are writing in writable areas.\par
+        '''\par
+        '''\cf2 - Show Time/Date on Upper [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property Others() As String
+            Get
+                Return ResourceManager.GetString("Others", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Segoe UI;}{\f1\fswiss\fcharset0 Arial;}}
+        '''{\colortbl ;\red0\green0\blue255;\red0\green128\blue128;\red0\green0\blue0;}
+        '''{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\cf1\f0\fs48 Shell Section\par
+        '''\fs24\par
+        '''\cf2 - Colored Shell: \cf3 When enabled, there will be a colorful shell.\par
+        '''\par
+        '''\cf2 - Simplified Help Command: \cf0 When enabled, the help command will only show commands what&apos;s available, not the descriptions. [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property Shell() As String
+            Get
+                Return ResourceManager.GetString("Shell", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace
