@@ -32,6 +32,8 @@ Please note that dates mentioned here is for development date changes only.
 
 **5/20/2018 - 0.0.1:** Initial release.
 
+**7/??/2018 - 0.0.4.9:** Added notification when saving is complete, Help system, and new settings for 0.0.4.9
+
 ## |-----+--> _Contributors_ <--+-----|
 
 **EoflaOE:** Owner of Kernel Simulator
