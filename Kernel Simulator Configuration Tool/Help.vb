@@ -3,6 +3,7 @@
     Private Sub Help_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         RichTextBox1.Rtf = My.Resources.Main
         Label1.Text = "Version " + Configurator.Ver
+        Sections.SelectedItem = "Introduction"
     End Sub
 
     Private Sub Sections_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Sections.SelectedValueChanged

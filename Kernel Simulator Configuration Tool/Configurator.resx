@@ -120,6 +120,10 @@
   <metadata name="MenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="Label9.Text" xml:space="preserve">
+    <value>Warning: When you choose the bright background color, you should set all text colors into dark colors that is 
+readable, or (at least), black. To confirm this, click on "Show colors in Live Mode" button.</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>58</value>
   </metadata>

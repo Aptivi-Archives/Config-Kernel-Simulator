@@ -2,9 +2,7 @@
 
 A user-friendly configuration tool for Kernel Simulator 0.0.4 or higher. This program can be changed eventually. This project is not final.
 
-## |-----+--> _Download_ <--+-----|
-
-You can download the binary and the source code here: https://github.com/EoflaOE/Config-Kernel-Simulator/releases
+We cannot upload binaries to releases, so we will create a new folder called bin to store binary files. See the reason [here](https://github.com/EoflaOE/Kernel-Simulator)
 
 ## |-----+--> _Prerequisites_ <--+-----|
 
@@ -33,6 +31,8 @@ Please note that dates mentioned here is for development date changes only.
 **5/20/2018 - 0.0.1:** Initial release.
 
 **7/??/2018 - 0.0.4.9:** Added notification when saving is complete, Help system, and new settings for 0.0.4.9
+
+**9/3/2018 - 0.0.5:** Added new config options for 0.0.5, fix bugs
 
 ## |-----+--> _Contributors_ <--+-----|
 

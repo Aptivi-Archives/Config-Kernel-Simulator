@@ -49,6 +49,10 @@ Partial Class Configurator
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.General = New System.Windows.Forms.TabPage()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.DefHelpColor = New System.Windows.Forms.ComboBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.CmdHelpColor = New System.Windows.Forms.ComboBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.userNameColor = New System.Windows.Forms.ComboBox()
@@ -108,7 +112,7 @@ Partial Class Configurator
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.MenuStrip1.Size = New System.Drawing.Size(650, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(655, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -147,7 +151,7 @@ Partial Class Configurator
         Me.TabControl1.Location = New System.Drawing.Point(8, 32)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(647, 353)
+        Me.TabControl1.Size = New System.Drawing.Size(647, 398)
         Me.TabControl1.TabIndex = 1
         '
         'General
@@ -158,16 +162,20 @@ Partial Class Configurator
         Me.General.Controls.Add(Me.RootPC)
         Me.General.Controls.Add(Me.MaintMode)
         Me.General.Controls.Add(Me.BootPrompt)
-        Me.General.Location = New System.Drawing.Point(4, 24)
+        Me.General.Location = New System.Drawing.Point(4, 22)
         Me.General.Name = "General"
         Me.General.Padding = New System.Windows.Forms.Padding(3)
-        Me.General.Size = New System.Drawing.Size(639, 325)
+        Me.General.Size = New System.Drawing.Size(639, 372)
         Me.General.TabIndex = 0
         Me.General.Text = "General"
         Me.General.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.DefHelpColor)
+        Me.GroupBox1.Controls.Add(Me.Label13)
+        Me.GroupBox1.Controls.Add(Me.CmdHelpColor)
+        Me.GroupBox1.Controls.Add(Me.Label14)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.userNameColor)
@@ -185,30 +193,66 @@ Partial Class Configurator
         Me.GroupBox1.Controls.Add(Me.CheckBox5)
         Me.GroupBox1.Location = New System.Drawing.Point(5, 109)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(622, 210)
+        Me.GroupBox1.Size = New System.Drawing.Size(622, 249)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Colors"
         '
+        'DefHelpColor
+        '
+        Me.DefHelpColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.DefHelpColor.Enabled = False
+        Me.DefHelpColor.FormattingEnabled = True
+        Me.DefHelpColor.Location = New System.Drawing.Point(227, 172)
+        Me.DefHelpColor.Name = "DefHelpColor"
+        Me.DefHelpColor.Size = New System.Drawing.Size(168, 23)
+        Me.DefHelpColor.TabIndex = 23
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(224, 154)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(119, 15)
+        Me.Label13.TabIndex = 22
+        Me.Label13.Text = "Definition Help Color"
+        '
+        'CmdHelpColor
+        '
+        Me.CmdHelpColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmdHelpColor.Enabled = False
+        Me.CmdHelpColor.FormattingEnabled = True
+        Me.CmdHelpColor.Location = New System.Drawing.Point(15, 172)
+        Me.CmdHelpColor.Name = "CmdHelpColor"
+        Me.CmdHelpColor.Size = New System.Drawing.Size(168, 23)
+        Me.CmdHelpColor.TabIndex = 21
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(12, 154)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(124, 15)
+        Me.Label14.TabIndex = 20
+        Me.Label14.Text = "Command Help Color"
+        '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(505, 171)
+        Me.Button1.Location = New System.Drawing.Point(438, 154)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(107, 30)
+        Me.Button1.Size = New System.Drawing.Size(168, 41)
         Me.Button1.TabIndex = 19
-        Me.Button1.Text = "Live"
+        Me.Button1.Text = "Show colors in Live Mode"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(13, 152)
+        Me.Label9.Location = New System.Drawing.Point(12, 207)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(583, 30)
         Me.Label9.TabIndex = 18
-        Me.Label9.Text = "Warning: When you choose the bright background color, you should set all text col" & _
-            "ors into dark colors that is " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "readable, or (at least), black. To confirm this, " & _
-            "click on ""Live"" button."
+        Me.Label9.Text = resources.GetString("Label9.Text")
         '
         'userNameColor
         '
@@ -329,7 +373,7 @@ Partial Class Configurator
         Me.CheckBox5.AutoSize = True
         Me.CheckBox5.Location = New System.Drawing.Point(15, 22)
         Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(152, 17)
+        Me.CheckBox5.Size = New System.Drawing.Size(171, 19)
         Me.CheckBox5.TabIndex = 4
         Me.CheckBox5.Text = "Customized Colors on Boot"
         Me.CheckBox5.UseVisualStyleBackColor = True
@@ -396,10 +440,10 @@ Partial Class Configurator
         Me.LogIn.Controls.Add(Me.Label11)
         Me.LogIn.Controls.Add(Me.clslogin)
         Me.LogIn.Controls.Add(Me.motdShow)
-        Me.LogIn.Location = New System.Drawing.Point(4, 24)
+        Me.LogIn.Location = New System.Drawing.Point(4, 22)
         Me.LogIn.Name = "LogIn"
         Me.LogIn.Padding = New System.Windows.Forms.Padding(3)
-        Me.LogIn.Size = New System.Drawing.Size(639, 325)
+        Me.LogIn.Size = New System.Drawing.Size(639, 372)
         Me.LogIn.TabIndex = 1
         Me.LogIn.Text = "Log in"
         Me.LogIn.UseVisualStyleBackColor = True
@@ -478,9 +522,9 @@ Partial Class Configurator
         '
         Me.Shell.Controls.Add(Me.simHelp)
         Me.Shell.Controls.Add(Me.colorShell)
-        Me.Shell.Location = New System.Drawing.Point(4, 24)
+        Me.Shell.Location = New System.Drawing.Point(4, 22)
         Me.Shell.Name = "Shell"
-        Me.Shell.Size = New System.Drawing.Size(639, 325)
+        Me.Shell.Size = New System.Drawing.Size(639, 372)
         Me.Shell.TabIndex = 2
         Me.Shell.Text = "Shell"
         Me.Shell.UseVisualStyleBackColor = True
@@ -490,7 +534,7 @@ Partial Class Configurator
         Me.simHelp.AutoSize = True
         Me.simHelp.Location = New System.Drawing.Point(10, 37)
         Me.simHelp.Name = "simHelp"
-        Me.simHelp.Size = New System.Drawing.Size(167, 19)
+        Me.simHelp.Size = New System.Drawing.Size(145, 17)
         Me.simHelp.TabIndex = 1
         Me.simHelp.Text = "Simplified Help Command"
         Me.simHelp.UseVisualStyleBackColor = True
@@ -502,7 +546,7 @@ Partial Class Configurator
         Me.colorShell.CheckState = System.Windows.Forms.CheckState.Checked
         Me.colorShell.Location = New System.Drawing.Point(10, 12)
         Me.colorShell.Name = "colorShell"
-        Me.colorShell.Size = New System.Drawing.Size(96, 19)
+        Me.colorShell.Size = New System.Drawing.Size(88, 17)
         Me.colorShell.TabIndex = 0
         Me.colorShell.Text = "Colored Shell"
         Me.colorShell.UseVisualStyleBackColor = True
@@ -512,9 +556,9 @@ Partial Class Configurator
         Me.Hardware.Controls.Add(Me.slotProbe)
         Me.Hardware.Controls.Add(Me.probeQuiet)
         Me.Hardware.Controls.Add(Me.gpuProbe)
-        Me.Hardware.Location = New System.Drawing.Point(4, 24)
+        Me.Hardware.Location = New System.Drawing.Point(4, 22)
         Me.Hardware.Name = "Hardware"
-        Me.Hardware.Size = New System.Drawing.Size(639, 325)
+        Me.Hardware.Size = New System.Drawing.Size(639, 372)
         Me.Hardware.TabIndex = 3
         Me.Hardware.Text = "Hardware"
         Me.Hardware.UseVisualStyleBackColor = True
@@ -526,7 +570,7 @@ Partial Class Configurator
         Me.slotProbe.CheckState = System.Windows.Forms.CheckState.Checked
         Me.slotProbe.Location = New System.Drawing.Point(10, 62)
         Me.slotProbe.Name = "slotProbe"
-        Me.slotProbe.Size = New System.Drawing.Size(320, 19)
+        Me.slotProbe.Size = New System.Drawing.Size(290, 17)
         Me.slotProbe.TabIndex = 3
         Me.slotProbe.Text = "Probe Slots by Name and by Numbers (and Percentage)"
         Me.slotProbe.UseVisualStyleBackColor = True
@@ -536,7 +580,7 @@ Partial Class Configurator
         Me.probeQuiet.AutoSize = True
         Me.probeQuiet.Location = New System.Drawing.Point(10, 37)
         Me.probeQuiet.Name = "probeQuiet"
-        Me.probeQuiet.Size = New System.Drawing.Size(89, 19)
+        Me.probeQuiet.Size = New System.Drawing.Size(82, 17)
         Me.probeQuiet.TabIndex = 1
         Me.probeQuiet.Text = "Quiet Probe"
         Me.probeQuiet.UseVisualStyleBackColor = True
@@ -546,7 +590,7 @@ Partial Class Configurator
         Me.gpuProbe.AutoSize = True
         Me.gpuProbe.Location = New System.Drawing.Point(10, 12)
         Me.gpuProbe.Name = "gpuProbe"
-        Me.gpuProbe.Size = New System.Drawing.Size(83, 19)
+        Me.gpuProbe.Size = New System.Drawing.Size(80, 17)
         Me.gpuProbe.TabIndex = 0
         Me.gpuProbe.Text = "Probe GPU"
         Me.gpuProbe.UseVisualStyleBackColor = True
@@ -558,9 +602,9 @@ Partial Class Configurator
         Me.Others.Controls.Add(Me.inputColor)
         Me.Others.Controls.Add(Me.Label7)
         Me.Others.Controls.Add(Me.backgroundColor)
-        Me.Others.Location = New System.Drawing.Point(4, 24)
+        Me.Others.Location = New System.Drawing.Point(4, 22)
         Me.Others.Name = "Others"
-        Me.Others.Size = New System.Drawing.Size(639, 325)
+        Me.Others.Size = New System.Drawing.Size(639, 372)
         Me.Others.TabIndex = 4
         Me.Others.Text = "Others"
         Me.Others.UseVisualStyleBackColor = True
@@ -570,7 +614,7 @@ Partial Class Configurator
         Me.tdCorner.AutoSize = True
         Me.tdCorner.Location = New System.Drawing.Point(13, 72)
         Me.tdCorner.Name = "tdCorner"
-        Me.tdCorner.Size = New System.Drawing.Size(236, 19)
+        Me.tdCorner.Size = New System.Drawing.Size(216, 17)
         Me.tdCorner.TabIndex = 12
         Me.tdCorner.Text = "Show Time/Date on Upper Right Corner"
         Me.tdCorner.UseVisualStyleBackColor = True
@@ -615,7 +659,7 @@ Partial Class Configurator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(650, 384)
+        Me.ClientSize = New System.Drawing.Size(655, 439)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -694,5 +738,9 @@ Partial Class Configurator
     Friend WithEvents MAL As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DefHelpColor As System.Windows.Forms.ComboBox
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents CmdHelpColor As System.Windows.Forms.ComboBox
+    Friend WithEvents Label14 As System.Windows.Forms.Label
 
 End Class

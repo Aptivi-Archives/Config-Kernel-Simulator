@@ -36,6 +36,8 @@ Public Class LiveColor
         RichTextBox5.ForeColor = Color.FromName(Configurator.hostNameColor.Text)
         RichTextBox4.ForeColor = Color.FromName(Configurator.userNameColor.Text)
         RichTextBox7.ForeColor = Color.FromName(Configurator.inputColor.Text)
+        RichTextBox9.ForeColor = Color.FromName(Configurator.CmdHelpColor.Text)
+        RichTextBox10.ForeColor = Color.FromName(Configurator.DefHelpColor.Text)
         If (Configurator.backgroundColor.Text = "DarkYellow") Then
             RichTextBox8.BackColor = Color.DarkGoldenrod
         Else
@@ -84,6 +86,16 @@ Public Class LiveColor
         Else
             RichTextBox7.BackColor = Color.White
         End If
+        If (Configurator.CmdHelpColor.Text = "White" Or Configurator.CmdHelpColor.Text = "Yellow" Or Configurator.CmdHelpColor.Text = "Cyan") Then
+            RichTextBox9.BackColor = Color.Black
+        Else
+            RichTextBox9.BackColor = Color.White
+        End If
+        If (Configurator.DefHelpColor.Text = "White" Or Configurator.DefHelpColor.Text = "Yellow" Or Configurator.DefHelpColor.Text = "Cyan") Then
+            RichTextBox10.BackColor = Color.Black
+        Else
+            RichTextBox10.BackColor = Color.White
+        End If
 
     End Sub
 
@@ -108,6 +120,12 @@ Public Class LiveColor
         End If
         If (Configurator.inputColor.Text = "DarkYellow") Then
             RichTextBox7.ForeColor = Color.DarkGoldenrod
+        End If
+        If (Configurator.CmdHelpColor.Text = "DarkYellow") Then
+            RichTextBox9.ForeColor = Color.DarkGoldenrod
+        End If
+        If (Configurator.DefHelpColor.Text = "DarkYellow") Then
+            RichTextBox10.ForeColor = Color.DarkGoldenrod
         End If
     End Sub
 

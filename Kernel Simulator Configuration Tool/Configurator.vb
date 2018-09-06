@@ -153,6 +153,10 @@ Public Class Configurator
                 HostName.Text = LineValue.Replace("Host Name = ", "")
             ElseIf (LineValue.Contains("MOTD After Login = ")) Then
                 MAL.Text = LineValue.Replace("MOTD After Login = ", "")
+            ElseIf (LineValue.Contains("Listed command in Help Color = ")) Then
+                CmdHelpColor.Text = LineValue.Replace("Listed command in Help Color = ", "")
+            ElseIf (LineValue.Contains("Definition of command in Help Color = ")) Then
+                DefHelpColor.Text = LineValue.Replace("Definition of command in Help Color = ", "")
             End If
             LineValue = KernelIni.ReadLine
         Loop
@@ -172,9 +176,8 @@ Public Class Configurator
         uncontError.Items.AddRange(Colors) : uncontError.Items.Remove("Black") : uncontError.Text = "Red"
         backgroundColor.Items.AddRange(Colors) : backgroundColor.Items.Remove("White") : backgroundColor.Text = "Black"
         inputColor.Items.AddRange(Colors) : inputColor.Items.Remove("Black") : inputColor.Text = "White"
-        For c As Integer = 0 To Colors.Length
-
-        Next
+        CmdHelpColor.Items.AddRange(Colors) : CmdHelpColor.Items.Remove("Black") : CmdHelpColor.Text = "DarkYellow"
+        DefHelpColor.Items.AddRange(Colors) : DefHelpColor.Items.Remove("Black") : DefHelpColor.Text = "DarkGray"
 
     End Sub
 
@@ -187,6 +190,10 @@ Public Class Configurator
             userNameColor.Enabled = True
             hostNameColor.Enabled = True
             uncontError.Enabled = True
+            backgroundColor.Enabled = True
+            inputColor.Enabled = True
+            CmdHelpColor.Enabled = True
+            DefHelpColor.Enabled = True
         Else
             textColor.Enabled = False
             licenseColor.Enabled = False
@@ -194,6 +201,10 @@ Public Class Configurator
             userNameColor.Enabled = False
             hostNameColor.Enabled = False
             uncontError.Enabled = False
+            backgroundColor.Enabled = False
+            inputColor.Enabled = False
+            CmdHelpColor.Enabled = False
+            DefHelpColor.Enabled = False
         End If
 
     End Sub
@@ -230,11 +241,13 @@ Public Class Configurator
                                 "Show Time/Date on Corner = {22}" + vbNewLine + _
                                 "MOTD = {23}" + vbNewLine + _
                                 "Host Name = {24}" + vbNewLine + _
-                                "MOTD After Login = {25}", Ver, CheckBox5.Checked, userNameColor.Text, hostNameColor.Text, contError.Text, uncontError.Text, _
-                                                         textColor.Text, licenseColor.Text, demo.Checked, RootPC.Checked, RootPwd.Text, MaintMode.Checked, _
-                                                         BootPrompt.Checked, clslogin.Checked, motdShow.Checked, simHelp.Checked, colorShell.Checked, _
-                                                         slotProbe.Checked, probeQuiet.Checked, gpuProbe.Checked, backgroundColor.Text, inputColor.Text, _
-                                                         tdCorner.Checked, MOTD.Text, HostName.Text, MAL.Text)
+                                "MOTD After Login = {25}" + vbNewLine + _
+                                "Listed command in Help Color = {26}" + vbNewLine + _
+                                "Definition of command in Help Color = {27}", Ver, CheckBox5.Checked, userNameColor.Text, hostNameColor.Text, contError.Text, uncontError.Text, _
+                                                                            textColor.Text, licenseColor.Text, demo.Checked, RootPC.Checked, RootPwd.Text, MaintMode.Checked, _
+                                                                            BootPrompt.Checked, clslogin.Checked, motdShow.Checked, simHelp.Checked, colorShell.Checked, _
+                                                                            slotProbe.Checked, probeQuiet.Checked, gpuProbe.Checked, backgroundColor.Text, inputColor.Text, _
+                                                                            tdCorner.Checked, MOTD.Text, HostName.Text, MAL.Text, CmdHelpColor.Text, DefHelpColor.Text)
             KernelIni.Close()
             KernelIni.Dispose()
             MsgBox("Settings saved. You can:" + vbNewLine + vbNewLine + "• Use ""reloadconfig"" on Kernel Simulator to see the changes, or" + vbNewLine + "• Use ""reboot"" to see the changes, or" + vbNewLine + "• Exit and re-open Kernel Simulator (recommended)", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Settings saved successfully")
@@ -320,6 +333,22 @@ Public Class Configurator
     End Sub
 
     Private Sub inputColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles inputColor.SelectedValueChanged
+        If (started = True) Then
+            LiveColor.LoadColors()
+            LiveColor.MakeBrightReadable()
+            LiveColor.correctColors()
+        End If
+    End Sub
+
+    Private Sub CmdHelpColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmdHelpColor.SelectedValueChanged
+        If (started = True) Then
+            LiveColor.LoadColors()
+            LiveColor.MakeBrightReadable()
+            LiveColor.correctColors()
+        End If
+    End Sub
+
+    Private Sub DefHelpColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DefHelpColor.SelectedValueChanged
         If (started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
