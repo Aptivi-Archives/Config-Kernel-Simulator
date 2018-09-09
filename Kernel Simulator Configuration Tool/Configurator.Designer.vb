@@ -88,13 +88,12 @@ Partial Class Configurator
         Me.Hardware = New System.Windows.Forms.TabPage()
         Me.slotProbe = New System.Windows.Forms.CheckBox()
         Me.probeQuiet = New System.Windows.Forms.CheckBox()
-        Me.gpuProbe = New System.Windows.Forms.CheckBox()
         Me.Others = New System.Windows.Forms.TabPage()
         Me.tdCorner = New System.Windows.Forms.CheckBox()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.inputColor = New System.Windows.Forms.ComboBox()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.backgroundColor = New System.Windows.Forms.ComboBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.General.SuspendLayout()
@@ -112,7 +111,7 @@ Partial Class Configurator
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.MenuStrip1.Size = New System.Drawing.Size(655, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(660, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -151,7 +150,7 @@ Partial Class Configurator
         Me.TabControl1.Location = New System.Drawing.Point(8, 32)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(647, 398)
+        Me.TabControl1.Size = New System.Drawing.Size(647, 442)
         Me.TabControl1.TabIndex = 1
         '
         'General
@@ -165,13 +164,17 @@ Partial Class Configurator
         Me.General.Location = New System.Drawing.Point(4, 22)
         Me.General.Name = "General"
         Me.General.Padding = New System.Windows.Forms.Padding(3)
-        Me.General.Size = New System.Drawing.Size(639, 372)
+        Me.General.Size = New System.Drawing.Size(639, 416)
         Me.General.TabIndex = 0
         Me.General.Text = "General"
         Me.General.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label16)
+        Me.GroupBox1.Controls.Add(Me.Label15)
+        Me.GroupBox1.Controls.Add(Me.inputColor)
+        Me.GroupBox1.Controls.Add(Me.backgroundColor)
         Me.GroupBox1.Controls.Add(Me.DefHelpColor)
         Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.CmdHelpColor)
@@ -193,7 +196,7 @@ Partial Class Configurator
         Me.GroupBox1.Controls.Add(Me.CheckBox5)
         Me.GroupBox1.Location = New System.Drawing.Point(5, 109)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(622, 249)
+        Me.GroupBox1.Size = New System.Drawing.Size(628, 299)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Colors"
@@ -238,7 +241,7 @@ Partial Class Configurator
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(438, 154)
+        Me.Button1.Location = New System.Drawing.Point(227, 206)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(168, 41)
         Me.Button1.TabIndex = 19
@@ -248,7 +251,7 @@ Partial Class Configurator
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(12, 207)
+        Me.Label9.Location = New System.Drawing.Point(12, 258)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(583, 30)
         Me.Label9.TabIndex = 18
@@ -443,7 +446,7 @@ Partial Class Configurator
         Me.LogIn.Location = New System.Drawing.Point(4, 22)
         Me.LogIn.Name = "LogIn"
         Me.LogIn.Padding = New System.Windows.Forms.Padding(3)
-        Me.LogIn.Size = New System.Drawing.Size(639, 372)
+        Me.LogIn.Size = New System.Drawing.Size(639, 416)
         Me.LogIn.TabIndex = 1
         Me.LogIn.Text = "Log in"
         Me.LogIn.UseVisualStyleBackColor = True
@@ -501,7 +504,7 @@ Partial Class Configurator
         Me.clslogin.AutoSize = True
         Me.clslogin.Location = New System.Drawing.Point(10, 37)
         Me.clslogin.Name = "clslogin"
-        Me.clslogin.Size = New System.Drawing.Size(131, 17)
+        Me.clslogin.Size = New System.Drawing.Size(141, 19)
         Me.clslogin.TabIndex = 1
         Me.clslogin.Text = "Clear Screen on Login"
         Me.clslogin.UseVisualStyleBackColor = True
@@ -513,7 +516,7 @@ Partial Class Configurator
         Me.motdShow.CheckState = System.Windows.Forms.CheckState.Checked
         Me.motdShow.Location = New System.Drawing.Point(10, 12)
         Me.motdShow.Name = "motdShow"
-        Me.motdShow.Size = New System.Drawing.Size(132, 17)
+        Me.motdShow.Size = New System.Drawing.Size(143, 19)
         Me.motdShow.TabIndex = 0
         Me.motdShow.Text = "Show MOTD on Login"
         Me.motdShow.UseVisualStyleBackColor = True
@@ -524,7 +527,7 @@ Partial Class Configurator
         Me.Shell.Controls.Add(Me.colorShell)
         Me.Shell.Location = New System.Drawing.Point(4, 22)
         Me.Shell.Name = "Shell"
-        Me.Shell.Size = New System.Drawing.Size(639, 372)
+        Me.Shell.Size = New System.Drawing.Size(639, 416)
         Me.Shell.TabIndex = 2
         Me.Shell.Text = "Shell"
         Me.Shell.UseVisualStyleBackColor = True
@@ -534,7 +537,7 @@ Partial Class Configurator
         Me.simHelp.AutoSize = True
         Me.simHelp.Location = New System.Drawing.Point(10, 37)
         Me.simHelp.Name = "simHelp"
-        Me.simHelp.Size = New System.Drawing.Size(145, 17)
+        Me.simHelp.Size = New System.Drawing.Size(167, 19)
         Me.simHelp.TabIndex = 1
         Me.simHelp.Text = "Simplified Help Command"
         Me.simHelp.UseVisualStyleBackColor = True
@@ -546,7 +549,7 @@ Partial Class Configurator
         Me.colorShell.CheckState = System.Windows.Forms.CheckState.Checked
         Me.colorShell.Location = New System.Drawing.Point(10, 12)
         Me.colorShell.Name = "colorShell"
-        Me.colorShell.Size = New System.Drawing.Size(88, 17)
+        Me.colorShell.Size = New System.Drawing.Size(96, 19)
         Me.colorShell.TabIndex = 0
         Me.colorShell.Text = "Colored Shell"
         Me.colorShell.UseVisualStyleBackColor = True
@@ -555,7 +558,6 @@ Partial Class Configurator
         '
         Me.Hardware.Controls.Add(Me.slotProbe)
         Me.Hardware.Controls.Add(Me.probeQuiet)
-        Me.Hardware.Controls.Add(Me.gpuProbe)
         Me.Hardware.Location = New System.Drawing.Point(4, 22)
         Me.Hardware.Name = "Hardware"
         Me.Hardware.Size = New System.Drawing.Size(639, 372)
@@ -568,9 +570,9 @@ Partial Class Configurator
         Me.slotProbe.AutoSize = True
         Me.slotProbe.Checked = True
         Me.slotProbe.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.slotProbe.Location = New System.Drawing.Point(10, 62)
+        Me.slotProbe.Location = New System.Drawing.Point(10, 37)
         Me.slotProbe.Name = "slotProbe"
-        Me.slotProbe.Size = New System.Drawing.Size(290, 17)
+        Me.slotProbe.Size = New System.Drawing.Size(320, 19)
         Me.slotProbe.TabIndex = 3
         Me.slotProbe.Text = "Probe Slots by Name and by Numbers (and Percentage)"
         Me.slotProbe.UseVisualStyleBackColor = True
@@ -578,33 +580,19 @@ Partial Class Configurator
         'probeQuiet
         '
         Me.probeQuiet.AutoSize = True
-        Me.probeQuiet.Location = New System.Drawing.Point(10, 37)
+        Me.probeQuiet.Location = New System.Drawing.Point(10, 12)
         Me.probeQuiet.Name = "probeQuiet"
-        Me.probeQuiet.Size = New System.Drawing.Size(82, 17)
+        Me.probeQuiet.Size = New System.Drawing.Size(89, 19)
         Me.probeQuiet.TabIndex = 1
         Me.probeQuiet.Text = "Quiet Probe"
         Me.probeQuiet.UseVisualStyleBackColor = True
         '
-        'gpuProbe
-        '
-        Me.gpuProbe.AutoSize = True
-        Me.gpuProbe.Location = New System.Drawing.Point(10, 12)
-        Me.gpuProbe.Name = "gpuProbe"
-        Me.gpuProbe.Size = New System.Drawing.Size(80, 17)
-        Me.gpuProbe.TabIndex = 0
-        Me.gpuProbe.Text = "Probe GPU"
-        Me.gpuProbe.UseVisualStyleBackColor = True
-        '
         'Others
         '
         Me.Others.Controls.Add(Me.tdCorner)
-        Me.Others.Controls.Add(Me.Label8)
-        Me.Others.Controls.Add(Me.inputColor)
-        Me.Others.Controls.Add(Me.Label7)
-        Me.Others.Controls.Add(Me.backgroundColor)
         Me.Others.Location = New System.Drawing.Point(4, 22)
         Me.Others.Name = "Others"
-        Me.Others.Size = New System.Drawing.Size(639, 372)
+        Me.Others.Size = New System.Drawing.Size(639, 416)
         Me.Others.TabIndex = 4
         Me.Others.Text = "Others"
         Me.Others.UseVisualStyleBackColor = True
@@ -612,54 +600,54 @@ Partial Class Configurator
         'tdCorner
         '
         Me.tdCorner.AutoSize = True
-        Me.tdCorner.Location = New System.Drawing.Point(13, 72)
+        Me.tdCorner.Location = New System.Drawing.Point(10, 13)
         Me.tdCorner.Name = "tdCorner"
-        Me.tdCorner.Size = New System.Drawing.Size(216, 17)
+        Me.tdCorner.Size = New System.Drawing.Size(236, 19)
         Me.tdCorner.TabIndex = 12
         Me.tdCorner.Text = "Show Time/Date on Upper Right Corner"
         Me.tdCorner.UseVisualStyleBackColor = True
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(10, 43)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(70, 15)
-        Me.Label8.TabIndex = 11
-        Me.Label8.Text = "Input Color:"
         '
         'inputColor
         '
         Me.inputColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.inputColor.FormattingEnabled = True
-        Me.inputColor.Location = New System.Drawing.Point(138, 39)
+        Me.inputColor.Location = New System.Drawing.Point(438, 172)
         Me.inputColor.Name = "inputColor"
-        Me.inputColor.Size = New System.Drawing.Size(489, 23)
-        Me.inputColor.TabIndex = 10
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(10, 13)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(106, 15)
-        Me.Label7.TabIndex = 9
-        Me.Label7.Text = "Background Color:"
+        Me.inputColor.Size = New System.Drawing.Size(168, 23)
+        Me.inputColor.TabIndex = 25
         '
         'backgroundColor
         '
         Me.backgroundColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.backgroundColor.FormattingEnabled = True
-        Me.backgroundColor.Location = New System.Drawing.Point(138, 10)
+        Me.backgroundColor.Location = New System.Drawing.Point(15, 224)
         Me.backgroundColor.Name = "backgroundColor"
-        Me.backgroundColor.Size = New System.Drawing.Size(489, 23)
-        Me.backgroundColor.TabIndex = 8
+        Me.backgroundColor.Size = New System.Drawing.Size(168, 23)
+        Me.backgroundColor.TabIndex = 24
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(435, 154)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(67, 15)
+        Me.Label15.TabIndex = 26
+        Me.Label15.Text = "Input Color"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(12, 206)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(103, 15)
+        Me.Label16.TabIndex = 27
+        Me.Label16.Text = "Background Color"
         '
         'Configurator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(655, 439)
+        Me.ClientSize = New System.Drawing.Size(660, 478)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -723,11 +711,6 @@ Partial Class Configurator
     Friend WithEvents slotProbe As System.Windows.Forms.CheckBox
     Friend WithEvents probeQuiet As System.Windows.Forms.CheckBox
     Friend WithEvents Others As System.Windows.Forms.TabPage
-    Friend WithEvents backgroundColor As System.Windows.Forms.ComboBox
-    Friend WithEvents gpuProbe As System.Windows.Forms.CheckBox
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents inputColor As System.Windows.Forms.ComboBox
-    Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents tdCorner As System.Windows.Forms.CheckBox
@@ -742,5 +725,9 @@ Partial Class Configurator
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents CmdHelpColor As System.Windows.Forms.ComboBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents inputColor As System.Windows.Forms.ComboBox
+    Friend WithEvents backgroundColor As System.Windows.Forms.ComboBox
 
 End Class

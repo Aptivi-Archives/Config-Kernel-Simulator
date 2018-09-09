@@ -131,12 +131,6 @@ Public Class Configurator
                 ElseIf (LineValue.Replace("Quiet Probe = ", "") = "False") Then
                     probeQuiet.Checked = False
                 End If
-            ElseIf (LineValue.Contains("Probe GPU = ")) Then
-                If (LineValue.Replace("Probe GPU = ", "") = "True") Then
-                    gpuProbe.Checked = True
-                ElseIf (LineValue.Replace("Probe GPU = ", "") = "False") Then
-                    gpuProbe.Checked = False
-                End If
             ElseIf (LineValue.Contains("Background Color = ")) Then
                 backgroundColor.Text = LineValue.Replace("Background Color = ", "")
             ElseIf (LineValue.Contains("Input Color = ")) Then
@@ -194,6 +188,7 @@ Public Class Configurator
             inputColor.Enabled = True
             CmdHelpColor.Enabled = True
             DefHelpColor.Enabled = True
+            Button1.Enabled = True
         Else
             textColor.Enabled = False
             licenseColor.Enabled = False
@@ -205,6 +200,7 @@ Public Class Configurator
             inputColor.Enabled = False
             CmdHelpColor.Enabled = False
             DefHelpColor.Enabled = False
+            Button1.Enabled = False
         End If
 
     End Sub
@@ -235,19 +231,18 @@ Public Class Configurator
                                 "Colored Shell = {16}" + vbNewLine + _
                                 "Probe Slots = {17}" + vbNewLine + _
                                 "Quiet Probe = {18}" + vbNewLine + _
-                                "Probe GPU = {19}" + vbNewLine + _
-                                "Background Color = {20}" + vbNewLine + _
-                                "Input Color = {21}" + vbNewLine + _
-                                "Show Time/Date on Corner = {22}" + vbNewLine + _
-                                "MOTD = {23}" + vbNewLine + _
-                                "Host Name = {24}" + vbNewLine + _
-                                "MOTD After Login = {25}" + vbNewLine + _
-                                "Listed command in Help Color = {26}" + vbNewLine + _
-                                "Definition of command in Help Color = {27}", Ver, CheckBox5.Checked, userNameColor.Text, hostNameColor.Text, contError.Text, uncontError.Text, _
+                                "Background Color = {19}" + vbNewLine + _
+                                "Input Color = {20}" + vbNewLine + _
+                                "Show Time/Date on Corner = {21}" + vbNewLine + _
+                                "MOTD = {22}" + vbNewLine + _
+                                "Host Name = {23}" + vbNewLine + _
+                                "MOTD After Login = {24}" + vbNewLine + _
+                                "Listed command in Help Color = {25}" + vbNewLine + _
+                                "Definition of command in Help Color = {26}", Ver, CheckBox5.Checked, userNameColor.Text, hostNameColor.Text, contError.Text, uncontError.Text, _
                                                                             textColor.Text, licenseColor.Text, demo.Checked, RootPC.Checked, RootPwd.Text, MaintMode.Checked, _
                                                                             BootPrompt.Checked, clslogin.Checked, motdShow.Checked, simHelp.Checked, colorShell.Checked, _
-                                                                            slotProbe.Checked, probeQuiet.Checked, gpuProbe.Checked, backgroundColor.Text, inputColor.Text, _
-                                                                            tdCorner.Checked, MOTD.Text, HostName.Text, MAL.Text, CmdHelpColor.Text, DefHelpColor.Text)
+                                                                            slotProbe.Checked, probeQuiet.Checked, backgroundColor.Text, inputColor.Text, tdCorner.Checked, _
+                                                                            MOTD.Text, HostName.Text, MAL.Text, CmdHelpColor.Text, DefHelpColor.Text)
             KernelIni.Close()
             KernelIni.Dispose()
             MsgBox("Settings saved. You can:" + vbNewLine + vbNewLine + "• Use ""reloadconfig"" on Kernel Simulator to see the changes, or" + vbNewLine + "• Use ""reboot"" to see the changes, or" + vbNewLine + "• Exit and re-open Kernel Simulator (recommended)", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Settings saved successfully")
@@ -324,7 +319,7 @@ Public Class Configurator
         End If
     End Sub
 
-    Private Sub backgroundColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles backgroundColor.SelectedValueChanged
+    Private Sub backgroundColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs)
         If (started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
@@ -332,7 +327,7 @@ Public Class Configurator
         End If
     End Sub
 
-    Private Sub inputColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles inputColor.SelectedValueChanged
+    Private Sub inputColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs)
         If (started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()

@@ -1,6 +1,6 @@
 # |---+-> Kernel Simulator Configuration Tool <-+---|
 
-A user-friendly configuration tool for Kernel Simulator 0.0.4 or higher. This program can be changed eventually. This project is not final.
+A user-friendly configuration tool for Kernel Simulator 0.0.4 or higher that can be changed eventually and is not final.
 
 We cannot upload binaries to releases, so we will create a new folder called bin to store binary files. See the reason [here](https://github.com/EoflaOE/Kernel-Simulator)
 
@@ -10,7 +10,7 @@ We cannot upload binaries to releases, so we will create a new folder called bin
 
 ## |-----+--> _Build Instructions_ <--+-----|
 
-1. Install [Microsoft Visual Basic Express 2010](https://visual-basic-express.soft32.com/old-version/386190/2010.express/) or [Visual Studio 2010](https://www.visualstudio.com/vs/older-downloads/ "Sign-in required"), or higher.
+1. Install [Microsoft Visual Basic Express 2010](https://visual-basic-express.soft32.com/old-version/386190/2010.express/) or Visual Studio 2010, or higher.
 
 2. After installation, extract the source code, and open Microsoft Visual Basic / Studio 2010, and click on **Open Project...**
 
@@ -33,6 +33,8 @@ Please note that dates mentioned here is for development date changes only.
 **7/??/2018 - 0.0.4.9:** Added notification when saving is complete, Help system, and new settings for 0.0.4.9
 
 **9/3/2018 - 0.0.5:** Added new config options for 0.0.5, fix bugs
+
+**9/9/2018 - 0.0.5.2:** Organized colors, removed Probe GPU
 
 ## |-----+--> _Contributors_ <--+-----|
 
