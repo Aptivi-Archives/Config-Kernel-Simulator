@@ -62,6 +62,25 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Segoe UI;}{\f1\fswiss\fcharset0 Arial;}}
+        '''{\colortbl ;\red0\green0\blue255;\red0\green128\blue128;}
+        '''{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\cf1\f0\fs48 MadMilkman.Ini\par
+        '''\fs24\par
+        '''\cf2 Source code: https://github.com/MarioZ/MadMilkman.Ini\par
+        '''\par
+        '''Copyright (c) 2016, Mario Zorica\par
+        '''\par
+        '''License (Apache 2.0): https://github.com/MarioZ/MadMilkman.Ini/blob/master/LICENSE\cf0\f1\fs20\par
+        '''}
+        '''
+        '''</summary>
+        Friend ReadOnly Property AboutLibs() As String
+            Get
+                Return ResourceManager.GetString("AboutLibs", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Segoe UI;}{\f1\fswiss\fcharset0 Arial;}}
         '''{\colortbl ;\red0\green0\blue255;\red0\green128\blue128;\red0\green0\blue0;}
         '''{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\cf1\f0\fs48 General Section\par
         '''\fs24\par
@@ -80,11 +99,11 @@ Namespace My.Resources
         '''{\colortbl ;\red0\green0\blue255;\red0\green128\blue128;\red0\green0\blue0;}
         '''{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\cf1\f0\fs48 Hardware Section\par
         '''\fs24\par
-        '''\cf2 - Probe GPU: \cf3 When enabled, GPU will be probed automatically by the probers.\par
-        '''\par
         '''\cf2 - Quiet Probe: \cf0 When enabled, the probing will be quiet.\par
         '''\par
-        '''\cf2 - Probe Slots by Name and by Numb [rest of string was truncated]&quot;;.
+        '''\cf2 - Probe Slots by Name and by Numbers (and Percentage): \cf3 When enabled, the RAM chips will be probed.\cf0\f1\fs20\par
+        '''}
+        '''
         '''</summary>
         Friend ReadOnly Property Hardware() As String
             Get

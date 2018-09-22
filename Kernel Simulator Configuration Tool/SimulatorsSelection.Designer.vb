@@ -89,9 +89,9 @@ Partial Class SimulatorsSelection
         '
         Me.statBottomBar.Font = New System.Drawing.Font("Segoe UI", 8.25!)
         Me.statBottomBar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statBar, Me.statText})
-        Me.statBottomBar.Location = New System.Drawing.Point(0, 504)
+        Me.statBottomBar.Location = New System.Drawing.Point(0, 505)
         Me.statBottomBar.Name = "statBottomBar"
-        Me.statBottomBar.Size = New System.Drawing.Size(1062, 22)
+        Me.statBottomBar.Size = New System.Drawing.Size(1061, 22)
         Me.statBottomBar.TabIndex = 5
         Me.statBottomBar.Text = "StatusStrip1"
         '
@@ -139,7 +139,7 @@ Partial Class SimulatorsSelection
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cancelButtonList
-        Me.ClientSize = New System.Drawing.Size(1062, 526)
+        Me.ClientSize = New System.Drawing.Size(1061, 527)
         Me.Controls.Add(Me.Simulators)
         Me.Controls.Add(Me.statBottomBar)
         Me.Controls.Add(Me.cancelButtonList)

@@ -36,11 +36,23 @@ Please note that dates mentioned here is for development date changes only.
 
 **9/9/2018 - 0.0.5.2:** Organized colors, removed Probe GPU
 
-## |-----+--> _Contributors_ <--+-----|
+**9/22/2018 - 0.0.5.5:** New config system
+
+## |-----+--> _Credits_ <--+-----|
 
 **EoflaOE:** Owner of Kernel Simulator
 
 **Paomedia:** Icon creator
+
+## |-----+--> _Open Source Libraries used_ <--+-----|
+
+MadMilkman.Ini
+
+Source code: https://github.com/MarioZ/MadMilkman.Ini
+
+Copyright (c) 2016, Mario Zorica
+
+License (Apache 2.0): https://github.com/MarioZ/MadMilkman.Ini/blob/master/LICENSE
 
 ## |-----+--> _License - GNU GPL_ <--+-----|
 

@@ -46,9 +46,14 @@ Partial Class Configurator
         Me.SaveSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenSourceLibrariesUsedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.General = New System.Windows.Forms.TabPage()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.inputColor = New System.Windows.Forms.ComboBox()
+        Me.backgroundColor = New System.Windows.Forms.ComboBox()
         Me.DefHelpColor = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.CmdHelpColor = New System.Windows.Forms.ComboBox()
@@ -90,10 +95,6 @@ Partial Class Configurator
         Me.probeQuiet = New System.Windows.Forms.CheckBox()
         Me.Others = New System.Windows.Forms.TabPage()
         Me.tdCorner = New System.Windows.Forms.CheckBox()
-        Me.inputColor = New System.Windows.Forms.ComboBox()
-        Me.backgroundColor = New System.Windows.Forms.ComboBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label16 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.General.SuspendLayout()
@@ -107,7 +108,7 @@ Partial Class Configurator
         'MenuStrip1
         '
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MainToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MainToolStripMenuItem, Me.HelpToolStripMenuItem, Me.OpenSourceLibrariesUsedToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
@@ -139,6 +140,12 @@ Partial Class Configurator
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
+        '
+        'OpenSourceLibrariesUsedToolStripMenuItem
+        '
+        Me.OpenSourceLibrariesUsedToolStripMenuItem.Name = "OpenSourceLibrariesUsedToolStripMenuItem"
+        Me.OpenSourceLibrariesUsedToolStripMenuItem.Size = New System.Drawing.Size(163, 20)
+        Me.OpenSourceLibrariesUsedToolStripMenuItem.Text = "Open Source Libraries Used"
         '
         'TabControl1
         '
@@ -200,6 +207,42 @@ Partial Class Configurator
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Colors"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(12, 206)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(103, 15)
+        Me.Label16.TabIndex = 27
+        Me.Label16.Text = "Background Color"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(435, 154)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(67, 15)
+        Me.Label15.TabIndex = 26
+        Me.Label15.Text = "Input Color"
+        '
+        'inputColor
+        '
+        Me.inputColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.inputColor.FormattingEnabled = True
+        Me.inputColor.Location = New System.Drawing.Point(438, 172)
+        Me.inputColor.Name = "inputColor"
+        Me.inputColor.Size = New System.Drawing.Size(168, 23)
+        Me.inputColor.TabIndex = 25
+        '
+        'backgroundColor
+        '
+        Me.backgroundColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.backgroundColor.FormattingEnabled = True
+        Me.backgroundColor.Location = New System.Drawing.Point(15, 224)
+        Me.backgroundColor.Name = "backgroundColor"
+        Me.backgroundColor.Size = New System.Drawing.Size(168, 23)
+        Me.backgroundColor.TabIndex = 24
         '
         'DefHelpColor
         '
@@ -376,7 +419,7 @@ Partial Class Configurator
         Me.CheckBox5.AutoSize = True
         Me.CheckBox5.Location = New System.Drawing.Point(15, 22)
         Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(171, 19)
+        Me.CheckBox5.Size = New System.Drawing.Size(152, 17)
         Me.CheckBox5.TabIndex = 4
         Me.CheckBox5.Text = "Customized Colors on Boot"
         Me.CheckBox5.UseVisualStyleBackColor = True
@@ -504,7 +547,7 @@ Partial Class Configurator
         Me.clslogin.AutoSize = True
         Me.clslogin.Location = New System.Drawing.Point(10, 37)
         Me.clslogin.Name = "clslogin"
-        Me.clslogin.Size = New System.Drawing.Size(141, 19)
+        Me.clslogin.Size = New System.Drawing.Size(131, 17)
         Me.clslogin.TabIndex = 1
         Me.clslogin.Text = "Clear Screen on Login"
         Me.clslogin.UseVisualStyleBackColor = True
@@ -516,7 +559,7 @@ Partial Class Configurator
         Me.motdShow.CheckState = System.Windows.Forms.CheckState.Checked
         Me.motdShow.Location = New System.Drawing.Point(10, 12)
         Me.motdShow.Name = "motdShow"
-        Me.motdShow.Size = New System.Drawing.Size(143, 19)
+        Me.motdShow.Size = New System.Drawing.Size(132, 17)
         Me.motdShow.TabIndex = 0
         Me.motdShow.Text = "Show MOTD on Login"
         Me.motdShow.UseVisualStyleBackColor = True
@@ -537,7 +580,7 @@ Partial Class Configurator
         Me.simHelp.AutoSize = True
         Me.simHelp.Location = New System.Drawing.Point(10, 37)
         Me.simHelp.Name = "simHelp"
-        Me.simHelp.Size = New System.Drawing.Size(167, 19)
+        Me.simHelp.Size = New System.Drawing.Size(145, 17)
         Me.simHelp.TabIndex = 1
         Me.simHelp.Text = "Simplified Help Command"
         Me.simHelp.UseVisualStyleBackColor = True
@@ -549,7 +592,7 @@ Partial Class Configurator
         Me.colorShell.CheckState = System.Windows.Forms.CheckState.Checked
         Me.colorShell.Location = New System.Drawing.Point(10, 12)
         Me.colorShell.Name = "colorShell"
-        Me.colorShell.Size = New System.Drawing.Size(96, 19)
+        Me.colorShell.Size = New System.Drawing.Size(88, 17)
         Me.colorShell.TabIndex = 0
         Me.colorShell.Text = "Colored Shell"
         Me.colorShell.UseVisualStyleBackColor = True
@@ -560,7 +603,7 @@ Partial Class Configurator
         Me.Hardware.Controls.Add(Me.probeQuiet)
         Me.Hardware.Location = New System.Drawing.Point(4, 22)
         Me.Hardware.Name = "Hardware"
-        Me.Hardware.Size = New System.Drawing.Size(639, 372)
+        Me.Hardware.Size = New System.Drawing.Size(639, 416)
         Me.Hardware.TabIndex = 3
         Me.Hardware.Text = "Hardware"
         Me.Hardware.UseVisualStyleBackColor = True
@@ -572,7 +615,7 @@ Partial Class Configurator
         Me.slotProbe.CheckState = System.Windows.Forms.CheckState.Checked
         Me.slotProbe.Location = New System.Drawing.Point(10, 37)
         Me.slotProbe.Name = "slotProbe"
-        Me.slotProbe.Size = New System.Drawing.Size(320, 19)
+        Me.slotProbe.Size = New System.Drawing.Size(290, 17)
         Me.slotProbe.TabIndex = 3
         Me.slotProbe.Text = "Probe Slots by Name and by Numbers (and Percentage)"
         Me.slotProbe.UseVisualStyleBackColor = True
@@ -582,7 +625,7 @@ Partial Class Configurator
         Me.probeQuiet.AutoSize = True
         Me.probeQuiet.Location = New System.Drawing.Point(10, 12)
         Me.probeQuiet.Name = "probeQuiet"
-        Me.probeQuiet.Size = New System.Drawing.Size(89, 19)
+        Me.probeQuiet.Size = New System.Drawing.Size(82, 17)
         Me.probeQuiet.TabIndex = 1
         Me.probeQuiet.Text = "Quiet Probe"
         Me.probeQuiet.UseVisualStyleBackColor = True
@@ -602,52 +645,16 @@ Partial Class Configurator
         Me.tdCorner.AutoSize = True
         Me.tdCorner.Location = New System.Drawing.Point(10, 13)
         Me.tdCorner.Name = "tdCorner"
-        Me.tdCorner.Size = New System.Drawing.Size(236, 19)
+        Me.tdCorner.Size = New System.Drawing.Size(216, 17)
         Me.tdCorner.TabIndex = 12
         Me.tdCorner.Text = "Show Time/Date on Upper Right Corner"
         Me.tdCorner.UseVisualStyleBackColor = True
-        '
-        'inputColor
-        '
-        Me.inputColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.inputColor.FormattingEnabled = True
-        Me.inputColor.Location = New System.Drawing.Point(438, 172)
-        Me.inputColor.Name = "inputColor"
-        Me.inputColor.Size = New System.Drawing.Size(168, 23)
-        Me.inputColor.TabIndex = 25
-        '
-        'backgroundColor
-        '
-        Me.backgroundColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.backgroundColor.FormattingEnabled = True
-        Me.backgroundColor.Location = New System.Drawing.Point(15, 224)
-        Me.backgroundColor.Name = "backgroundColor"
-        Me.backgroundColor.Size = New System.Drawing.Size(168, 23)
-        Me.backgroundColor.TabIndex = 24
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(435, 154)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(67, 15)
-        Me.Label15.TabIndex = 26
-        Me.Label15.Text = "Input Color"
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(12, 206)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(103, 15)
-        Me.Label16.TabIndex = 27
-        Me.Label16.Text = "Background Color"
         '
         'Configurator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(660, 478)
+        Me.ClientSize = New System.Drawing.Size(660, 479)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -729,5 +736,6 @@ Partial Class Configurator
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents inputColor As System.Windows.Forms.ComboBox
     Friend WithEvents backgroundColor As System.Windows.Forms.ComboBox
+    Friend WithEvents OpenSourceLibrariesUsedToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

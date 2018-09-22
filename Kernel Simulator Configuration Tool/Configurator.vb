@@ -45,117 +45,47 @@ Public Class Configurator
 
     Sub readConfig()
         initializeCombos()
-        Dim KernelIni As New StreamReader(Environ("USERPROFILE") + "\kernelConfig.ini")
-        Dim LineValue As String = KernelIni.ReadLine
-        Do While LineValue IsNot Nothing
-            If (LineValue.Contains("Kernel Version = ")) Then
-                Ver = LineValue.Replace("Kernel Version = ", "")
-                Me.Text = Me.Text + " - Version " + Ver
-            ElseIf (LineValue.Contains("Customized Colors on Boot = ")) Then
-                If (LineValue.Replace("Customized Colors on Boot = ", "") = "True") Then
-                    CheckBox5.Checked = True
-                Else
-                    CheckBox5.Checked = False
-                End If
-            ElseIf (LineValue.Contains("User Name Shell Color = ")) Then
-                userNameColor.Text = LineValue.Replace("User Name Shell Color = ", "")
-            ElseIf (LineValue.Contains("Host Name Shell Color = ")) Then
-                hostNameColor.Text = LineValue.Replace("Host Name Shell Color = ", "")
-            ElseIf (LineValue.Contains("Continuable Kernel Error Color = ")) Then
-                contError.Text = LineValue.Replace("Continuable Kernel Error Color = ", "")
-            ElseIf (LineValue.Contains("Uncontinuable Kernel Error Color = ")) Then
-                uncontError.Text = LineValue.Replace("Uncontinuable Kernel Error Color = ", "")
-            ElseIf (LineValue.Contains("Text Color = ")) Then
-                textColor.Text = LineValue.Replace("Text Color = ", "")
-            ElseIf (LineValue.Contains("License Color = ")) Then
-                licenseColor.Text = LineValue.Replace("License Color = ", "")
-            ElseIf (LineValue.Contains("Create Demo Account = ")) Then
-                If (LineValue.Replace("Create Demo Account = ", "") = "True") Then
-                    demo.Checked = True
-                ElseIf (LineValue.Replace("Create Demo Account = ", "") = "False") Then
-                    demo.Checked = False
-                End If
-            ElseIf (LineValue.Contains("Change Root Password = ")) Then
-                If (LineValue.Replace("Change Root Password = ", "") = "True") Then
-                    RootPC.Checked = True
-                ElseIf (LineValue.Replace("Change Root Password = ", "") = "False") Then
-                    RootPC.Checked = False
-                End If
-            ElseIf (LineValue.Contains("Set Root Password to = ")) Then
-                RootPwd.Text = LineValue.Replace("Set Root Password to = ", "")
-            ElseIf (LineValue.Contains("Maintenance Mode = ")) Then
-                If (LineValue.Replace("Maintenance Mode = ", "") = "True") Then
-                    MaintMode.Checked = True
-                ElseIf (LineValue.Replace("Maintenance Mode = ", "") = "False") Then
-                    MaintMode.Checked = False
-                End If
-            ElseIf (LineValue.Contains("Prompt for Arguments on Boot = ")) Then
-                If (LineValue.Replace("Prompt for Arguments on Boot = ", "") = "True") Then
-                    BootPrompt.Checked = True
-                ElseIf (LineValue.Replace("Prompt for Arguments on Boot = ", "") = "False") Then
-                    BootPrompt.Checked = False
-                End If
-            ElseIf (LineValue.Contains("Clear Screen on Log-in = ")) Then
-                If (LineValue.Replace("Clear Screen on Log-in = ", "") = "True") Then
-                    clslogin.Checked = True
-                ElseIf (LineValue.Replace("Clear Screen on Log-in = ", "") = "False") Then
-                    clslogin.Checked = False
-                End If
-            ElseIf (LineValue.Contains("Show MOTD on Log-in = ")) Then
-                If (LineValue.Replace("Show MOTD on Log-in = ", "") = "True") Then
-                    motdShow.Checked = True
-                ElseIf (LineValue.Replace("Show MOTD on Log-in = ", "") = "False") Then
-                    motdShow.Checked = False
-                End If
-            ElseIf (LineValue.Contains("Simplified Help Command = ")) Then
-                If (LineValue.Replace("Simplified Help Command = ", "") = "True") Then
-                    simHelp.Checked = True
-                ElseIf (LineValue.Replace("Simplified Help Command = ", "") = "False") Then
-                    simHelp.Checked = False
-                End If
-            ElseIf (LineValue.Contains("Colored Shell = ")) Then
-                If (LineValue.Replace("Colored Shell = ", "") = "True") Then
-                    colorShell.Checked = True
-                Else
-                    colorShell.Checked = False
-                End If
-            ElseIf (LineValue.Contains("Probe Slots = ")) Then
-                If (LineValue.Replace("Probe Slots = ", "") = "True") Then
-                    slotProbe.Checked = True
-                ElseIf (LineValue.Replace("Probe Slots = ", "") = "False") Then
-                    slotProbe.Checked = False
-                End If
-            ElseIf (LineValue.Contains("Quiet Probe = ")) Then
-                If (LineValue.Replace("Quiet Probe = ", "") = "True") Then
-                    probeQuiet.Checked = True
-                ElseIf (LineValue.Replace("Quiet Probe = ", "") = "False") Then
-                    probeQuiet.Checked = False
-                End If
-            ElseIf (LineValue.Contains("Background Color = ")) Then
-                backgroundColor.Text = LineValue.Replace("Background Color = ", "")
-            ElseIf (LineValue.Contains("Input Color = ")) Then
-                inputColor.Text = LineValue.Replace("Input Color = ", "")
-            ElseIf (LineValue.Contains("Show Time/Date on Corner = ")) Then
-                If (LineValue.Replace("Show Time/Date on Corner = ", "") = "True") Then
-                    tdCorner.Checked = True
-                ElseIf (LineValue.Replace("Show Time/Date on Corner = ", "") = "False") Then
-                    tdCorner.Checked = False
-                End If
-            ElseIf (LineValue.Contains("MOTD = ")) Then
-                MOTD.Text = LineValue.Replace("MOTD = ", "")
-            ElseIf (LineValue.Contains("Host Name = ")) Then
-                HostName.Text = LineValue.Replace("Host Name = ", "")
-            ElseIf (LineValue.Contains("MOTD After Login = ")) Then
-                MAL.Text = LineValue.Replace("MOTD After Login = ", "")
-            ElseIf (LineValue.Contains("Listed command in Help Color = ")) Then
-                CmdHelpColor.Text = LineValue.Replace("Listed command in Help Color = ", "")
-            ElseIf (LineValue.Contains("Definition of command in Help Color = ")) Then
-                DefHelpColor.Text = LineValue.Replace("Definition of command in Help Color = ", "")
-            End If
-            LineValue = KernelIni.ReadLine
-        Loop
-        KernelIni.Close()
-        KernelIni.Dispose()
+        Dim configReader As New IniFile()
+        configReader.Load(Environ("USERPROFILE") + "\kernelConfig.ini")
+        If (configReader.Sections("General").Keys("Customized Colors on Boot").Value = "True") Then CheckBox5.Checked = True Else CheckBox5.Checked = False
+
+        'Colors Section
+        userNameColor.Text = configReader.Sections("Colors").Keys("User Name Shell Color").Value
+        hostNameColor.Text = configReader.Sections("Colors").Keys("Host Name Shell Color").Value
+        contError.Text = configReader.Sections("Colors").Keys("Continuable Kernel Error Color").Value
+        uncontError.Text = configReader.Sections("Colors").Keys("Uncontinuable Kernel Error Color").Value
+        textColor.Text = configReader.Sections("Colors").Keys("Text Color").Value
+        licenseColor.Text = configReader.Sections("Colors").Keys("License Color").Value
+        backgroundColor.Text = configReader.Sections("Colors").Keys("Background Color").Value
+        inputColor.Text = configReader.Sections("Colors").Keys("Input Color").Value
+        CmdHelpColor.Text = configReader.Sections("Colors").Keys("Listed command in help Color").Value
+        DefHelpColor.Text = configReader.Sections("Colors").Keys("Definition of command in Help Color").Value
+
+        'General Section
+        If (configReader.Sections("General").Keys("Create Demo Account").Value = "True") Then demo.Checked = True Else demo.Checked = False
+        If (configReader.Sections("General").Keys("Change Root Password").Value = "True") Then RootPC.Checked = True Else RootPC.Checked = False
+        RootPwd.Text = configReader.Sections("General").Keys("Set Root Password to").Value
+        If (configReader.Sections("General").Keys("Maintenance Mode").Value = "True") Then MaintMode.Checked = True Else MaintMode.Checked = False
+        If (configReader.Sections("General").Keys("Prompt for Arguments on Boot").Value = "True") Then BootPrompt.Checked = True Else BootPrompt.Checked = False
+
+        'Login Section
+        If (configReader.Sections("Login").Keys("Clear Screen on Log-in").Value = "True") Then clslogin.Checked = True Else clslogin.Checked = False
+        If (configReader.Sections("Login").Keys("Show MOTD on Log-in").Value = "True") Then motdShow.Checked = True Else motdShow.Checked = False
+        MOTD.Text = configReader.Sections("Login").Keys("MOTD").Value
+        HostName.Text = configReader.Sections("Login").Keys("Host Name").Value
+        MAL.Text = configReader.Sections("Login").Keys("MOTD After Login").Value
+
+        'Shell Section
+        If (configReader.Sections("Shell").Keys("Simplified Help Command").Value = "True") Then simHelp.Checked = True Else simHelp.Checked = False
+        If (configReader.Sections("Shell").Keys("Colored Shell").Value = "True") Then colorShell.Checked = True Else colorShell.Checked = False
+
+        'Hardware Section
+        If (configReader.Sections("Hardware").Keys("Probe Slots").Value = "True") Then slotProbe.Checked = True Else slotProbe.Checked = False
+        If (configReader.Sections("Hardware").Keys("Quiet Probe").Value = "True") Then probeQuiet.Checked = True Else probeQuiet.Checked = False
+
+        'Misc Section
+        If (configReader.Sections("Misc").Keys("Show Time/Date on Upper Right Corner").Value = "True") Then tdCorner.Checked = True Else tdCorner.Checked = False
+        Ver = configReader.Sections("Misc").Keys("Kernel Version").Value
     End Sub
 
     Sub initializeCombos()
@@ -207,45 +137,72 @@ Public Class Configurator
 
     Private Sub SaveSettingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveSettingsToolStripMenuItem.Click
         Try
+            'Save file before doing anything
             My.Computer.FileSystem.WriteAllText(Environ("USERPROFILE") + "\kernelConfig.ini", "", False)
-            Dim KernelIni As New StreamWriter(Environ("USERPROFILE") + "\kernelConfig.ini")
+            Dim ksconf As New IniFile()
+
+            'Set to default password if there is no password for "root"
             If (RootPwd.Text = "") Then
                 RootPwd.Text = "toor"
             End If
-            KernelIni.WriteLine("Kernel Version = {0}" + vbNewLine + _
-                                "Customized Colors on Boot = {1}" + vbNewLine + _
-                                "User Name Shell Color = {2}" + vbNewLine + _
-                                "Host Name Shell Color = {3}" + vbNewLine + _
-                                "Continuable Kernel Error Color = {4}" + vbNewLine + _
-                                "Uncontinuable Kernel Error Color = {5}" + vbNewLine + _
-                                "Text Color = {6}" + vbNewLine + _
-                                "License Color = {7}" + vbNewLine + _
-                                "Create Demo Account = {8}" + vbNewLine + _
-                                "Change Root Password = {9}" + vbNewLine + _
-                                "Set Root Password to = {10}" + vbNewLine + _
-                                "Maintenance Mode = {11}" + vbNewLine + _
-                                "Prompt for Arguments on Boot = {12}" + vbNewLine + _
-                                "Clear Screen on Log-in = {13}" + vbNewLine + _
-                                "Show MOTD on Log-in = {14}" + vbNewLine + _
-                                "Simplified Help Command = {15}" + vbNewLine + _
-                                "Colored Shell = {16}" + vbNewLine + _
-                                "Probe Slots = {17}" + vbNewLine + _
-                                "Quiet Probe = {18}" + vbNewLine + _
-                                "Background Color = {19}" + vbNewLine + _
-                                "Input Color = {20}" + vbNewLine + _
-                                "Show Time/Date on Corner = {21}" + vbNewLine + _
-                                "MOTD = {22}" + vbNewLine + _
-                                "Host Name = {23}" + vbNewLine + _
-                                "MOTD After Login = {24}" + vbNewLine + _
-                                "Listed command in Help Color = {25}" + vbNewLine + _
-                                "Definition of command in Help Color = {26}", Ver, CheckBox5.Checked, userNameColor.Text, hostNameColor.Text, contError.Text, uncontError.Text, _
-                                                                            textColor.Text, licenseColor.Text, demo.Checked, RootPC.Checked, RootPwd.Text, MaintMode.Checked, _
-                                                                            BootPrompt.Checked, clslogin.Checked, motdShow.Checked, simHelp.Checked, colorShell.Checked, _
-                                                                            slotProbe.Checked, probeQuiet.Checked, backgroundColor.Text, inputColor.Text, tdCorner.Checked, _
-                                                                            MOTD.Text, HostName.Text, MAL.Text, CmdHelpColor.Text, DefHelpColor.Text)
-            KernelIni.Close()
-            KernelIni.Dispose()
-            MsgBox("Settings saved. You can:" + vbNewLine + vbNewLine + "• Use ""reloadconfig"" on Kernel Simulator to see the changes, or" + vbNewLine + "• Use ""reboot"" to see the changes, or" + vbNewLine + "• Exit and re-open Kernel Simulator (recommended)", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Settings saved successfully")
+
+            'The General Section
+            ksconf.Sections.Add(
+                New IniSection(ksconf, "General",
+                    New IniKey(ksconf, "Prompt for Arguments on Boot", BootPrompt.Checked),
+                    New IniKey(ksconf, "Maintenance Mode", MaintMode.Checked),
+                    New IniKey(ksconf, "Change Root Password", RootPC.Checked),
+                    New IniKey(ksconf, "Set Root Password to", RootPwd.Text),
+                    New IniKey(ksconf, "Create Demo Account", demo.Checked),
+                    New IniKey(ksconf, "Customized Colors on Boot", CheckBox5.Checked)))
+
+            'The Colors Section
+            ksconf.Sections.Add(
+                New IniSection(ksconf, "Colors",
+                    New IniKey(ksconf, "User Name Shell Color", userNameColor.Text),
+                    New IniKey(ksconf, "Host Name Shell Color", hostNameColor.Text),
+                    New IniKey(ksconf, "Continuable Kernel Error Color", contError.Text),
+                    New IniKey(ksconf, "Uncontinuable Kernel Error Color", uncontError.Text),
+                    New IniKey(ksconf, "Text Color", textColor.Text),
+                    New IniKey(ksconf, "License Color", licenseColor.Text),
+                    New IniKey(ksconf, "Background Color", backgroundColor.Text),
+                    New IniKey(ksconf, "Input Color", inputColor.Text),
+                    New IniKey(ksconf, "Listed command in Help Color", CmdHelpColor.Text),
+                    New IniKey(ksconf, "Definition of command in Help Color", DefHelpColor.Text)))
+
+            'The Hardware Section
+            ksconf.Sections.Add(
+                New IniSection(ksconf, "Hardware",
+                    New IniKey(ksconf, "Quiet Probe", probeQuiet.Checked),
+                    New IniKey(ksconf, "Probe Slots", slotProbe.Checked)))
+
+            'The Login Section
+            ksconf.Sections.Add(
+                New IniSection(ksconf, "Login",
+                    New IniKey(ksconf, "Show MOTD on Log-in", motdShow.Checked),
+                    New IniKey(ksconf, "Clear Screen on Log-in", clslogin.Checked),
+                    New IniKey(ksconf, "MOTD", MOTD.Text),
+                    New IniKey(ksconf, "Host Name", HostName.Text),
+                    New IniKey(ksconf, "MOTD After Login", MAL.Text)))
+
+            'The Shell Section
+            ksconf.Sections.Add(
+                New IniSection(ksconf, "Shell",
+                    New IniKey(ksconf, "Colored Shell", colorShell.Checked),
+                    New IniKey(ksconf, "Simplified Help Command", simHelp.Checked)))
+
+            'Misc Section
+            ksconf.Sections.Add(
+                New IniSection(ksconf, "Misc",
+                    New IniKey(ksconf, "Show Time/Date on Upper Right Corner", tdCorner.Checked),
+                    New IniKey(ksconf, "Kernel Version", Ver)))
+
+            'Save Config
+            ksconf.Save(Environ("USERPROFILE") + "\kernelConfig.ini")
+            MsgBox("Settings saved, but remember that your config will not be backwards-compatible with 0.0.5.2 or lower. You can:" + vbNewLine + vbNewLine + _
+                   "• Use ""reloadconfig"" on Kernel Simulator to see the changes, or" + vbNewLine + _
+                   "• Use ""reboot"" to see the changes, or" + vbNewLine + _
+                   "• Exit and re-open Kernel Simulator (recommended)", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Settings saved successfully")
         Catch ex As IO.IOException
             MsgBox(ex.StackTrace + vbNewLine + vbNewLine + "There is an error when trying to write to a configuration file. The file might be opened by another program, or other error specified below." + vbNewLine + "Error " + CStr(Err.Number) + ": " + ex.Message, vbOKOnly + vbCritical, "Error")
         Catch ex As Exception
@@ -355,4 +312,7 @@ Public Class Configurator
         Help.Show()
     End Sub
 
+    Private Sub OpenSourceLibrariesUsedToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenSourceLibrariesUsedToolStripMenuItem.Click
+        Libs.Show()
+    End Sub
 End Class
