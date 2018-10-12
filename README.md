@@ -1,6 +1,6 @@
 # |---+-> Kernel Simulator Configuration Tool <-+---|
 
-A user-friendly configuration tool for Kernel Simulator 0.0.4 or higher that can be changed eventually and is not final.
+A user-friendly configuration tool for Kernel Simulator 0.0.4 or higher that can be changed eventually and is not final. Please note that we are still not ready for Unix systems.
 
 We cannot upload binaries to releases, so we will create a new folder called bin to store binary files. See the reason [here](https://github.com/EoflaOE/Kernel-Simulator)
 
