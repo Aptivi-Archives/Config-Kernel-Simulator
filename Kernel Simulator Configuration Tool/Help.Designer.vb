@@ -43,7 +43,7 @@ Partial Class Help
         '
         Me.Sections.FormattingEnabled = True
         Me.Sections.ItemHeight = 15
-        Me.Sections.Items.AddRange(New Object() {"Introduction", "General", "Login", "Shell", "Hardware", "Others"})
+        Me.Sections.Items.AddRange(New Object() {"Introduction", "General", "Login", "Shell", "Hardware", "Others", "Localization"})
         Me.Sections.Location = New System.Drawing.Point(751, 8)
         Me.Sections.Name = "Sections"
         Me.Sections.Size = New System.Drawing.Size(179, 169)
@@ -63,7 +63,7 @@ Partial Class Help
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(748, 454)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(49, 15)
+        Me.Label1.Size = New System.Drawing.Size(48, 15)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Version "
         '

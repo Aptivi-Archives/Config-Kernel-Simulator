@@ -124,6 +124,12 @@
     <value>Warning: When you choose the bright background color, you should set all text colors into dark colors that is 
 readable, or (at least), black. To confirm this, click on "Show colors in Live Mode" button.</value>
   </data>
+  <data name="Label8.Text" xml:space="preserve">
+    <value>Warning: When you select your language from the list, the tool's language doesn't change because they're not ready
+yet. You must save the changes made, and run KS to see it live.
+
+Translation view coming soon.</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>58</value>
   </metadata>

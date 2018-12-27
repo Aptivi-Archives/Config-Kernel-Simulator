@@ -113,7 +113,7 @@ Partial Class LiveColor
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(4, 8)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(61, 15)
+        Me.Label1.Size = New System.Drawing.Size(60, 15)
         Me.Label1.TabIndex = 17
         Me.Label1.Text = "Text Color"
         '
@@ -331,7 +331,7 @@ Partial Class LiveColor
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "LiveColor"

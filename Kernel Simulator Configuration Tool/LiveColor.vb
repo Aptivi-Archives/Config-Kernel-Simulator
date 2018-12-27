@@ -22,12 +22,6 @@ Public Class LiveColor
         Configurator.Button1.Enabled = True
     End Sub
 
-    Private Sub LiveColor_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        LoadColors()
-        MakeBrightReadable()
-        correctColors()
-    End Sub
-
     Sub LoadColors()
         RichTextBox1.ForeColor = Color.FromName(Configurator.textColor.Text)
         RichTextBox2.ForeColor = Color.FromName(Configurator.licenseColor.Text)
@@ -38,11 +32,7 @@ Public Class LiveColor
         RichTextBox7.ForeColor = Color.FromName(Configurator.inputColor.Text)
         RichTextBox9.ForeColor = Color.FromName(Configurator.CmdHelpColor.Text)
         RichTextBox10.ForeColor = Color.FromName(Configurator.DefHelpColor.Text)
-        If (Configurator.backgroundColor.Text = "DarkYellow") Then
-            RichTextBox8.BackColor = Color.DarkGoldenrod
-        Else
-            RichTextBox8.BackColor = Color.FromName(Configurator.backgroundColor.Text)
-        End If
+        RichTextBox8.BackColor = Color.FromName(Configurator.backgroundColor.Text)
     End Sub
 
     Sub MakeBrightReadable()
@@ -121,6 +111,9 @@ Public Class LiveColor
         If (Configurator.inputColor.Text = "DarkYellow") Then
             RichTextBox7.ForeColor = Color.DarkGoldenrod
         End If
+        If (Configurator.backgroundColor.Text = "DarkYellow") Then
+            RichTextBox8.BackColor = Color.DarkGoldenrod
+        End If
         If (Configurator.CmdHelpColor.Text = "DarkYellow") Then
             RichTextBox9.ForeColor = Color.DarkGoldenrod
         End If
@@ -129,4 +122,9 @@ Public Class LiveColor
         End If
     End Sub
 
+    Private Sub LiveColor_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        LoadColors()
+        MakeBrightReadable()
+        correctColors()
+    End Sub
 End Class

@@ -98,7 +98,6 @@ Public Class SimulatorsSelection
             MsgBox("Kernel Simulator has created a configuration.", CType(MsgBoxStyle.Information + MsgBoxStyle.OkOnly, MsgBoxStyle), "Kernel Simulator Config Error")
             Me.Hide()
             Configurator.readConfig()
-            Configurator.started = True
             Configurator.Show()
         Else
             MsgBox("Kernel Simulator executable was unable to create a config. Kernel Simulator returned " + CStr(ret), CType(MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, MsgBoxStyle), "Kernel Simulator Config Error")

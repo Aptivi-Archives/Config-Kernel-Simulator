@@ -22,20 +22,28 @@ Imports System.Reflection
 Public Class Configurator
 
     Public Ver As String
-    Public started As Boolean = False
+    Public Started As Boolean = False
+    Public configReader As New IniFile()
+    Public confPath As String 'For multi-platform support
+    Public EnvironmentOSType As String = Environment.OSVersion.ToString
 
     Private Sub Configurator_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        'Initialize directory
+        If EnvironmentOSType.Contains("Unix") Then
+            confPath = Environ("HOME") + "/kernelConfig.ini"
+        Else
+            confPath = Environ("USERPROFILE") + "\kernelConfig.ini"
+        End If
 
         'Read the configuration file
         Try
             readConfig()
-            started = True
         Catch noFile As FileNotFoundException
             Dim response = MsgBox("The configuration file is not found. Do you want to make one?", CType(MsgBoxStyle.Question + MsgBoxStyle.YesNo, MsgBoxStyle), "Config Not Found")
             If (response = vbYes) Then
                 SimulatorsSelection.ShowDialog()
                 readConfig()
-                started = True
             Else
                 Environment.Exit(1)
             End If
@@ -45,9 +53,34 @@ Public Class Configurator
 
     Sub readConfig()
         initializeCombos()
-        Dim configReader As New IniFile()
-        configReader.Load(Environ("USERPROFILE") + "\kernelConfig.ini")
-        If (configReader.Sections("General").Keys("Customized Colors on Boot").Value = "True") Then CheckBox5.Checked = True Else CheckBox5.Checked = False
+        configReader.Load(confPath)
+        If (configReader.Sections("General").Keys("Customized Colors on Boot").Value = "True") Then
+            CheckBox5.Checked = True
+            textColor.Enabled = True
+            licenseColor.Enabled = True
+            contError.Enabled = True
+            userNameColor.Enabled = True
+            hostNameColor.Enabled = True
+            uncontError.Enabled = True
+            backgroundColor.Enabled = True
+            inputColor.Enabled = True
+            CmdHelpColor.Enabled = True
+            DefHelpColor.Enabled = True
+            Button1.Enabled = True
+        Else
+            CheckBox5.Checked = False
+            textColor.Enabled = False
+            licenseColor.Enabled = False
+            contError.Enabled = False
+            userNameColor.Enabled = False
+            hostNameColor.Enabled = False
+            uncontError.Enabled = False
+            backgroundColor.Enabled = False
+            inputColor.Enabled = False
+            CmdHelpColor.Enabled = False
+            DefHelpColor.Enabled = False
+            Button1.Enabled = False
+        End If
 
         'Colors Section
         userNameColor.Text = configReader.Sections("Colors").Keys("User Name Shell Color").Value
@@ -60,6 +93,7 @@ Public Class Configurator
         inputColor.Text = configReader.Sections("Colors").Keys("Input Color").Value
         CmdHelpColor.Text = configReader.Sections("Colors").Keys("Listed command in help Color").Value
         DefHelpColor.Text = configReader.Sections("Colors").Keys("Definition of command in Help Color").Value
+        Started = True
 
         'General Section
         If (configReader.Sections("General").Keys("Create Demo Account").Value = "True") Then demo.Checked = True Else demo.Checked = False
@@ -67,6 +101,7 @@ Public Class Configurator
         RootPwd.Text = configReader.Sections("General").Keys("Set Root Password to").Value
         If (configReader.Sections("General").Keys("Maintenance Mode").Value = "True") Then MaintMode.Checked = True Else MaintMode.Checked = False
         If (configReader.Sections("General").Keys("Prompt for Arguments on Boot").Value = "True") Then BootPrompt.Checked = True Else BootPrompt.Checked = False
+        ReadLocalization()
 
         'Login Section
         If (configReader.Sections("Login").Keys("Clear Screen on Log-in").Value = "True") Then clslogin.Checked = True Else clslogin.Checked = False
@@ -87,6 +122,48 @@ Public Class Configurator
         If (configReader.Sections("Misc").Keys("Show Time/Date on Upper Right Corner").Value = "True") Then tdCorner.Checked = True Else tdCorner.Checked = False
         Ver = configReader.Sections("Misc").Keys("Kernel Version").Value
     End Sub
+
+    Sub ReadLocalization()
+        Select Case configReader.Sections("General").Keys("Language").Value
+            Case "eng"
+                Languages.Text = "English (United States - eng)"
+            Case "chi"
+                Languages.Text = "Chinese (Simplified - China - chi)"
+            Case "fre"
+                Languages.Text = "French (France - fre)"
+            Case "ger"
+                Languages.Text = "German (Germany - ger)"
+            Case "ind"
+                Languages.Text = "Hindi (India - ind)"
+            Case "ptg"
+                Languages.Text = "Portuguese (Brazil - ptg)"
+            Case "spa"
+                Languages.Text = "Spanish (Spain - spa)"
+            Case Else
+                Languages.Text = "English (United States - eng)"
+        End Select
+    End Sub
+
+    Function SaveLocalization()
+        Select Case Languages.Text
+            Case "English (United States - eng)"
+                Return "eng"
+            Case "Chinese (Simplified - China - chi)"
+                Return "chi"
+            Case "French (France - fre)"
+                Return "fre"
+            Case "German (Germany - ger)"
+                Return "ger"
+            Case "Hindi (India - ind)"
+                Return "ind"
+            Case "Portuguese (Brazil - ptg)"
+                Return "ptg"
+            Case "Spanish (Spain - spa)"
+                Return "spa"
+            Case Else
+                Return "eng"
+        End Select
+    End Function
 
     Sub initializeCombos()
 
@@ -138,7 +215,7 @@ Public Class Configurator
     Private Sub SaveSettingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveSettingsToolStripMenuItem.Click
         Try
             'Save file before doing anything
-            My.Computer.FileSystem.WriteAllText(Environ("USERPROFILE") + "\kernelConfig.ini", "", False)
+            My.Computer.FileSystem.WriteAllText(confPath, "", False)
             Dim ksconf As New IniFile()
 
             'Set to default password if there is no password for "root"
@@ -154,7 +231,8 @@ Public Class Configurator
                     New IniKey(ksconf, "Change Root Password", RootPC.Checked),
                     New IniKey(ksconf, "Set Root Password to", RootPwd.Text),
                     New IniKey(ksconf, "Create Demo Account", demo.Checked),
-                    New IniKey(ksconf, "Customized Colors on Boot", CheckBox5.Checked)))
+                    New IniKey(ksconf, "Customized Colors on Boot", CheckBox5.Checked),
+                    New IniKey(ksconf, "Language", SaveLocalization)))
 
             'The Colors Section
             ksconf.Sections.Add(
@@ -198,12 +276,12 @@ Public Class Configurator
                     New IniKey(ksconf, "Kernel Version", Ver)))
 
             'Save Config
-            ksconf.Save(Environ("USERPROFILE") + "\kernelConfig.ini")
-            MsgBox("Settings saved, but remember that your config will not be backwards-compatible with 0.0.5.2 or lower. You can:" + vbNewLine + vbNewLine + _
-                   "• Use ""reloadconfig"" on Kernel Simulator to see the changes, or" + vbNewLine + _
-                   "• Use ""reboot"" to see the changes, or" + vbNewLine + _
+            ksconf.Save(confPath)
+            MsgBox("Settings saved, but remember that your config will not be backwards-compatible with 0.0.5.2 or lower. You can:" + vbNewLine + vbNewLine +
+                   "• Use ""reloadconfig"" on Kernel Simulator to see the changes, or" + vbNewLine +
+                   "• Use ""reboot"" to see the changes, or" + vbNewLine +
                    "• Exit and re-open Kernel Simulator (recommended)", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Settings saved successfully")
-        Catch ex As IO.IOException
+        Catch ex As IOException
             MsgBox(ex.StackTrace + vbNewLine + vbNewLine + "There is an error when trying to write to a configuration file. The file might be opened by another program, or other error specified below." + vbNewLine + "Error " + CStr(Err.Number) + ": " + ex.Message, vbOKOnly + vbCritical, "Error")
         Catch ex As Exception
             MsgBox(ex.StackTrace + vbNewLine + vbNewLine + "There is an error when trying to write to a configuration file that is specified below." + vbNewLine + "Error " + CStr(Err.Number) + ": " + ex.Message, vbOKOnly + vbCritical, "Error")
@@ -229,7 +307,7 @@ Public Class Configurator
     End Sub
 
     Private Sub textColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles textColor.SelectedValueChanged
-        If (started = True) Then
+        If (Started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
             LiveColor.correctColors()
@@ -237,7 +315,7 @@ Public Class Configurator
     End Sub
 
     Private Sub licenseColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles licenseColor.SelectedValueChanged
-        If (started = True) Then
+        If (Started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
             LiveColor.correctColors()
@@ -245,7 +323,7 @@ Public Class Configurator
     End Sub
 
     Private Sub contError_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles contError.SelectedValueChanged
-        If (started = True) Then
+        If (Started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
             LiveColor.correctColors()
@@ -253,7 +331,7 @@ Public Class Configurator
     End Sub
 
     Private Sub uncontError_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles uncontError.SelectedValueChanged
-        If (started = True) Then
+        If (Started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
             LiveColor.correctColors()
@@ -261,7 +339,7 @@ Public Class Configurator
     End Sub
 
     Private Sub hostNameColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles hostNameColor.SelectedValueChanged
-        If (started = True) Then
+        If (Started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
             LiveColor.correctColors()
@@ -269,7 +347,7 @@ Public Class Configurator
     End Sub
 
     Private Sub userNameColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles userNameColor.SelectedValueChanged
-        If (started = True) Then
+        If (Started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
             LiveColor.correctColors()
@@ -277,7 +355,7 @@ Public Class Configurator
     End Sub
 
     Private Sub backgroundColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs)
-        If (started = True) Then
+        If (Started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
             LiveColor.correctColors()
@@ -285,7 +363,7 @@ Public Class Configurator
     End Sub
 
     Private Sub inputColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs)
-        If (started = True) Then
+        If (Started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
             LiveColor.correctColors()
@@ -293,7 +371,7 @@ Public Class Configurator
     End Sub
 
     Private Sub CmdHelpColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmdHelpColor.SelectedValueChanged
-        If (started = True) Then
+        If (Started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
             LiveColor.correctColors()
@@ -301,7 +379,7 @@ Public Class Configurator
     End Sub
 
     Private Sub DefHelpColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DefHelpColor.SelectedValueChanged
-        If (started = True) Then
+        If (Started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
             LiveColor.correctColors()

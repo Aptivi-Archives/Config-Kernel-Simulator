@@ -1,28 +1,20 @@
 # |---+-> Kernel Simulator Configuration Tool <-+---|
 
-A user-friendly configuration tool for Kernel Simulator 0.0.4 or higher that can be changed eventually and is not final. Please note that we are still not ready for Unix systems.
+A user-friendly configuration tool for Kernel Simulator 0.0.4 or higher that can be changed eventually and is not final.
 
-We cannot upload binaries to releases, so we will create a new folder called bin to store binary files. See the reason [here](https://github.com/EoflaOE/Kernel-Simulator)
+We have moved our dev machine to our second laptop, and we are finally able to upload binaries to releases.
+
+Please note that the current version is a beta version and contains bugs and instabilities. Send us a feedback on GitHub issues.
 
 ## |-----+--> _Prerequisites_ <--+-----|
 
-[Microsoft .NET Framework 4.0](https://download.microsoft.com/download/1/B/E/1BE39E79-7E39-46A3-96FF-047F95396215/dotNetFx40_Full_setup.exe) is **important and required** for Kernel Simulator Configuration Tool to work fully. If you have Windows 8 or later, you might already have this version of Microsoft .NET Framework 4.0.
+- Microsoft .NET Framework 4.6.1
+
+- Windows 7 or higher
 
 ## |-----+--> _Build Instructions_ <--+-----|
 
-1. Install [Microsoft Visual Basic Express 2010](https://visual-basic-express.soft32.com/old-version/386190/2010.express/) or Visual Studio 2010, or higher.
-
-2. After installation, extract the source code, and open Microsoft Visual Basic / Studio 2010, and click on **Open Project...**
-
-3. Go to the source directory, and double-click the solution file
-
-4. Right click on the project on the right, and select **Properties**
-
-5. Go to **Compile**, click **Browse...** on **Build output path:**, and select your build path. When you're finished, click on **OK** button.
-
-6. Click on the **Build** menu bar, and click on **Build Kernel Simulator Configuration Tool**
-
-7. In **Windows Explorer**, go to the build directory and then double-click on the executable file.
+You can find the build instructions on the Kernel Simulator category.
 
 ## |-----+--> _History_ <--+-----|
 
@@ -38,9 +30,11 @@ Please note that dates mentioned here is for development date changes only.
 
 **9/22/2018 - 0.0.5.5:** New config system
 
+**12/27/2018 - 0.0.5.9:** Fixed the 2 color combo boxes not being disabled on startup, Added new config option for localization, and more.
+
 ## |-----+--> _Credits_ <--+-----|
 
-**EoflaOE:** Owner of Kernel Simulator
+**EoflaOE:** Owner of Kernel Simulator Config Tool
 
 **Paomedia:** Icon creator
 

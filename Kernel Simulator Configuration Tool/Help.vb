@@ -19,6 +19,8 @@
             RichTextBox1.Rtf = My.Resources.Shell
         ElseIf (Sections.SelectedItem = "Others") Then
             RichTextBox1.Rtf = My.Resources.Others
+        ElseIf (Sections.SelectedItem = "Localization") Then
+            RichTextBox1.Rtf = My.Resources.Localization
         End If
     End Sub
 

@@ -95,6 +95,10 @@ Partial Class Configurator
         Me.probeQuiet = New System.Windows.Forms.CheckBox()
         Me.Others = New System.Windows.Forms.TabPage()
         Me.tdCorner = New System.Windows.Forms.CheckBox()
+        Me.Localization = New System.Windows.Forms.TabPage()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Languages = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.General.SuspendLayout()
@@ -103,6 +107,7 @@ Partial Class Configurator
         Me.Shell.SuspendLayout()
         Me.Hardware.SuspendLayout()
         Me.Others.SuspendLayout()
+        Me.Localization.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -154,6 +159,7 @@ Partial Class Configurator
         Me.TabControl1.Controls.Add(Me.Shell)
         Me.TabControl1.Controls.Add(Me.Hardware)
         Me.TabControl1.Controls.Add(Me.Others)
+        Me.TabControl1.Controls.Add(Me.Localization)
         Me.TabControl1.Location = New System.Drawing.Point(8, 32)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -168,10 +174,10 @@ Partial Class Configurator
         Me.General.Controls.Add(Me.RootPC)
         Me.General.Controls.Add(Me.MaintMode)
         Me.General.Controls.Add(Me.BootPrompt)
-        Me.General.Location = New System.Drawing.Point(4, 22)
+        Me.General.Location = New System.Drawing.Point(4, 24)
         Me.General.Name = "General"
         Me.General.Padding = New System.Windows.Forms.Padding(3)
-        Me.General.Size = New System.Drawing.Size(639, 416)
+        Me.General.Size = New System.Drawing.Size(639, 414)
         Me.General.TabIndex = 0
         Me.General.Text = "General"
         Me.General.UseVisualStyleBackColor = True
@@ -229,6 +235,7 @@ Partial Class Configurator
         'inputColor
         '
         Me.inputColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.inputColor.Enabled = False
         Me.inputColor.FormattingEnabled = True
         Me.inputColor.Location = New System.Drawing.Point(438, 172)
         Me.inputColor.Name = "inputColor"
@@ -238,6 +245,7 @@ Partial Class Configurator
         'backgroundColor
         '
         Me.backgroundColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.backgroundColor.Enabled = False
         Me.backgroundColor.FormattingEnabled = True
         Me.backgroundColor.Location = New System.Drawing.Point(15, 224)
         Me.backgroundColor.Name = "backgroundColor"
@@ -410,7 +418,7 @@ Partial Class Configurator
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(12, 48)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(61, 15)
+        Me.Label1.Size = New System.Drawing.Size(60, 15)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Text Color"
         '
@@ -419,7 +427,7 @@ Partial Class Configurator
         Me.CheckBox5.AutoSize = True
         Me.CheckBox5.Location = New System.Drawing.Point(15, 22)
         Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(152, 17)
+        Me.CheckBox5.Size = New System.Drawing.Size(171, 19)
         Me.CheckBox5.TabIndex = 4
         Me.CheckBox5.Text = "Customized Colors on Boot"
         Me.CheckBox5.UseVisualStyleBackColor = True
@@ -486,10 +494,10 @@ Partial Class Configurator
         Me.LogIn.Controls.Add(Me.Label11)
         Me.LogIn.Controls.Add(Me.clslogin)
         Me.LogIn.Controls.Add(Me.motdShow)
-        Me.LogIn.Location = New System.Drawing.Point(4, 22)
+        Me.LogIn.Location = New System.Drawing.Point(4, 24)
         Me.LogIn.Name = "LogIn"
         Me.LogIn.Padding = New System.Windows.Forms.Padding(3)
-        Me.LogIn.Size = New System.Drawing.Size(639, 416)
+        Me.LogIn.Size = New System.Drawing.Size(639, 414)
         Me.LogIn.TabIndex = 1
         Me.LogIn.Text = "Log in"
         Me.LogIn.UseVisualStyleBackColor = True
@@ -506,7 +514,7 @@ Partial Class Configurator
         Me.Label12.AutoSize = True
         Me.Label12.Location = New System.Drawing.Point(11, 123)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(107, 15)
+        Me.Label12.Size = New System.Drawing.Size(106, 15)
         Me.Label12.TabIndex = 21
         Me.Label12.Text = "MOTD After Login:"
         '
@@ -538,7 +546,7 @@ Partial Class Configurator
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(11, 65)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(45, 15)
+        Me.Label11.Size = New System.Drawing.Size(44, 15)
         Me.Label11.TabIndex = 17
         Me.Label11.Text = "MOTD:"
         '
@@ -547,7 +555,7 @@ Partial Class Configurator
         Me.clslogin.AutoSize = True
         Me.clslogin.Location = New System.Drawing.Point(10, 37)
         Me.clslogin.Name = "clslogin"
-        Me.clslogin.Size = New System.Drawing.Size(131, 17)
+        Me.clslogin.Size = New System.Drawing.Size(141, 19)
         Me.clslogin.TabIndex = 1
         Me.clslogin.Text = "Clear Screen on Login"
         Me.clslogin.UseVisualStyleBackColor = True
@@ -559,7 +567,7 @@ Partial Class Configurator
         Me.motdShow.CheckState = System.Windows.Forms.CheckState.Checked
         Me.motdShow.Location = New System.Drawing.Point(10, 12)
         Me.motdShow.Name = "motdShow"
-        Me.motdShow.Size = New System.Drawing.Size(132, 17)
+        Me.motdShow.Size = New System.Drawing.Size(142, 19)
         Me.motdShow.TabIndex = 0
         Me.motdShow.Text = "Show MOTD on Login"
         Me.motdShow.UseVisualStyleBackColor = True
@@ -568,9 +576,9 @@ Partial Class Configurator
         '
         Me.Shell.Controls.Add(Me.simHelp)
         Me.Shell.Controls.Add(Me.colorShell)
-        Me.Shell.Location = New System.Drawing.Point(4, 22)
+        Me.Shell.Location = New System.Drawing.Point(4, 24)
         Me.Shell.Name = "Shell"
-        Me.Shell.Size = New System.Drawing.Size(639, 416)
+        Me.Shell.Size = New System.Drawing.Size(639, 414)
         Me.Shell.TabIndex = 2
         Me.Shell.Text = "Shell"
         Me.Shell.UseVisualStyleBackColor = True
@@ -580,7 +588,7 @@ Partial Class Configurator
         Me.simHelp.AutoSize = True
         Me.simHelp.Location = New System.Drawing.Point(10, 37)
         Me.simHelp.Name = "simHelp"
-        Me.simHelp.Size = New System.Drawing.Size(145, 17)
+        Me.simHelp.Size = New System.Drawing.Size(167, 19)
         Me.simHelp.TabIndex = 1
         Me.simHelp.Text = "Simplified Help Command"
         Me.simHelp.UseVisualStyleBackColor = True
@@ -592,7 +600,7 @@ Partial Class Configurator
         Me.colorShell.CheckState = System.Windows.Forms.CheckState.Checked
         Me.colorShell.Location = New System.Drawing.Point(10, 12)
         Me.colorShell.Name = "colorShell"
-        Me.colorShell.Size = New System.Drawing.Size(88, 17)
+        Me.colorShell.Size = New System.Drawing.Size(96, 19)
         Me.colorShell.TabIndex = 0
         Me.colorShell.Text = "Colored Shell"
         Me.colorShell.UseVisualStyleBackColor = True
@@ -601,9 +609,9 @@ Partial Class Configurator
         '
         Me.Hardware.Controls.Add(Me.slotProbe)
         Me.Hardware.Controls.Add(Me.probeQuiet)
-        Me.Hardware.Location = New System.Drawing.Point(4, 22)
+        Me.Hardware.Location = New System.Drawing.Point(4, 24)
         Me.Hardware.Name = "Hardware"
-        Me.Hardware.Size = New System.Drawing.Size(639, 416)
+        Me.Hardware.Size = New System.Drawing.Size(639, 414)
         Me.Hardware.TabIndex = 3
         Me.Hardware.Text = "Hardware"
         Me.Hardware.UseVisualStyleBackColor = True
@@ -615,7 +623,7 @@ Partial Class Configurator
         Me.slotProbe.CheckState = System.Windows.Forms.CheckState.Checked
         Me.slotProbe.Location = New System.Drawing.Point(10, 37)
         Me.slotProbe.Name = "slotProbe"
-        Me.slotProbe.Size = New System.Drawing.Size(290, 17)
+        Me.slotProbe.Size = New System.Drawing.Size(320, 19)
         Me.slotProbe.TabIndex = 3
         Me.slotProbe.Text = "Probe Slots by Name and by Numbers (and Percentage)"
         Me.slotProbe.UseVisualStyleBackColor = True
@@ -625,7 +633,7 @@ Partial Class Configurator
         Me.probeQuiet.AutoSize = True
         Me.probeQuiet.Location = New System.Drawing.Point(10, 12)
         Me.probeQuiet.Name = "probeQuiet"
-        Me.probeQuiet.Size = New System.Drawing.Size(82, 17)
+        Me.probeQuiet.Size = New System.Drawing.Size(89, 19)
         Me.probeQuiet.TabIndex = 1
         Me.probeQuiet.Text = "Quiet Probe"
         Me.probeQuiet.UseVisualStyleBackColor = True
@@ -633,9 +641,9 @@ Partial Class Configurator
         'Others
         '
         Me.Others.Controls.Add(Me.tdCorner)
-        Me.Others.Location = New System.Drawing.Point(4, 22)
+        Me.Others.Location = New System.Drawing.Point(4, 24)
         Me.Others.Name = "Others"
-        Me.Others.Size = New System.Drawing.Size(639, 416)
+        Me.Others.Size = New System.Drawing.Size(639, 414)
         Me.Others.TabIndex = 4
         Me.Others.Text = "Others"
         Me.Others.UseVisualStyleBackColor = True
@@ -645,10 +653,50 @@ Partial Class Configurator
         Me.tdCorner.AutoSize = True
         Me.tdCorner.Location = New System.Drawing.Point(10, 13)
         Me.tdCorner.Name = "tdCorner"
-        Me.tdCorner.Size = New System.Drawing.Size(216, 17)
+        Me.tdCorner.Size = New System.Drawing.Size(236, 19)
         Me.tdCorner.TabIndex = 12
         Me.tdCorner.Text = "Show Time/Date on Upper Right Corner"
         Me.tdCorner.UseVisualStyleBackColor = True
+        '
+        'Localization
+        '
+        Me.Localization.Controls.Add(Me.Label8)
+        Me.Localization.Controls.Add(Me.Languages)
+        Me.Localization.Controls.Add(Me.Label7)
+        Me.Localization.Location = New System.Drawing.Point(4, 24)
+        Me.Localization.Name = "Localization"
+        Me.Localization.Size = New System.Drawing.Size(639, 414)
+        Me.Localization.TabIndex = 5
+        Me.Localization.Text = "Localization"
+        Me.Localization.UseVisualStyleBackColor = True
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(10, 42)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(620, 60)
+        Me.Label8.TabIndex = 2
+        Me.Label8.Text = resources.GetString("Label8.Text")
+        '
+        'Languages
+        '
+        Me.Languages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Languages.FormattingEnabled = True
+        Me.Languages.Items.AddRange(New Object() {"Chinese (Simplified - China - chi)", "English (United States - eng)", "French (France - fre)", "German (Germany - ger)", "Hindi (India - ind)", "Portuguese (Brazil - ptg)", "Spanish (Spain - spa)"})
+        Me.Languages.Location = New System.Drawing.Point(194, 9)
+        Me.Languages.Name = "Languages"
+        Me.Languages.Size = New System.Drawing.Size(431, 23)
+        Me.Languages.TabIndex = 1
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(10, 13)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(175, 15)
+        Me.Label7.TabIndex = 0
+        Me.Label7.Text = "Select your language on the list:"
         '
         'Configurator
         '
@@ -679,6 +727,8 @@ Partial Class Configurator
         Me.Hardware.PerformLayout()
         Me.Others.ResumeLayout(False)
         Me.Others.PerformLayout()
+        Me.Localization.ResumeLayout(False)
+        Me.Localization.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -737,5 +787,8 @@ Partial Class Configurator
     Friend WithEvents inputColor As System.Windows.Forms.ComboBox
     Friend WithEvents backgroundColor As System.Windows.Forms.ComboBox
     Friend WithEvents OpenSourceLibrariesUsedToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-
+    Friend WithEvents Localization As TabPage
+    Friend WithEvents Languages As ComboBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
 End Class
