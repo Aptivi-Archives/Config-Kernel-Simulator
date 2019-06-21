@@ -9,10 +9,10 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("Kernel Simulator Configuration Tool")> 
-<Assembly: AssemblyDescription("This configures Kernel Simulator.")> 
-<Assembly: AssemblyCompany("Fantasy Island Developer")> 
-<Assembly: AssemblyProduct("Kernel Simulator Configuration Tool")> 
-<Assembly: AssemblyCopyright("Copyright © Fantasy Island Developer 2018")> 
+<Assembly: AssemblyDescription("This configures Kernel Simulator.")>
+<Assembly: AssemblyCompany("EoflaOE")>
+<Assembly: AssemblyProduct("Kernel Simulator Configuration Tool")>
+<Assembly: AssemblyCopyright("Copyright © EoflaOE 2018-2019")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("0.0.5.9")>
-<Assembly: AssemblyFileVersion("0.0.5.9")>
+<Assembly: AssemblyVersion("0.0.6.0")>
+<Assembly: AssemblyFileVersion("0.0.6.0")>

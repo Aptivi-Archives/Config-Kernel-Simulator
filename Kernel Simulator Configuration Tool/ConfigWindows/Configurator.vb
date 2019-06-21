@@ -17,7 +17,6 @@
 '    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Imports System.IO
-Imports System.Reflection
 
 Public Class Configurator
 
@@ -40,8 +39,8 @@ Public Class Configurator
         Try
             readConfig()
         Catch noFile As FileNotFoundException
-            Dim response = MsgBox("The configuration file is not found. Do you want to make one?", CType(MsgBoxStyle.Question + MsgBoxStyle.YesNo, MsgBoxStyle), "Config Not Found")
-            If (response = vbYes) Then
+            Dim response = MsgBox("The configuration file is not found. Do you want to make one?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Config Not Found")
+            If (response = Global.Microsoft.VisualBasic.Constants.vbYes) Then
                 SimulatorsSelection.ShowDialog()
                 readConfig()
             Else
@@ -120,6 +119,7 @@ Public Class Configurator
 
         'Misc Section
         If (configReader.Sections("Misc").Keys("Show Time/Date on Upper Right Corner").Value = "True") Then tdCorner.Checked = True Else tdCorner.Checked = False
+        Screensave.Text = configReader.Sections("Misc").Keys("Screensaver").Value
         Ver = configReader.Sections("Misc").Keys("Kernel Version").Value
     End Sub
 
@@ -139,6 +139,18 @@ Public Class Configurator
                 Languages.Text = "Portuguese (Brazil - ptg)"
             Case "spa"
                 Languages.Text = "Spanish (Spain - spa)"
+            Case "dtc"
+                Languages.Text = "Dutch (Netherlands - dtc)"
+            Case "fin"
+                Languages.Text = "Finnish (Finland - fin)"
+            Case "ita"
+                Languages.Text = "Italian (Italy - ita)"
+            Case "mal"
+                Languages.Text = "Malay (mal)"
+            Case "swe"
+                Languages.Text = "Swedish (Switzerland - swe)"
+            Case "tky"
+                Languages.Text = "Turkish (Turkey - tky)"
             Case Else
                 Languages.Text = "English (United States - eng)"
         End Select
@@ -160,6 +172,18 @@ Public Class Configurator
                 Return "ptg"
             Case "Spanish (Spain - spa)"
                 Return "spa"
+            Case "Dutch (Netherlands - dtc)"
+                Return "dtc"
+            Case "Finnish (Finland - fin)"
+                Return "fin"
+            Case "Italian (Italy - ita)"
+                Return "ita"
+            Case "Malay (mal)"
+                Return "mal"
+            Case "Swedish (Switzerland - swe)"
+                Return "swe"
+            Case "Turkish (Turkey - tky)"
+                Return "tky"
             Case Else
                 Return "eng"
         End Select
@@ -273,6 +297,7 @@ Public Class Configurator
             ksconf.Sections.Add(
                 New IniSection(ksconf, "Misc",
                     New IniKey(ksconf, "Show Time/Date on Upper Right Corner", tdCorner.Checked),
+                    New IniKey(ksconf, "Screensaver", Screensave.Text),
                     New IniKey(ksconf, "Kernel Version", Ver)))
 
             'Save Config
@@ -392,5 +417,16 @@ Public Class Configurator
 
     Private Sub OpenSourceLibrariesUsedToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenSourceLibrariesUsedToolStripMenuItem.Click
         Libs.Show()
+    End Sub
+
+    Private Sub Screensave_SelectedValueChanged(sender As Object, e As EventArgs) Handles Screensave.SelectedValueChanged
+        Select Case Screensave.Text
+            Case "matrix", "disco", "colorMix"
+                configReader.Sections("Misc").Keys("Screensaver").Value = Screensave.Text
+            Case Else
+                If ScreenOpen.ShowDialog() = DialogResult.OK Then 'TODO: Make a check for screensaver health
+                    configReader.Sections("Misc").Keys("Screensaver").Value = ScreenOpen.SafeFileName
+                End If
+        End Select
     End Sub
 End Class

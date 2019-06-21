@@ -24,13 +24,7 @@ Public Class SimulatorsSelection
     Public onExec As Boolean = True
     Public selectedExec As String
 
-    Private Sub SimulatorsSelection_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
-
-        population.RunWorkerAsync()
-
-    End Sub
-
-    Private Sub refreshButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles refreshButton.Click
+    Private Sub RefreshSims(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown, refreshButton.Click
 
         population.RunWorkerAsync()
 
@@ -38,44 +32,61 @@ Public Class SimulatorsSelection
 
     Private Sub population_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles population.DoWork
 
+        'TODO: Re-write, but let it detect all EXE files and see if the specified EXE file is KS or not.
         statText.Text = "Finding Kernel Simulator executables..."
+
+        'Try to delete the temporary old search file
         Try
             FileIO.FileSystem.DeleteFile(Environ("TEMP") + "\ksFind.txt")
         Catch ex As IO.FileNotFoundException
             'Do nothing, and continue.
         End Try
+
+        'Variables
         Dim ret As Integer
         Dim folder As String = ""
+
+        'Find KS in every disk
         For Each drive As IO.DriveInfo In My.Computer.FileSystem.Drives
             If drive.DriveType = IO.DriveType.Fixed Then
                 folder = drive.Name
                 ret = wsh.Run("CMD /C DIR """ & folder & "Kernel*Simulator.exe"" /S /B /A:-D >> %TEMP%\ksFind.txt", 0, True)
             End If
         Next
+
+        'If KS is found
         If (ret = 0) Then
-            Dim res As New IO.StreamReader(Environ("TEMP") + "\ksFind.txt") : Dim ln As String = res.ReadLine : Dim temp As String = ""
-            Do While ln IsNot Nothing
+            'Variables
+            Dim res As New IO.StreamReader(Environ("TEMP") + "\ksFind.txt")
+            Dim ln As String = res.ReadLine
+            Dim temp As String = ""
+
+            'TODO: Make it a list, removing unnecessary "temp" var.
+            Do While Not res.EndOfStream
                 temp = temp + ln + ", "
                 ln = res.ReadLine
             Loop
-            Dim kernelSimulators() As String = temp.Split({", "}, StringSplitOptions.RemoveEmptyEntries) : Dim KernelSimulator As String
-            For Each KernelSimulator In kernelSimulators
+
+            'Split paths
+            Dim kernelSimulators() As String = temp.Split({", "}, StringSplitOptions.RemoveEmptyEntries)
+            For Each KernelSimulator As String In kernelSimulators
                 Me.Invoke(New Action(Sub()
                                          Simulators.Items.Add(KernelSimulator)
                                          Simulators.Items.Item(Simulators.Items.Count - 1).SubItems.Add(Reflection.Assembly.LoadFile(KernelSimulator).GetName.Version.ToString)
                                          statText.Text = "Found " + KernelSimulator
                                          statBar.Increment(statBar.Maximum / kernelSimulators.Length)
                                          If (Simulators.Items.Count = 1) Then
-                                             Me.Text = "Found " + CStr(Simulators.Items.Count) + " Simulator - Choose one from the list and click OK to create a config file."
+                                             Me.Text = "Found " + CStr(Simulators.Items.Count) + " simulator - Choose one from the list and click OK to create a config file."
                                          Else
-                                             Me.Text = "Found " + CStr(Simulators.Items.Count) + " Simulators - Choose one from the list and click OK to create a config file."
+                                             Me.Text = "Found " + CStr(Simulators.Items.Count) + " simulators - Choose one from the list and click OK to create a config file."
                                          End If
                                      End Sub))
             Next
+
+            'Ready
             statText.Text = "Ready!"
-            My.Computer.FileSystem.DeleteFile(Environ("TEMP") + "\ksFind.txt")
         Else
-            MsgBox("Kernel Simulator executable was not found anywhere on " + folder + ". " + vbNewLine + "Download on https://github.com/EoflaOE/Kernel-Simulator/releases", CType(MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, MsgBoxStyle), "Kernel Simulator Not Found")
+            MsgBox("Kernel Simulator executable was not found anywhere on " + folder + ". " + vbNewLine + "Download on https://github.com/EoflaOE/Kernel-Simulator/releases", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Kernel Simulator Not Found")
             Environment.Exit(2)
         End If
 
@@ -95,12 +106,12 @@ Public Class SimulatorsSelection
 
         Dim ret = wsh.Run("CMD /C """ & selectedExec & """ createConf", 0, True)
         If (ret = 0) Then
-            MsgBox("Kernel Simulator has created a configuration.", CType(MsgBoxStyle.Information + MsgBoxStyle.OkOnly, MsgBoxStyle), "Kernel Simulator Config Error")
+            MsgBox("Kernel Simulator has created a configuration.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Kernel Simulator Config Error")
             Me.Hide()
             Configurator.readConfig()
             Configurator.Show()
         Else
-            MsgBox("Kernel Simulator executable was unable to create a config. Kernel Simulator returned " + CStr(ret), CType(MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, MsgBoxStyle), "Kernel Simulator Config Error")
+            MsgBox("Kernel Simulator executable was unable to create a config. Kernel Simulator returned " + CStr(ret), MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Kernel Simulator Config Error")
             Environment.Exit(1)
         End If
 
@@ -110,7 +121,9 @@ Public Class SimulatorsSelection
 
         If (IsNothing(Simulators.FocusedItem) = False) Then
             Dim versionAsm As String = Simulators.Items(Simulators.FocusedItem.Index).SubItems(1).Text.Remove(5)
+#Disable Warning IDE0059
             Dim versionAsmSplit(2) As String
+#Enable Warning IDE0059
             versionAsmSplit = versionAsm.Split("."c)
             If (CInt(versionAsmSplit(0)) = 0 And CInt(versionAsmSplit(1)) = 0 And CInt(versionAsmSplit(2)) >= 4) Or (CInt(versionAsmSplit(0)) > 0 And CInt(versionAsmSplit(1)) > 0 And CInt(versionAsmSplit(2)) >= 0) Then
                 OKButton.Enabled = True
@@ -121,5 +134,4 @@ Public Class SimulatorsSelection
         End If
 
     End Sub
-
 End Class

@@ -150,8 +150,8 @@ Partial Class SimulatorsSelection
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "SimulatorsSelection"
-        Me.Text = "Found 0 Simulators - Choose one from the list and click OK to create a config fil" & _
-            "e."
+        Me.Text = "Found 0 Simulators - Choose one from the list and click OK to create a config fil" &
+    "e."
         Me.statBottomBar.ResumeLayout(False)
         Me.statBottomBar.PerformLayout()
         Me.ResumeLayout(False)

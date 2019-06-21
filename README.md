@@ -2,13 +2,11 @@
 
 A user-friendly configuration tool for Kernel Simulator 0.0.4 or higher that can be changed eventually and is not final.
 
-We have moved our dev machine to our second laptop, and we are finally able to upload binaries to releases.
-
-Please note that the current version is a beta version and contains bugs and instabilities. Send us a feedback on GitHub issues.
+Please note that the current version is not final and contains bugs and instabilities. Send us a feedback on GitHub issues.
 
 ## |-----+--> _Prerequisites_ <--+-----|
 
-- Microsoft .NET Framework 4.6.1
+- Microsoft .NET Framework 4.7
 
 - Windows 7 or higher
 
@@ -32,11 +30,13 @@ Please note that dates mentioned here is for development date changes only.
 
 **12/27/2018 - 0.0.5.9:** Fixed the 2 color combo boxes not being disabled on startup, Added new config option for localization, and more.
 
+**6/21/2019 - 0.0.6:** Updated help, Added screensaver config, and other changes to reflect 0.0.6's changes
+
 ## |-----+--> _Credits_ <--+-----|
 
 **EoflaOE:** Owner of Kernel Simulator Config Tool
 
-**Paomedia:** Icon creator
+**Oxygen Team:** Icon creator
 
 ## |-----+--> _Open Source Libraries used_ <--+-----|
 
@@ -51,7 +51,7 @@ License (Apache 2.0): https://github.com/MarioZ/MadMilkman.Ini/blob/master/LICEN
 ## |-----+--> _License - GNU GPL_ <--+-----|
 
     Kernel Simulator - Simulates our future planned Kernel
-    Copyright (C) 2018  EoflaOE
+    Copyright (C) 2018-2019  EoflaOE
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

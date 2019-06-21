@@ -94,11 +94,14 @@ Partial Class Configurator
         Me.slotProbe = New System.Windows.Forms.CheckBox()
         Me.probeQuiet = New System.Windows.Forms.CheckBox()
         Me.Others = New System.Windows.Forms.TabPage()
+        Me.Screensave = New System.Windows.Forms.ComboBox()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.tdCorner = New System.Windows.Forms.CheckBox()
         Me.Localization = New System.Windows.Forms.TabPage()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Languages = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.ScreenOpen = New System.Windows.Forms.OpenFileDialog()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.General.SuspendLayout()
@@ -640,6 +643,8 @@ Partial Class Configurator
         '
         'Others
         '
+        Me.Others.Controls.Add(Me.Screensave)
+        Me.Others.Controls.Add(Me.Label17)
         Me.Others.Controls.Add(Me.tdCorner)
         Me.Others.Location = New System.Drawing.Point(4, 24)
         Me.Others.Name = "Others"
@@ -647,6 +652,25 @@ Partial Class Configurator
         Me.Others.TabIndex = 4
         Me.Others.Text = "Others"
         Me.Others.UseVisualStyleBackColor = True
+        '
+        'Screensave
+        '
+        Me.Screensave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Screensave.FormattingEnabled = True
+        Me.Screensave.Items.AddRange(New Object() {"matrix", "colorMix", "disco", "Custom (by mods)"})
+        Me.Screensave.Location = New System.Drawing.Point(125, 34)
+        Me.Screensave.Name = "Screensave"
+        Me.Screensave.Size = New System.Drawing.Size(149, 23)
+        Me.Screensave.TabIndex = 14
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(10, 37)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(106, 15)
+        Me.Label17.TabIndex = 13
+        Me.Label17.Text = "Select Screensaver:"
         '
         'tdCorner
         '
@@ -683,7 +707,7 @@ Partial Class Configurator
         '
         Me.Languages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Languages.FormattingEnabled = True
-        Me.Languages.Items.AddRange(New Object() {"Chinese (Simplified - China - chi)", "English (United States - eng)", "French (France - fre)", "German (Germany - ger)", "Hindi (India - ind)", "Portuguese (Brazil - ptg)", "Spanish (Spain - spa)"})
+        Me.Languages.Items.AddRange(New Object() {"Chinese (Simplified - China - chi)", "English (United States - eng)", "French (France - fre)", "German (Germany - ger)", "Hindi (India - ind)", "Portuguese (Brazil - ptg)", "Spanish (Spain - spa)", "Dutch (Netherlands - dtc)", "Finnish (Finland - fin)", "Italian (Italy - ita)", "Malay (mal)", "Swedish (Switzerland (?) - swe)", "Turkish (Turkey - tky)"})
         Me.Languages.Location = New System.Drawing.Point(194, 9)
         Me.Languages.Name = "Languages"
         Me.Languages.Size = New System.Drawing.Size(431, 23)
@@ -697,6 +721,14 @@ Partial Class Configurator
         Me.Label7.Size = New System.Drawing.Size(175, 15)
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Select your language on the list:"
+        '
+        'ScreenOpen
+        '
+        Me.ScreenOpen.DefaultExt = "SS.m"
+        Me.ScreenOpen.FileName = "screensaver"
+        Me.ScreenOpen.Filter = "Screensaver file|*SS.m"
+        Me.ScreenOpen.InitialDirectory = "%USERPROFILE%\KSMods"
+        Me.ScreenOpen.Title = "Select a screensaver"
         '
         'Configurator
         '
@@ -791,4 +823,7 @@ Partial Class Configurator
     Friend WithEvents Languages As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
+    Friend WithEvents Screensave As ComboBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents ScreenOpen As OpenFileDialog
 End Class
