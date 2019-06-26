@@ -18,21 +18,21 @@
 
 Public Class LiveColor
 
-    Private Sub LiveColor_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub LiveColor_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
         Configurator.Button1.Enabled = True
     End Sub
 
     Sub LoadColors()
-        RichTextBox1.ForeColor = Color.FromName(Configurator.textColor.Text)
-        RichTextBox2.ForeColor = Color.FromName(Configurator.licenseColor.Text)
-        RichTextBox3.ForeColor = Color.FromName(Configurator.contError.Text)
-        RichTextBox6.ForeColor = Color.FromName(Configurator.uncontError.Text)
-        RichTextBox5.ForeColor = Color.FromName(Configurator.hostNameColor.Text)
-        RichTextBox4.ForeColor = Color.FromName(Configurator.userNameColor.Text)
-        RichTextBox7.ForeColor = Color.FromName(Configurator.inputColor.Text)
-        RichTextBox9.ForeColor = Color.FromName(Configurator.CmdHelpColor.Text)
-        RichTextBox10.ForeColor = Color.FromName(Configurator.DefHelpColor.Text)
-        RichTextBox8.BackColor = Color.FromName(Configurator.backgroundColor.Text)
+        If Not Configurator.textColor.Text = "DarkYellow" Then RichTextBox1.ForeColor = Color.FromName(Configurator.textColor.Text)
+        If Not Configurator.licenseColor.Text = "DarkYellow" Then RichTextBox2.ForeColor = Color.FromName(Configurator.licenseColor.Text)
+        If Not Configurator.contError.Text = "DarkYellow" Then RichTextBox3.ForeColor = Color.FromName(Configurator.contError.Text)
+        If Not Configurator.uncontError.Text = "DarkYellow" Then RichTextBox6.ForeColor = Color.FromName(Configurator.uncontError.Text)
+        If Not Configurator.hostNameColor.Text = "DarkYellow" Then RichTextBox5.ForeColor = Color.FromName(Configurator.hostNameColor.Text)
+        If Not Configurator.userNameColor.Text = "DarkYellow" Then RichTextBox4.ForeColor = Color.FromName(Configurator.userNameColor.Text)
+        If Not Configurator.inputColor.Text = "DarkYellow" Then RichTextBox7.ForeColor = Color.FromName(Configurator.inputColor.Text)
+        If Not Configurator.CmdHelpColor.Text = "DarkYellow" Then RichTextBox9.ForeColor = Color.FromName(Configurator.CmdHelpColor.Text)
+        If Not Configurator.DefHelpColor.Text = "DarkYellow" Then RichTextBox10.ForeColor = Color.FromName(Configurator.DefHelpColor.Text)
+        If Not Configurator.backgroundColor.Text = "DarkYellow" Then RichTextBox8.BackColor = Color.FromName(Configurator.backgroundColor.Text)
     End Sub
 
     Sub MakeBrightReadable()
@@ -86,10 +86,9 @@ Public Class LiveColor
         Else
             RichTextBox10.BackColor = Color.White
         End If
-
     End Sub
 
-    Sub correctColors()
+    Sub CorrectColors()
         If (Configurator.textColor.Text = "DarkYellow") Then
             RichTextBox1.ForeColor = Color.DarkGoldenrod
         End If
@@ -125,6 +124,6 @@ Public Class LiveColor
     Private Sub LiveColor_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         LoadColors()
         MakeBrightReadable()
-        correctColors()
+        CorrectColors()
     End Sub
 End Class

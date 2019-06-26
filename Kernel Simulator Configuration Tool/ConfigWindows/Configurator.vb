@@ -37,12 +37,12 @@ Public Class Configurator
 
         'Read the configuration file
         Try
-            readConfig()
+            ReadConfig()
         Catch noFile As FileNotFoundException
             Dim response = MsgBox("The configuration file is not found. Do you want to make one?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Config Not Found")
             If (response = Global.Microsoft.VisualBasic.Constants.vbYes) Then
                 SimulatorsSelection.ShowDialog()
-                readConfig()
+                ReadConfig()
             Else
                 Environment.Exit(1)
             End If
@@ -50,8 +50,8 @@ Public Class Configurator
 
     End Sub
 
-    Sub readConfig()
-        initializeCombos()
+    Sub ReadConfig()
+        InitializeCombos()
         configReader.Load(confPath)
         If (configReader.Sections("General").Keys("Customized Colors on Boot").Value = "True") Then
             CheckBox5.Checked = True
@@ -151,12 +151,14 @@ Public Class Configurator
                 Languages.Text = "Swedish (Switzerland - swe)"
             Case "tky"
                 Languages.Text = "Turkish (Turkey - tky)"
+            Case "cze"
+                Languages.Text = "Czech (cze)"
             Case Else
                 Languages.Text = "English (United States - eng)"
         End Select
     End Sub
 
-    Function SaveLocalization()
+    Function SaveLocalization() As String
         Select Case Languages.Text
             Case "English (United States - eng)"
                 Return "eng"
@@ -184,14 +186,16 @@ Public Class Configurator
                 Return "swe"
             Case "Turkish (Turkey - tky)"
                 Return "tky"
+            Case "Czech (cze)"
+                Return "cze"
             Case Else
                 Return "eng"
         End Select
     End Function
 
-    Sub initializeCombos()
+    Sub InitializeCombos()
 
-        Dim Colors() As String = {"White", "Gray", "DarkGray", "DarkRed", "Red", "DarkYellow", "Yellow", "DarkGreen", "Green", "DarkCyan", _
+        Dim Colors() As String = {"White", "Gray", "DarkGray", "DarkRed", "Red", "DarkYellow", "Yellow", "DarkGreen", "Green", "DarkCyan",
                                   "Cyan", "DarkBlue", "Blue", "DarkMagenta", "Magenta", "Black"}
         textColor.Items.AddRange(Colors) : textColor.Items.Remove("Black") : textColor.Text = "Gray"
         licenseColor.Items.AddRange(Colors) : licenseColor.Items.Remove("Black") : licenseColor.Text = "White"
@@ -331,83 +335,11 @@ Public Class Configurator
         LiveColor.Show()
     End Sub
 
-    Private Sub textColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles textColor.SelectedValueChanged
+    Private Sub ReadyLiveColor(ByVal sender As Object, ByVal e As System.EventArgs) Handles DefHelpColor.SelectedValueChanged, CmdHelpColor.SelectedValueChanged, backgroundColor.SelectedValueChanged, inputColor.SelectedValueChanged, userNameColor.SelectedValueChanged, hostNameColor.SelectedValueChanged, uncontError.SelectedValueChanged, contError.SelectedValueChanged, licenseColor.SelectedValueChanged, textColor.SelectedValueChanged
         If (Started = True) Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
-            LiveColor.correctColors()
-        End If
-    End Sub
-
-    Private Sub licenseColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles licenseColor.SelectedValueChanged
-        If (Started = True) Then
-            LiveColor.LoadColors()
-            LiveColor.MakeBrightReadable()
-            LiveColor.correctColors()
-        End If
-    End Sub
-
-    Private Sub contError_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles contError.SelectedValueChanged
-        If (Started = True) Then
-            LiveColor.LoadColors()
-            LiveColor.MakeBrightReadable()
-            LiveColor.correctColors()
-        End If
-    End Sub
-
-    Private Sub uncontError_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles uncontError.SelectedValueChanged
-        If (Started = True) Then
-            LiveColor.LoadColors()
-            LiveColor.MakeBrightReadable()
-            LiveColor.correctColors()
-        End If
-    End Sub
-
-    Private Sub hostNameColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles hostNameColor.SelectedValueChanged
-        If (Started = True) Then
-            LiveColor.LoadColors()
-            LiveColor.MakeBrightReadable()
-            LiveColor.correctColors()
-        End If
-    End Sub
-
-    Private Sub userNameColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles userNameColor.SelectedValueChanged
-        If (Started = True) Then
-            LiveColor.LoadColors()
-            LiveColor.MakeBrightReadable()
-            LiveColor.correctColors()
-        End If
-    End Sub
-
-    Private Sub backgroundColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs)
-        If (Started = True) Then
-            LiveColor.LoadColors()
-            LiveColor.MakeBrightReadable()
-            LiveColor.correctColors()
-        End If
-    End Sub
-
-    Private Sub inputColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs)
-        If (Started = True) Then
-            LiveColor.LoadColors()
-            LiveColor.MakeBrightReadable()
-            LiveColor.correctColors()
-        End If
-    End Sub
-
-    Private Sub CmdHelpColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CmdHelpColor.SelectedValueChanged
-        If (Started = True) Then
-            LiveColor.LoadColors()
-            LiveColor.MakeBrightReadable()
-            LiveColor.correctColors()
-        End If
-    End Sub
-
-    Private Sub DefHelpColor_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DefHelpColor.SelectedValueChanged
-        If (Started = True) Then
-            LiveColor.LoadColors()
-            LiveColor.MakeBrightReadable()
-            LiveColor.correctColors()
+            LiveColor.CorrectColors()
         End If
     End Sub
 

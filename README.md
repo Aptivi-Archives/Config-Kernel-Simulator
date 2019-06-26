@@ -32,6 +32,8 @@ Please note that dates mentioned here is for development date changes only.
 
 **6/21/2019 - 0.0.6:** Updated help, Added screensaver config, and other changes to reflect 0.0.6's changes
 
+**6/26/2019 - 0.0.6.3:** Fixed unhandled exception when settin any of the color sections into DarkYellow, Added Czech
+
 ## |-----+--> _Credits_ <--+-----|
 
 **EoflaOE:** Owner of Kernel Simulator Config Tool

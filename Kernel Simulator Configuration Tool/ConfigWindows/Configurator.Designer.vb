@@ -707,7 +707,7 @@ Partial Class Configurator
         '
         Me.Languages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Languages.FormattingEnabled = True
-        Me.Languages.Items.AddRange(New Object() {"Chinese (Simplified - China - chi)", "English (United States - eng)", "French (France - fre)", "German (Germany - ger)", "Hindi (India - ind)", "Portuguese (Brazil - ptg)", "Spanish (Spain - spa)", "Dutch (Netherlands - dtc)", "Finnish (Finland - fin)", "Italian (Italy - ita)", "Malay (mal)", "Swedish (Switzerland (?) - swe)", "Turkish (Turkey - tky)"})
+        Me.Languages.Items.AddRange(New Object() {"Chinese (Simplified - China - chi)", "English (United States - eng)", "French (France - fre)", "German (Germany - ger)", "Hindi (India - ind)", "Portuguese (Brazil - ptg)", "Spanish (Spain - spa)", "Dutch (Netherlands - dtc)", "Finnish (Finland - fin)", "Italian (Italy - ita)", "Malay (mal)", "Swedish (Switzerland (?) - swe)", "Turkish (Turkey - tky)", "Czech (cze)"})
         Me.Languages.Location = New System.Drawing.Point(194, 9)
         Me.Languages.Name = "Languages"
         Me.Languages.Size = New System.Drawing.Size(431, 23)
