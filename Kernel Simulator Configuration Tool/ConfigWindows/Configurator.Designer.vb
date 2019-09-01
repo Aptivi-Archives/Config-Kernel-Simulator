@@ -79,12 +79,8 @@ Partial Class Configurator
         Me.MaintMode = New System.Windows.Forms.CheckBox()
         Me.BootPrompt = New System.Windows.Forms.CheckBox()
         Me.LogIn = New System.Windows.Forms.TabPage()
-        Me.MAL = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.HostName = New System.Windows.Forms.TextBox()
-        Me.MOTD = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
         Me.clslogin = New System.Windows.Forms.CheckBox()
         Me.motdShow = New System.Windows.Forms.CheckBox()
         Me.Shell = New System.Windows.Forms.TabPage()
@@ -307,7 +303,7 @@ Partial Class Configurator
         Me.Label9.AutoSize = True
         Me.Label9.Location = New System.Drawing.Point(12, 258)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(583, 30)
+        Me.Label9.Size = New System.Drawing.Size(584, 30)
         Me.Label9.TabIndex = 18
         Me.Label9.Text = resources.GetString("Label9.Text")
         '
@@ -489,12 +485,8 @@ Partial Class Configurator
         '
         'LogIn
         '
-        Me.LogIn.Controls.Add(Me.MAL)
-        Me.LogIn.Controls.Add(Me.Label12)
         Me.LogIn.Controls.Add(Me.HostName)
-        Me.LogIn.Controls.Add(Me.MOTD)
         Me.LogIn.Controls.Add(Me.Label10)
-        Me.LogIn.Controls.Add(Me.Label11)
         Me.LogIn.Controls.Add(Me.clslogin)
         Me.LogIn.Controls.Add(Me.motdShow)
         Me.LogIn.Location = New System.Drawing.Point(4, 24)
@@ -505,53 +497,21 @@ Partial Class Configurator
         Me.LogIn.Text = "Log in"
         Me.LogIn.UseVisualStyleBackColor = True
         '
-        'MAL
-        '
-        Me.MAL.Location = New System.Drawing.Point(141, 119)
-        Me.MAL.Name = "MAL"
-        Me.MAL.Size = New System.Drawing.Size(486, 23)
-        Me.MAL.TabIndex = 22
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(11, 123)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(106, 15)
-        Me.Label12.TabIndex = 21
-        Me.Label12.Text = "MOTD After Login:"
-        '
         'HostName
         '
-        Me.HostName.Location = New System.Drawing.Point(141, 90)
+        Me.HostName.Location = New System.Drawing.Point(138, 62)
         Me.HostName.Name = "HostName"
         Me.HostName.Size = New System.Drawing.Size(486, 23)
         Me.HostName.TabIndex = 20
         '
-        'MOTD
-        '
-        Me.MOTD.Location = New System.Drawing.Point(141, 61)
-        Me.MOTD.Name = "MOTD"
-        Me.MOTD.Size = New System.Drawing.Size(486, 23)
-        Me.MOTD.TabIndex = 19
-        '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(11, 94)
+        Me.Label10.Location = New System.Drawing.Point(8, 66)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(70, 15)
         Me.Label10.TabIndex = 18
         Me.Label10.Text = "Host Name:"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(11, 65)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(44, 15)
-        Me.Label11.TabIndex = 17
-        Me.Label11.Text = "MOTD:"
         '
         'clslogin
         '
@@ -570,7 +530,7 @@ Partial Class Configurator
         Me.motdShow.CheckState = System.Windows.Forms.CheckState.Checked
         Me.motdShow.Location = New System.Drawing.Point(10, 12)
         Me.motdShow.Name = "motdShow"
-        Me.motdShow.Size = New System.Drawing.Size(142, 19)
+        Me.motdShow.Size = New System.Drawing.Size(141, 19)
         Me.motdShow.TabIndex = 0
         Me.motdShow.Text = "Show MOTD on Login"
         Me.motdShow.UseVisualStyleBackColor = True
@@ -677,7 +637,7 @@ Partial Class Configurator
         Me.tdCorner.AutoSize = True
         Me.tdCorner.Location = New System.Drawing.Point(10, 13)
         Me.tdCorner.Name = "tdCorner"
-        Me.tdCorner.Size = New System.Drawing.Size(236, 19)
+        Me.tdCorner.Size = New System.Drawing.Size(235, 19)
         Me.tdCorner.TabIndex = 12
         Me.tdCorner.Text = "Show Time/Date on Upper Right Corner"
         Me.tdCorner.UseVisualStyleBackColor = True
@@ -707,7 +667,7 @@ Partial Class Configurator
         '
         Me.Languages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Languages.FormattingEnabled = True
-        Me.Languages.Items.AddRange(New Object() {"Chinese (Simplified - China - chi)", "English (United States - eng)", "French (France - fre)", "German (Germany - ger)", "Hindi (India - ind)", "Portuguese (Brazil - ptg)", "Spanish (Spain - spa)", "Dutch (Netherlands - dtc)", "Finnish (Finland - fin)", "Italian (Italy - ita)", "Malay (mal)", "Swedish (Switzerland (?) - swe)", "Turkish (Turkey - tky)", "Czech (cze)"})
+        Me.Languages.Items.AddRange(New Object() {"Chinese (Simplified - China - chi)", "English (United States - eng)", "French (France - fre)", "German (Germany - ger)", "Hindi (India - ind)", "Portuguese (Brazil - ptg)", "Spanish (Spain - spa)", "Dutch (Netherlands - dtc)", "Finnish (Finland - fin)", "Italian (Italy - ita)", "Malay (mal)", "Swedish (Switzerland (?) - swe)", "Turkish (Turkey - tky)", "Czech (cze)", "Indonesian (Indonesia - ndo)", "Polish (Poland - pol)", "Romanian (Roman - rmn)", "Uzbek (Uzbekistan - uzb)", "Croatian (Croatia - cro)"})
         Me.Languages.Location = New System.Drawing.Point(194, 9)
         Me.Languages.Name = "Languages"
         Me.Languages.Size = New System.Drawing.Size(431, 23)
@@ -804,11 +764,7 @@ Partial Class Configurator
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents tdCorner As System.Windows.Forms.CheckBox
     Friend WithEvents HostName As System.Windows.Forms.TextBox
-    Friend WithEvents MOTD As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents MAL As System.Windows.Forms.TextBox
-    Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DefHelpColor As System.Windows.Forms.ComboBox
     Friend WithEvents Label13 As System.Windows.Forms.Label

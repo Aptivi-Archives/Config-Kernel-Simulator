@@ -32,7 +32,9 @@ Please note that dates mentioned here is for development date changes only.
 
 **6/21/2019 - 0.0.6:** Updated help, Added screensaver config, and other changes to reflect 0.0.6's changes
 
-**6/26/2019 - 0.0.6.3:** Fixed unhandled exception when settin any of the color sections into DarkYellow, Added Czech
+**6/26/2019 - 0.0.6.3:** Fixed unhandled exception when setting any of the color sections into DarkYellow, Added Czech
+
+**9/1/2019 - 0.0.7.1:** Added new languages for 0.0.7
 
 ## |-----+--> _Credits_ <--+-----|
 

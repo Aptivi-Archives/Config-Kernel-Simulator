@@ -105,9 +105,7 @@ Public Class Configurator
         'Login Section
         If (configReader.Sections("Login").Keys("Clear Screen on Log-in").Value = "True") Then clslogin.Checked = True Else clslogin.Checked = False
         If (configReader.Sections("Login").Keys("Show MOTD on Log-in").Value = "True") Then motdShow.Checked = True Else motdShow.Checked = False
-        MOTD.Text = configReader.Sections("Login").Keys("MOTD").Value
         HostName.Text = configReader.Sections("Login").Keys("Host Name").Value
-        MAL.Text = configReader.Sections("Login").Keys("MOTD After Login").Value
 
         'Shell Section
         If (configReader.Sections("Shell").Keys("Simplified Help Command").Value = "True") Then simHelp.Checked = True Else simHelp.Checked = False
@@ -153,6 +151,16 @@ Public Class Configurator
                 Languages.Text = "Turkish (Turkey - tky)"
             Case "cze"
                 Languages.Text = "Czech (cze)"
+            Case "cro"
+                Languages.Text = "Croatian (Croatia - cro)"
+            Case "ndo"
+                Languages.Text = "Indonesian (Indonesia - ndo)"
+            Case "pol"
+                Languages.Text = "Polish (Poland - pol)"
+            Case "rmn"
+                Languages.Text = "Romanian (Roman - rmn)"
+            Case "uzb"
+                Languages.Text = "Uzbek (Uzbekistan - uzb)"
             Case Else
                 Languages.Text = "English (United States - eng)"
         End Select
@@ -188,6 +196,16 @@ Public Class Configurator
                 Return "tky"
             Case "Czech (cze)"
                 Return "cze"
+            Case "Croatian (Croatia - cro)"
+                Return "cro"
+            Case "Indonesian (Indonesia - ndo)"
+                Return "ndo"
+            Case "Polish (Poland - pol)"
+                Return "pol"
+            Case "Romanian (Roman - rmn)"
+                Return "rmn"
+            Case "Uzbek (Uzbekistan - uzb)"
+                Return "uzb"
             Case Else
                 Return "eng"
         End Select
@@ -287,9 +305,7 @@ Public Class Configurator
                 New IniSection(ksconf, "Login",
                     New IniKey(ksconf, "Show MOTD on Log-in", motdShow.Checked),
                     New IniKey(ksconf, "Clear Screen on Log-in", clslogin.Checked),
-                    New IniKey(ksconf, "MOTD", MOTD.Text),
-                    New IniKey(ksconf, "Host Name", HostName.Text),
-                    New IniKey(ksconf, "MOTD After Login", MAL.Text)))
+                    New IniKey(ksconf, "Host Name", HostName.Text)))
 
             'The Shell Section
             ksconf.Sections.Add(
@@ -307,7 +323,7 @@ Public Class Configurator
             'Save Config
             ksconf.Save(confPath)
             MsgBox("Settings saved, but remember that your config will not be backwards-compatible with 0.0.5.2 or lower. You can:" + vbNewLine + vbNewLine +
-                   "• Use ""reloadconfig"" on Kernel Simulator to see the changes, or" + vbNewLine +
+                   "• Use ""reloadconfig"" on Kernel Simulator to see the changes," + vbNewLine +
                    "• Use ""reboot"" to see the changes, or" + vbNewLine +
                    "• Exit and re-open Kernel Simulator (recommended)", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Settings saved successfully")
         Catch ex As IOException
