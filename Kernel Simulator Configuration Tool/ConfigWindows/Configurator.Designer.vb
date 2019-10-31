@@ -98,6 +98,15 @@ Partial Class Configurator
         Me.Languages = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.ScreenOpen = New System.Windows.Forms.OpenFileDialog()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.DebugPort = New System.Windows.Forms.TextBox()
+        Me.DebugMax = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.DebugNPrefix = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.RetryDownload = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.General.SuspendLayout()
@@ -603,6 +612,15 @@ Partial Class Configurator
         '
         'Others
         '
+        Me.Others.Controls.Add(Me.RetryDownload)
+        Me.Others.Controls.Add(Me.Label20)
+        Me.Others.Controls.Add(Me.DebugNPrefix)
+        Me.Others.Controls.Add(Me.Label19)
+        Me.Others.Controls.Add(Me.Label18)
+        Me.Others.Controls.Add(Me.DebugMax)
+        Me.Others.Controls.Add(Me.Label12)
+        Me.Others.Controls.Add(Me.DebugPort)
+        Me.Others.Controls.Add(Me.Label11)
         Me.Others.Controls.Add(Me.Screensave)
         Me.Others.Controls.Add(Me.Label17)
         Me.Others.Controls.Add(Me.tdCorner)
@@ -617,8 +635,8 @@ Partial Class Configurator
         '
         Me.Screensave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Screensave.FormattingEnabled = True
-        Me.Screensave.Items.AddRange(New Object() {"matrix", "colorMix", "disco", "Custom (by mods)"})
-        Me.Screensave.Location = New System.Drawing.Point(125, 34)
+        Me.Screensave.Items.AddRange(New Object() {"matrix", "colorMix", "disco", "glitterMatrix", "lines", "Custom (by mods)"})
+        Me.Screensave.Location = New System.Drawing.Point(138, 38)
         Me.Screensave.Name = "Screensave"
         Me.Screensave.Size = New System.Drawing.Size(149, 23)
         Me.Screensave.TabIndex = 14
@@ -626,7 +644,7 @@ Partial Class Configurator
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(10, 37)
+        Me.Label17.Location = New System.Drawing.Point(7, 41)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(106, 15)
         Me.Label17.TabIndex = 13
@@ -667,7 +685,7 @@ Partial Class Configurator
         '
         Me.Languages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Languages.FormattingEnabled = True
-        Me.Languages.Items.AddRange(New Object() {"Chinese (Simplified - China - chi)", "English (United States - eng)", "French (France - fre)", "German (Germany - ger)", "Hindi (India - ind)", "Portuguese (Brazil - ptg)", "Spanish (Spain - spa)", "Dutch (Netherlands - dtc)", "Finnish (Finland - fin)", "Italian (Italy - ita)", "Malay (mal)", "Swedish (Switzerland (?) - swe)", "Turkish (Turkey - tky)", "Czech (cze)", "Indonesian (Indonesia - ndo)", "Polish (Poland - pol)", "Romanian (Roman - rmn)", "Uzbek (Uzbekistan - uzb)", "Croatian (Croatia - cro)"})
+        Me.Languages.Items.AddRange(New Object() {"Chinese (Simplified - China - chi)", "English (United States - eng)", "French (France - fre)", "German (Germany - ger)", "Hindi (India - ind)", "Portuguese (Brazil - ptg)", "Spanish (Spain - spa)", "Dutch (Netherlands - dtc)", "Finnish (Finland - fin)", "Italian (Italy - ita)", "Malay (mal)", "Swedish (Switzerland (?) - swe)", "Turkish (Turkey - tky)", "Czech (cze)", "Indonesian (Indonesia - ndo)", "Polish (Poland - pol)", "Romanian (Roman - rmn)", "Uzbek (Uzbekistan - uzb)", "Croatian (Croatia - cro)", "Russian (Russia - rus)"})
         Me.Languages.Location = New System.Drawing.Point(194, 9)
         Me.Languages.Name = "Languages"
         Me.Languages.Size = New System.Drawing.Size(431, 23)
@@ -689,6 +707,87 @@ Partial Class Configurator
         Me.ScreenOpen.Filter = "Screensaver file|*SS.m"
         Me.ScreenOpen.InitialDirectory = "%USERPROFILE%\KSMods"
         Me.ScreenOpen.Title = "Select a screensaver"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(7, 72)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(70, 15)
+        Me.Label11.TabIndex = 15
+        Me.Label11.Text = "Debug port:"
+        '
+        'DebugPort
+        '
+        Me.DebugPort.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.DebugPort.Location = New System.Drawing.Point(138, 69)
+        Me.DebugPort.MaxLength = 5
+        Me.DebugPort.Name = "DebugPort"
+        Me.DebugPort.Size = New System.Drawing.Size(149, 23)
+        Me.DebugPort.TabIndex = 16
+        '
+        'DebugMax
+        '
+        Me.DebugMax.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.DebugMax.Location = New System.Drawing.Point(138, 98)
+        Me.DebugMax.MaxLength = 30
+        Me.DebugMax.Name = "DebugMax"
+        Me.DebugMax.Size = New System.Drawing.Size(107, 23)
+        Me.DebugMax.TabIndex = 18
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(7, 101)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(125, 15)
+        Me.Label12.TabIndex = 17
+        Me.Label12.Text = "Debug maximum size:"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(252, 101)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(35, 15)
+        Me.Label18.TabIndex = 19
+        Me.Label18.Text = "bytes"
+        '
+        'DebugNPrefix
+        '
+        Me.DebugNPrefix.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.DebugNPrefix.Location = New System.Drawing.Point(138, 127)
+        Me.DebugNPrefix.MaxLength = 30
+        Me.DebugNPrefix.Name = "DebugNPrefix"
+        Me.DebugNPrefix.Size = New System.Drawing.Size(149, 23)
+        Me.DebugNPrefix.TabIndex = 21
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(7, 130)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(103, 15)
+        Me.Label19.TabIndex = 20
+        Me.Label19.Text = "Debug nick prefix:"
+        '
+        'RetryDownload
+        '
+        Me.RetryDownload.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.RetryDownload.Location = New System.Drawing.Point(138, 156)
+        Me.RetryDownload.MaxLength = 3
+        Me.RetryDownload.Name = "RetryDownload"
+        Me.RetryDownload.Size = New System.Drawing.Size(149, 23)
+        Me.RetryDownload.TabIndex = 23
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(7, 159)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(123, 15)
+        Me.Label20.TabIndex = 22
+        Me.Label20.Text = "Download retry times:"
         '
         'Configurator
         '
@@ -782,4 +881,13 @@ Partial Class Configurator
     Friend WithEvents Screensave As ComboBox
     Friend WithEvents Label17 As Label
     Friend WithEvents ScreenOpen As OpenFileDialog
+    Friend WithEvents RetryDownload As TextBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents DebugNPrefix As TextBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents DebugMax As TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents DebugPort As TextBox
+    Friend WithEvents Label11 As Label
 End Class

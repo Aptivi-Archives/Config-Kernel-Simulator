@@ -36,6 +36,8 @@ Please note that dates mentioned here is for development date changes only.
 
 **9/1/2019 - 0.0.7.1:** Added new languages for 0.0.7
 
+**10/31/2019 - 0.0.7.61:** Added new config for 0.0.7.61, and added Russian language
+
 ## |-----+--> _Credits_ <--+-----|
 
 **EoflaOE:** Owner of Kernel Simulator Config Tool

@@ -53,7 +53,7 @@ Public Class Configurator
     Sub ReadConfig()
         InitializeCombos()
         configReader.Load(confPath)
-        If (configReader.Sections("General").Keys("Customized Colors on Boot").Value = "True") Then
+        If (configReader.Sections("Shell").Keys("Colored Shell").Value = "True") Then
             CheckBox5.Checked = True
             textColor.Enabled = True
             licenseColor.Enabled = True
@@ -118,6 +118,10 @@ Public Class Configurator
         'Misc Section
         If (configReader.Sections("Misc").Keys("Show Time/Date on Upper Right Corner").Value = "True") Then tdCorner.Checked = True Else tdCorner.Checked = False
         Screensave.Text = configReader.Sections("Misc").Keys("Screensaver").Value
+        DebugPort.Text = configReader.Sections("Misc").Keys("Debug Port").Value
+        DebugMax.Text = configReader.Sections("Misc").Keys("Debug Size Quota in Bytes").Value
+        DebugNPrefix.Text = configReader.Sections("Misc").Keys("Remote Debug Default Nick Prefix").Value
+        RetryDownload.Text = configReader.Sections("Misc").Keys("Download Retry Times").Value
         Ver = configReader.Sections("Misc").Keys("Kernel Version").Value
     End Sub
 
@@ -161,6 +165,8 @@ Public Class Configurator
                 Languages.Text = "Romanian (Roman - rmn)"
             Case "uzb"
                 Languages.Text = "Uzbek (Uzbekistan - uzb)"
+            Case "rus"
+                Languages.Text = "Russian (Russia - rus)"
             Case Else
                 Languages.Text = "English (United States - eng)"
         End Select
@@ -206,6 +212,8 @@ Public Class Configurator
                 Return "rmn"
             Case "Uzbek (Uzbekistan - uzb)"
                 Return "uzb"
+            Case "Russian (Russia - rus)"
+                Return "rus"
             Case Else
                 Return "eng"
         End Select
@@ -318,6 +326,10 @@ Public Class Configurator
                 New IniSection(ksconf, "Misc",
                     New IniKey(ksconf, "Show Time/Date on Upper Right Corner", tdCorner.Checked),
                     New IniKey(ksconf, "Screensaver", Screensave.Text),
+                    New IniKey(ksconf, "Debug Port", DebugPort.Text),
+                    New IniKey(ksconf, "Debug Size Quota in Bytes", DebugMax.Text),
+                    New IniKey(ksconf, "Remote Debug Default Nick Prefix", DebugNPrefix.Text),
+                    New IniKey(ksconf, "Download Retry Times", RetryDownload.Text),
                     New IniKey(ksconf, "Kernel Version", Ver)))
 
             'Save Config
@@ -369,7 +381,7 @@ Public Class Configurator
 
     Private Sub Screensave_SelectedValueChanged(sender As Object, e As EventArgs) Handles Screensave.SelectedValueChanged
         Select Case Screensave.Text
-            Case "matrix", "disco", "colorMix"
+            Case "matrix", "disco", "colorMix", "glitterMatrix", "lines"
                 configReader.Sections("Misc").Keys("Screensaver").Value = Screensave.Text
             Case Else
                 If ScreenOpen.ShowDialog() = DialogResult.OK Then 'TODO: Make a check for screensaver health
