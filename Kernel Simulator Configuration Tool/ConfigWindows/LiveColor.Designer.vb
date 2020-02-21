@@ -61,6 +61,8 @@ Partial Class LiveColor
         Me.Label9 = New System.Windows.Forms.Label()
         Me.RichTextBox10 = New System.Windows.Forms.RichTextBox()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.RichTextBox11 = New System.Windows.Forms.RichTextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label4
@@ -292,9 +294,9 @@ Partial Class LiveColor
         Me.RichTextBox10.Name = "RichTextBox10"
         Me.RichTextBox10.ReadOnly = True
         Me.RichTextBox10.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None
-        Me.RichTextBox10.Size = New System.Drawing.Size(734, 23)
+        Me.RichTextBox10.Size = New System.Drawing.Size(356, 23)
         Me.RichTextBox10.TabIndex = 36
-        Me.RichTextBox10.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio."
+        Me.RichTextBox10.Text = "Lorem ipsum dolor sit amet"
         '
         'Label10
         '
@@ -305,11 +307,36 @@ Partial Class LiveColor
         Me.Label10.TabIndex = 35
         Me.Label10.Text = "Definition Help Color"
         '
+        'RichTextBox11
+        '
+        Me.RichTextBox11.BackColor = System.Drawing.SystemColors.Window
+        Me.RichTextBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.RichTextBox11.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.RichTextBox11.Font = New System.Drawing.Font("Lucida Console", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RichTextBox11.Location = New System.Drawing.Point(385, 158)
+        Me.RichTextBox11.Name = "RichTextBox11"
+        Me.RichTextBox11.ReadOnly = True
+        Me.RichTextBox11.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None
+        Me.RichTextBox11.Size = New System.Drawing.Size(356, 23)
+        Me.RichTextBox11.TabIndex = 38
+        Me.RichTextBox11.Text = "Lorem ipsum dolor sit amet"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(382, 140)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(68, 15)
+        Me.Label11.TabIndex = 37
+        Me.Label11.Text = "Stage Color"
+        '
         'LiveColor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(753, 195)
+        Me.Controls.Add(Me.RichTextBox11)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.RichTextBox10)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.RichTextBox9)
@@ -361,4 +388,6 @@ Partial Class LiveColor
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents RichTextBox10 As System.Windows.Forms.RichTextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents RichTextBox11 As RichTextBox
+    Friend WithEvents Label11 As Label
 End Class

@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("This configures Kernel Simulator.")>
 <Assembly: AssemblyCompany("EoflaOE")>
 <Assembly: AssemblyProduct("Kernel Simulator Configuration Tool")>
-<Assembly: AssemblyCopyright("Copyright © EoflaOE 2018-2019")>
+<Assembly: AssemblyCopyright("Copyright © EoflaOE 2018-2020")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("0.0.7.1")>
-<Assembly: AssemblyFileVersion("0.0.7.1")>
+<Assembly: AssemblyVersion("0.0.8.0")>
+<Assembly: AssemblyFileVersion("0.0.8.0")>

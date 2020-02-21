@@ -26,7 +26,7 @@ Public Class Configurator
     Public confPath As String 'For multi-platform support
     Public EnvironmentOSType As String = Environment.OSVersion.ToString
 
-    Private Sub Configurator_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Configurator_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
 
         'Initialize directory
         If EnvironmentOSType.Contains("Unix") Then
@@ -65,6 +65,7 @@ Public Class Configurator
             inputColor.Enabled = True
             CmdHelpColor.Enabled = True
             DefHelpColor.Enabled = True
+            StageColor.Enabled = True
             Button1.Enabled = True
         Else
             CheckBox5.Checked = False
@@ -78,6 +79,7 @@ Public Class Configurator
             inputColor.Enabled = False
             CmdHelpColor.Enabled = False
             DefHelpColor.Enabled = False
+            StageColor.Enabled = True
             Button1.Enabled = False
         End If
 
@@ -92,6 +94,7 @@ Public Class Configurator
         inputColor.Text = configReader.Sections("Colors").Keys("Input Color").Value
         CmdHelpColor.Text = configReader.Sections("Colors").Keys("Listed command in help Color").Value
         DefHelpColor.Text = configReader.Sections("Colors").Keys("Definition of command in Help Color").Value
+        StageColor.Text = configReader.Sections("Colors").Keys("Kernel Stage Color").Value
         Started = True
 
         'General Section
@@ -100,12 +103,14 @@ Public Class Configurator
         RootPwd.Text = configReader.Sections("General").Keys("Set Root Password to").Value
         If (configReader.Sections("General").Keys("Maintenance Mode").Value = "True") Then MaintMode.Checked = True Else MaintMode.Checked = False
         If (configReader.Sections("General").Keys("Prompt for Arguments on Boot").Value = "True") Then BootPrompt.Checked = True Else BootPrompt.Checked = False
+        If configReader.Sections("General").Keys("Check for Updates on Startup").Value = "True" Then UpdateStart.Checked = True Else UpdateStart.Checked = False
         ReadLocalization()
 
         'Login Section
         If (configReader.Sections("Login").Keys("Clear Screen on Log-in").Value = "True") Then clslogin.Checked = True Else clslogin.Checked = False
         If (configReader.Sections("Login").Keys("Show MOTD on Log-in").Value = "True") Then motdShow.Checked = True Else motdShow.Checked = False
         HostName.Text = configReader.Sections("Login").Keys("Host Name").Value
+        If (configReader.Sections("Login").Keys("Show available usernames").Value = "True") Then UsersShow.Checked = True Else UsersShow.Checked = False
 
         'Shell Section
         If (configReader.Sections("Shell").Keys("Simplified Help Command").Value = "True") Then simHelp.Checked = True Else simHelp.Checked = False
@@ -122,6 +127,12 @@ Public Class Configurator
         DebugMax.Text = configReader.Sections("Misc").Keys("Debug Size Quota in Bytes").Value
         DebugNPrefix.Text = configReader.Sections("Misc").Keys("Remote Debug Default Nick Prefix").Value
         RetryDownload.Text = configReader.Sections("Misc").Keys("Download Retry Times").Value
+        If configReader.Sections("Misc").Keys("Log FTP username").Value = "True" Then LogFTPUsr.Checked = True Else LogFTPUsr.Checked = False
+        If configReader.Sections("Misc").Keys("Log FTP IP address").Value = "True" Then LogFTPIP.Checked = True Else LogFTPIP.Checked = False
+        If configReader.Sections("Misc").Keys("Size parse mode").Value = "True" Then FullParseMode.Checked = True Else FullParseMode.Checked = False
+        If configReader.Sections("Misc").Keys("Marquee on startup").Value = "True" Then StartScroll.Checked = True Else StartScroll.Checked = False
+        If configReader.Sections("Misc").Keys("Long Time and Date").Value = "True" Then LongTimeDate.Checked = True Else LongTimeDate.Checked = False
+        If configReader.Sections("Misc").Keys("Show Hidden Files").Value = "True" Then HiddenFiles.Checked = True Else HiddenFiles.Checked = False
         Ver = configReader.Sections("Misc").Keys("Kernel Version").Value
     End Sub
 
@@ -129,14 +140,22 @@ Public Class Configurator
         Select Case configReader.Sections("General").Keys("Language").Value
             Case "eng"
                 Languages.Text = "English (United States - eng)"
+            Case "arb"
+                Languages.Text = "Arabic (Arab countries - arb)"
+            Case "arb-T"
+                Languages.Text = "Arabic (Arab countries - arb) (Translated)"
             Case "chi"
                 Languages.Text = "Chinese (Simplified - China - chi)"
+            Case "chi-T"
+                Languages.Text = "Chinese (Simplified - China - chi) (Translated)"
             Case "fre"
                 Languages.Text = "French (France - fre)"
             Case "ger"
                 Languages.Text = "German (Germany - ger)"
             Case "ind"
                 Languages.Text = "Hindi (India - ind)"
+            Case "ind-T"
+                Languages.Text = "Hindi (India - ind) (Translated)"
             Case "ptg"
                 Languages.Text = "Portuguese (Brazil - ptg)"
             Case "spa"
@@ -167,6 +186,22 @@ Public Class Configurator
                 Languages.Text = "Uzbek (Uzbekistan - uzb)"
             Case "rus"
                 Languages.Text = "Russian (Russia - rus)"
+            Case "rus-T"
+                Languages.Text = "Russian (Russia - rus) (Translated)"
+            Case "jpn"
+                Languages.Text = "Japanese (Japan - jpn)"
+            Case "jpn-T"
+                Languages.Text = "Japanese (Japan - jpn) (Translated)"
+            Case "kor"
+                Languages.Text = "Korean (Korea - kor)"
+            Case "kor-T"
+                Languages.Text = "Korean (Korea - kor) (Translated)"
+            Case "dan"
+                Languages.Text = "Danish (dan)"
+            Case "vtn"
+                Languages.Text = "Vietnamese (Vietnam - vtn)"
+            Case "nwg"
+                Languages.Text = "Norwegian (nwg)"
             Case Else
                 Languages.Text = "English (United States - eng)"
         End Select
@@ -176,14 +211,22 @@ Public Class Configurator
         Select Case Languages.Text
             Case "English (United States - eng)"
                 Return "eng"
+            Case "Arabic (Arab countries - arb)"
+                Return "arb"
+            Case "Arabic (Arab countries - arb) (Translated)"
+                Return "arb-T"
             Case "Chinese (Simplified - China - chi)"
                 Return "chi"
+            Case "Chinese (Simplified - China - chi) (Translated)"
+                Return "chi-T"
             Case "French (France - fre)"
                 Return "fre"
             Case "German (Germany - ger)"
                 Return "ger"
             Case "Hindi (India - ind)"
                 Return "ind"
+            Case "Hindi (India - ind) (Translated)"
+                Return "ind-T"
             Case "Portuguese (Brazil - ptg)"
                 Return "ptg"
             Case "Spanish (Spain - spa)"
@@ -214,6 +257,22 @@ Public Class Configurator
                 Return "uzb"
             Case "Russian (Russia - rus)"
                 Return "rus"
+            Case "Russian (Russia - rus) (Translated)"
+                Return "rus-T"
+            Case "Japanese (Japan - jpn)"
+                Return "jpn"
+            Case "Japanese (Japan - jpn) (Translated)"
+                Return "jpn-T"
+            Case "Korean (Korea - kor)"
+                Return "kor"
+            Case "Korean (Korea - kor) (Translated)"
+                Return "kor-T"
+            Case "Danish (dan)"
+                Return "dan"
+            Case "Vietnamese (Vietnam - vtn)"
+                Return "vtn"
+            Case "Norwegian (nwg)"
+                Return "nwg"
             Case Else
                 Return "eng"
         End Select
@@ -221,24 +280,31 @@ Public Class Configurator
 
     Sub InitializeCombos()
 
-        Dim Colors() As String = {"White", "Gray", "DarkGray", "DarkRed", "Red", "DarkYellow", "Yellow", "DarkGreen", "Green", "DarkCyan",
-                                  "Cyan", "DarkBlue", "Blue", "DarkMagenta", "Magenta", "Black"}
-        textColor.Items.AddRange(Colors) : textColor.Items.Remove("Black") : textColor.Text = "Gray"
-        licenseColor.Items.AddRange(Colors) : licenseColor.Items.Remove("Black") : licenseColor.Text = "White"
-        contError.Items.AddRange(Colors) : contError.Items.Remove("Black") : contError.Text = "Yellow"
-        userNameColor.Items.AddRange(Colors) : userNameColor.Items.Remove("Black") : userNameColor.Text = "Green"
-        hostNameColor.Items.AddRange(Colors) : hostNameColor.Items.Remove("Black") : hostNameColor.Text = "DarkGreen"
-        uncontError.Items.AddRange(Colors) : uncontError.Items.Remove("Black") : uncontError.Text = "Red"
-        backgroundColor.Items.AddRange(Colors) : backgroundColor.Items.Remove("White") : backgroundColor.Text = "Black"
-        inputColor.Items.AddRange(Colors) : inputColor.Items.Remove("Black") : inputColor.Text = "White"
-        CmdHelpColor.Items.AddRange(Colors) : CmdHelpColor.Items.Remove("Black") : CmdHelpColor.Text = "DarkYellow"
-        DefHelpColor.Items.AddRange(Colors) : DefHelpColor.Items.Remove("Black") : DefHelpColor.Text = "DarkGray"
+        Dim Colors As New List(Of String)
+
+        'Enumerate all colors and add to list
+        For Each Enumed As ConsoleColors In [Enum].GetValues(GetType(ConsoleColors))
+            Colors.Add(Enumed.ToString)
+        Next
+
+        'Add colors to list
+        textColor.Items.AddRange(Colors.ToArray) : textColor.Items.Remove("Black") : textColor.Text = "Gray"
+        licenseColor.Items.AddRange(Colors.ToArray) : licenseColor.Items.Remove("Black") : licenseColor.Text = "White"
+        contError.Items.AddRange(Colors.ToArray) : contError.Items.Remove("Black") : contError.Text = "Yellow"
+        userNameColor.Items.AddRange(Colors.ToArray) : userNameColor.Items.Remove("Black") : userNameColor.Text = "Green"
+        hostNameColor.Items.AddRange(Colors.ToArray) : hostNameColor.Items.Remove("Black") : hostNameColor.Text = "DarkGreen"
+        uncontError.Items.AddRange(Colors.ToArray) : uncontError.Items.Remove("Black") : uncontError.Text = "Red"
+        backgroundColor.Items.AddRange(Colors.ToArray) : backgroundColor.Items.Remove("White") : backgroundColor.Text = "Black"
+        inputColor.Items.AddRange(Colors.ToArray) : inputColor.Items.Remove("Black") : inputColor.Text = "White"
+        CmdHelpColor.Items.AddRange(Colors.ToArray) : CmdHelpColor.Items.Remove("Black") : CmdHelpColor.Text = "DarkYellow"
+        DefHelpColor.Items.AddRange(Colors.ToArray) : DefHelpColor.Items.Remove("Black") : DefHelpColor.Text = "DarkGray"
+        StageColor.Items.AddRange(Colors.ToArray) : StageColor.Items.Remove("Black") : StageColor.Text = "Green"
 
     End Sub
 
-    Private Sub CheckBox5_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox5.CheckedChanged
+    Private Sub CheckBox5_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles CheckBox5.CheckedChanged
 
-        If (CheckBox5.Checked = True) Then
+        If CheckBox5.Checked Then
             textColor.Enabled = True
             licenseColor.Enabled = True
             contError.Enabled = True
@@ -249,6 +315,7 @@ Public Class Configurator
             inputColor.Enabled = True
             CmdHelpColor.Enabled = True
             DefHelpColor.Enabled = True
+            StageColor.Enabled = True
             Button1.Enabled = True
         Else
             textColor.Enabled = False
@@ -261,6 +328,7 @@ Public Class Configurator
             inputColor.Enabled = False
             CmdHelpColor.Enabled = False
             DefHelpColor.Enabled = False
+            StageColor.Enabled = True
             Button1.Enabled = False
         End If
 
@@ -286,6 +354,7 @@ Public Class Configurator
                     New IniKey(ksconf, "Set Root Password to", RootPwd.Text),
                     New IniKey(ksconf, "Create Demo Account", demo.Checked),
                     New IniKey(ksconf, "Customized Colors on Boot", CheckBox5.Checked),
+                    New IniKey(ksconf, "Check for Updates on Startup", UpdateStart.Checked),
                     New IniKey(ksconf, "Language", SaveLocalization)))
 
             'The Colors Section
@@ -300,7 +369,8 @@ Public Class Configurator
                     New IniKey(ksconf, "Background Color", backgroundColor.Text),
                     New IniKey(ksconf, "Input Color", inputColor.Text),
                     New IniKey(ksconf, "Listed command in Help Color", CmdHelpColor.Text),
-                    New IniKey(ksconf, "Definition of command in Help Color", DefHelpColor.Text)))
+                    New IniKey(ksconf, "Definition of command in Help Color", DefHelpColor.Text),
+                    New IniKey(ksconf, "Kernel Stage Color", StageColor.Text)))
 
             'The Hardware Section
             ksconf.Sections.Add(
@@ -330,6 +400,12 @@ Public Class Configurator
                     New IniKey(ksconf, "Debug Size Quota in Bytes", DebugMax.Text),
                     New IniKey(ksconf, "Remote Debug Default Nick Prefix", DebugNPrefix.Text),
                     New IniKey(ksconf, "Download Retry Times", RetryDownload.Text),
+                    New IniKey(ksconf, "Log FTP username", LogFTPUsr.Checked),
+                    New IniKey(ksconf, "Log FTP IP address", LogFTPIP.Checked),
+                    New IniKey(ksconf, "Size parse mode", FullParseMode.Checked),
+                    New IniKey(ksconf, "Marquee on startup", StartScroll.Checked),
+                    New IniKey(ksconf, "Long Time and Date", LongTimeDate.Checked),
+                    New IniKey(ksconf, "Show Hidden Files", HiddenFiles.Checked),
                     New IniKey(ksconf, "Kernel Version", Ver)))
 
             'Save Config
@@ -381,7 +457,7 @@ Public Class Configurator
 
     Private Sub Screensave_SelectedValueChanged(sender As Object, e As EventArgs) Handles Screensave.SelectedValueChanged
         Select Case Screensave.Text
-            Case "matrix", "disco", "colorMix", "glitterMatrix", "lines"
+            Case "matrix", "disco", "disco255", "colorMix", "colorMix255", "glitterMatrix", "glitterColor", "glitterColor255", "lines", "lines255", "aptErrorSim", "hackUserFromAD"
                 configReader.Sections("Misc").Keys("Screensaver").Value = Screensave.Text
             Case Else
                 If ScreenOpen.ShowDialog() = DialogResult.OK Then 'TODO: Make a check for screensaver health
