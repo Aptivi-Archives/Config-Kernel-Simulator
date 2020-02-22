@@ -38,6 +38,8 @@ Please note that dates mentioned here is for development date changes only.
 
 **10/31/2019 - 0.0.7.61:** Added new config for 0.0.7.61, and added Russian language
 
+**2/22/2020 - 0.0.8:** Prepared for 0.0.8
+
 ## |-----+--> _Credits_ <--+-----|
 
 **EoflaOE:** Owner of Kernel Simulator Config Tool
