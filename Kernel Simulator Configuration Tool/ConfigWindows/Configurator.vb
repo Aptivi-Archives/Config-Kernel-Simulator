@@ -1,5 +1,5 @@
 ﻿
-'    Kernel Simulator Configuration Tool  Copyright (C) 2018  EoflaOE
+'    Kernel Simulator Configuration Tool  Copyright (C) 2018-2020  EoflaOE
 '
 '    This file is part of Kernel Simulator Configuration Tool
 '
@@ -202,6 +202,8 @@ Public Class Configurator
                 Languages.Text = "Vietnamese (Vietnam - vtn)"
             Case "nwg"
                 Languages.Text = "Norwegian (nwg)"
+            Case "slo"
+                Languages.Text = "Slovak (Slovakia - slo)"
             Case Else
                 Languages.Text = "English (United States - eng)"
         End Select
@@ -273,6 +275,8 @@ Public Class Configurator
                 Return "vtn"
             Case "Norwegian (nwg)"
                 Return "nwg"
+            Case "Slovak (Slovakia - slo)"
+                Return "slo"
             Case Else
                 Return "eng"
         End Select

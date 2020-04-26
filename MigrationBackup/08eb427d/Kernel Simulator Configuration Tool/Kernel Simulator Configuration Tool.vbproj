@@ -74,6 +74,9 @@
     <ApplicationIcon>iconfinder_applications-utilities_8840.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MadMilkman.Ini, Version=1.0.6.0, Culture=neutral, PublicKeyToken=4e0b5157a7ffbb74, processorArchitecture=MSIL">
+      <HintPath>..\packages\MadMilkman.Ini.1.0.6.0\lib\net20\MadMilkman.Ini.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -179,6 +182,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="packages.config" />
     <None Include="Resources\AboutLibs.rtf" />
     <None Include="Resources\General.rtf" />
     <None Include="Resources\Hardware.rtf" />
@@ -190,11 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="iconfinder_applications-utilities_8840.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="MadMilkman.Ini">
-      <Version>1.0.6</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">

@@ -1,5 +1,5 @@
 ﻿
-'    Kernel Simulator Configuration Tool  Copyright (C) 2018  EoflaOE
+'    Kernel Simulator Configuration Tool  Copyright (C) 2018-2020  EoflaOE
 '
 '    This file is part of Kernel Simulator Configuration Tool
 '

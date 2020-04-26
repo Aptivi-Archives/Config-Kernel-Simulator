@@ -6,7 +6,7 @@ Please note that the current version is not final and contains bugs and instabil
 
 ## |-----+--> _Prerequisites_ <--+-----|
 
-- Microsoft .NET Framework 4.7
+- Microsoft .NET Framework 4.8
 
 - Windows 7 or higher
 
@@ -20,7 +20,9 @@ Please note that dates mentioned here is for development date changes only.
 
 **5/20/2018 - 0.0.1:** Initial release.
 
-**7/??/2018 - 0.0.4.9:** Added notification when saving is complete, Help system, and new settings for 0.0.4.9
+**7/15/2018 - 0.0.4.5:** Added new settings for 0.0.4.5
+
+**7/24/2018 - 0.0.4.9:** Added notification when saving is complete, Help system, and new settings for 0.0.4.9
 
 **9/3/2018 - 0.0.5:** Added new config options for 0.0.5, fix bugs
 
@@ -39,6 +41,8 @@ Please note that dates mentioned here is for development date changes only.
 **10/31/2019 - 0.0.7.61:** Added new config for 0.0.7.61, and added Russian language
 
 **2/22/2020 - 0.0.8:** Prepared for 0.0.8
+
+**4/26/2020 - 0.0.9:** Added languages from 0.0.9, targeted .NET Framework 4.8, migrated to PackageReference
 
 ## |-----+--> _Credits_ <--+-----|
 
@@ -59,7 +63,7 @@ License (Apache 2.0): https://github.com/MarioZ/MadMilkman.Ini/blob/master/LICEN
 ## |-----+--> _License - GNU GPL_ <--+-----|
 
     Kernel Simulator - Simulates our future planned Kernel
-    Copyright (C) 2018-2019  EoflaOE
+    Copyright (C) 2018-2020  EoflaOE
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
