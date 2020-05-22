@@ -54,7 +54,6 @@ Public Class Configurator
         InitializeCombos()
         configReader.Load(confPath)
         If (configReader.Sections("Shell").Keys("Colored Shell").Value = "True") Then
-            CheckBox5.Checked = True
             textColor.Enabled = True
             licenseColor.Enabled = True
             contError.Enabled = True
@@ -69,7 +68,6 @@ Public Class Configurator
             ErrorColor.Enabled = True
             Button1.Enabled = True
         Else
-            CheckBox5.Checked = False
             textColor.Enabled = False
             licenseColor.Enabled = False
             contError.Enabled = False
