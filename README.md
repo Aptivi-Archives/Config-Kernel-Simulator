@@ -44,6 +44,8 @@ Please note that dates mentioned here is for development date changes only.
 
 **4/26/2020 - 0.0.9:** Added languages from 0.0.9, targeted .NET Framework 4.8, migrated to PackageReference
 
+**5/22/2020 - 0.0.10:** Added "Error Text Color" entry from 0.0.10, Fixed extra config entry being made, Fixed missing config entry on save
+
 ## |-----+--> _Credits_ <--+-----|
 
 **EoflaOE:** Owner of Kernel Simulator Config Tool
