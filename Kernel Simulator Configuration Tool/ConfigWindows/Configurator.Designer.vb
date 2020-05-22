@@ -51,6 +51,8 @@ Partial Class Configurator
         Me.General = New System.Windows.Forms.TabPage()
         Me.UpdateStart = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.ErrorColor = New System.Windows.Forms.ComboBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.StageColor = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -75,7 +77,6 @@ Partial Class Configurator
         Me.Label2 = New System.Windows.Forms.Label()
         Me.textColor = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
         Me.RootPwd = New System.Windows.Forms.MaskedTextBox()
         Me.demo = New System.Windows.Forms.CheckBox()
         Me.RootPC = New System.Windows.Forms.CheckBox()
@@ -181,7 +182,7 @@ Partial Class Configurator
         Me.TabControl1.Location = New System.Drawing.Point(8, 32)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(647, 442)
+        Me.TabControl1.Size = New System.Drawing.Size(647, 448)
         Me.TabControl1.TabIndex = 1
         '
         'General
@@ -196,7 +197,7 @@ Partial Class Configurator
         Me.General.Location = New System.Drawing.Point(4, 24)
         Me.General.Name = "General"
         Me.General.Padding = New System.Windows.Forms.Padding(3)
-        Me.General.Size = New System.Drawing.Size(639, 414)
+        Me.General.Size = New System.Drawing.Size(639, 420)
         Me.General.TabIndex = 0
         Me.General.Text = "General"
         Me.General.UseVisualStyleBackColor = True
@@ -213,6 +214,8 @@ Partial Class Configurator
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label22)
+        Me.GroupBox1.Controls.Add(Me.ErrorColor)
         Me.GroupBox1.Controls.Add(Me.Label21)
         Me.GroupBox1.Controls.Add(Me.StageColor)
         Me.GroupBox1.Controls.Add(Me.Label16)
@@ -237,18 +240,36 @@ Partial Class Configurator
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.textColor)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.CheckBox5)
         Me.GroupBox1.Location = New System.Drawing.Point(5, 109)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(628, 299)
+        Me.GroupBox1.Size = New System.Drawing.Size(628, 305)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Colors"
         '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(435, 177)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(64, 15)
+        Me.Label22.TabIndex = 31
+        Me.Label22.Text = "Error Color"
+        '
+        'ErrorColor
+        '
+        Me.ErrorColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ErrorColor.Enabled = False
+        Me.ErrorColor.FormattingEnabled = True
+        Me.ErrorColor.Location = New System.Drawing.Point(438, 195)
+        Me.ErrorColor.Name = "ErrorColor"
+        Me.ErrorColor.Size = New System.Drawing.Size(168, 23)
+        Me.ErrorColor.TabIndex = 30
+        '
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(224, 206)
+        Me.Label21.Location = New System.Drawing.Point(224, 177)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(68, 15)
         Me.Label21.TabIndex = 29
@@ -259,7 +280,7 @@ Partial Class Configurator
         Me.StageColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.StageColor.Enabled = False
         Me.StageColor.FormattingEnabled = True
-        Me.StageColor.Location = New System.Drawing.Point(227, 224)
+        Me.StageColor.Location = New System.Drawing.Point(227, 195)
         Me.StageColor.Name = "StageColor"
         Me.StageColor.Size = New System.Drawing.Size(168, 23)
         Me.StageColor.TabIndex = 28
@@ -267,7 +288,7 @@ Partial Class Configurator
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(12, 206)
+        Me.Label16.Location = New System.Drawing.Point(12, 177)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(103, 15)
         Me.Label16.TabIndex = 27
@@ -276,7 +297,7 @@ Partial Class Configurator
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(435, 154)
+        Me.Label15.Location = New System.Drawing.Point(435, 125)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(67, 15)
         Me.Label15.TabIndex = 26
@@ -287,7 +308,7 @@ Partial Class Configurator
         Me.inputColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.inputColor.Enabled = False
         Me.inputColor.FormattingEnabled = True
-        Me.inputColor.Location = New System.Drawing.Point(438, 172)
+        Me.inputColor.Location = New System.Drawing.Point(438, 143)
         Me.inputColor.Name = "inputColor"
         Me.inputColor.Size = New System.Drawing.Size(168, 23)
         Me.inputColor.TabIndex = 25
@@ -297,7 +318,7 @@ Partial Class Configurator
         Me.backgroundColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.backgroundColor.Enabled = False
         Me.backgroundColor.FormattingEnabled = True
-        Me.backgroundColor.Location = New System.Drawing.Point(15, 224)
+        Me.backgroundColor.Location = New System.Drawing.Point(15, 195)
         Me.backgroundColor.Name = "backgroundColor"
         Me.backgroundColor.Size = New System.Drawing.Size(168, 23)
         Me.backgroundColor.TabIndex = 24
@@ -307,7 +328,7 @@ Partial Class Configurator
         Me.DefHelpColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.DefHelpColor.Enabled = False
         Me.DefHelpColor.FormattingEnabled = True
-        Me.DefHelpColor.Location = New System.Drawing.Point(227, 172)
+        Me.DefHelpColor.Location = New System.Drawing.Point(227, 143)
         Me.DefHelpColor.Name = "DefHelpColor"
         Me.DefHelpColor.Size = New System.Drawing.Size(168, 23)
         Me.DefHelpColor.TabIndex = 23
@@ -315,7 +336,7 @@ Partial Class Configurator
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(224, 154)
+        Me.Label13.Location = New System.Drawing.Point(224, 125)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(119, 15)
         Me.Label13.TabIndex = 22
@@ -326,7 +347,7 @@ Partial Class Configurator
         Me.CmdHelpColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmdHelpColor.Enabled = False
         Me.CmdHelpColor.FormattingEnabled = True
-        Me.CmdHelpColor.Location = New System.Drawing.Point(15, 172)
+        Me.CmdHelpColor.Location = New System.Drawing.Point(15, 143)
         Me.CmdHelpColor.Name = "CmdHelpColor"
         Me.CmdHelpColor.Size = New System.Drawing.Size(168, 23)
         Me.CmdHelpColor.TabIndex = 21
@@ -334,7 +355,7 @@ Partial Class Configurator
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(12, 154)
+        Me.Label14.Location = New System.Drawing.Point(12, 125)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(124, 15)
         Me.Label14.TabIndex = 20
@@ -342,7 +363,7 @@ Partial Class Configurator
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(438, 201)
+        Me.Button1.Location = New System.Drawing.Point(438, 224)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(168, 41)
         Me.Button1.TabIndex = 19
@@ -352,7 +373,7 @@ Partial Class Configurator
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(12, 258)
+        Me.Label9.Location = New System.Drawing.Point(12, 268)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(584, 30)
         Me.Label9.TabIndex = 18
@@ -363,7 +384,7 @@ Partial Class Configurator
         Me.userNameColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.userNameColor.Enabled = False
         Me.userNameColor.FormattingEnabled = True
-        Me.userNameColor.Location = New System.Drawing.Point(438, 119)
+        Me.userNameColor.Location = New System.Drawing.Point(438, 90)
         Me.userNameColor.Name = "userNameColor"
         Me.userNameColor.Size = New System.Drawing.Size(168, 23)
         Me.userNameColor.TabIndex = 17
@@ -371,7 +392,7 @@ Partial Class Configurator
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(435, 101)
+        Me.Label4.Location = New System.Drawing.Point(435, 72)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(125, 15)
         Me.Label4.TabIndex = 16
@@ -382,7 +403,7 @@ Partial Class Configurator
         Me.hostNameColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.hostNameColor.Enabled = False
         Me.hostNameColor.FormattingEnabled = True
-        Me.hostNameColor.Location = New System.Drawing.Point(227, 119)
+        Me.hostNameColor.Location = New System.Drawing.Point(227, 90)
         Me.hostNameColor.Name = "hostNameColor"
         Me.hostNameColor.Size = New System.Drawing.Size(168, 23)
         Me.hostNameColor.TabIndex = 15
@@ -390,7 +411,7 @@ Partial Class Configurator
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(224, 101)
+        Me.Label5.Location = New System.Drawing.Point(224, 72)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(127, 15)
         Me.Label5.TabIndex = 14
@@ -401,7 +422,7 @@ Partial Class Configurator
         Me.uncontError.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.uncontError.Enabled = False
         Me.uncontError.FormattingEnabled = True
-        Me.uncontError.Location = New System.Drawing.Point(15, 119)
+        Me.uncontError.Location = New System.Drawing.Point(15, 90)
         Me.uncontError.Name = "uncontError"
         Me.uncontError.Size = New System.Drawing.Size(168, 23)
         Me.uncontError.TabIndex = 13
@@ -409,7 +430,7 @@ Partial Class Configurator
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 101)
+        Me.Label6.Location = New System.Drawing.Point(12, 72)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(181, 15)
         Me.Label6.TabIndex = 12
@@ -420,7 +441,7 @@ Partial Class Configurator
         Me.contError.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.contError.Enabled = False
         Me.contError.FormattingEnabled = True
-        Me.contError.Location = New System.Drawing.Point(438, 66)
+        Me.contError.Location = New System.Drawing.Point(438, 37)
         Me.contError.Name = "contError"
         Me.contError.Size = New System.Drawing.Size(168, 23)
         Me.contError.TabIndex = 11
@@ -428,7 +449,7 @@ Partial Class Configurator
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(435, 48)
+        Me.Label3.Location = New System.Drawing.Point(435, 19)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(168, 15)
         Me.Label3.TabIndex = 10
@@ -439,7 +460,7 @@ Partial Class Configurator
         Me.licenseColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.licenseColor.Enabled = False
         Me.licenseColor.FormattingEnabled = True
-        Me.licenseColor.Location = New System.Drawing.Point(227, 66)
+        Me.licenseColor.Location = New System.Drawing.Point(227, 37)
         Me.licenseColor.Name = "licenseColor"
         Me.licenseColor.Size = New System.Drawing.Size(168, 23)
         Me.licenseColor.TabIndex = 9
@@ -447,7 +468,7 @@ Partial Class Configurator
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(224, 48)
+        Me.Label2.Location = New System.Drawing.Point(224, 19)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(78, 15)
         Me.Label2.TabIndex = 8
@@ -458,7 +479,7 @@ Partial Class Configurator
         Me.textColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.textColor.Enabled = False
         Me.textColor.FormattingEnabled = True
-        Me.textColor.Location = New System.Drawing.Point(15, 66)
+        Me.textColor.Location = New System.Drawing.Point(15, 37)
         Me.textColor.Name = "textColor"
         Me.textColor.Size = New System.Drawing.Size(168, 23)
         Me.textColor.TabIndex = 7
@@ -466,21 +487,11 @@ Partial Class Configurator
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 48)
+        Me.Label1.Location = New System.Drawing.Point(12, 19)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(60, 15)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Text Color"
-        '
-        'CheckBox5
-        '
-        Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.Location = New System.Drawing.Point(15, 22)
-        Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(171, 19)
-        Me.CheckBox5.TabIndex = 4
-        Me.CheckBox5.Text = "Customized Colors on Boot"
-        Me.CheckBox5.UseVisualStyleBackColor = True
         '
         'RootPwd
         '
@@ -544,7 +555,7 @@ Partial Class Configurator
         Me.LogIn.Location = New System.Drawing.Point(4, 24)
         Me.LogIn.Name = "LogIn"
         Me.LogIn.Padding = New System.Windows.Forms.Padding(3)
-        Me.LogIn.Size = New System.Drawing.Size(639, 414)
+        Me.LogIn.Size = New System.Drawing.Size(639, 451)
         Me.LogIn.TabIndex = 1
         Me.LogIn.Text = "Log in"
         Me.LogIn.UseVisualStyleBackColor = True
@@ -603,7 +614,7 @@ Partial Class Configurator
         Me.Shell.Controls.Add(Me.colorShell)
         Me.Shell.Location = New System.Drawing.Point(4, 24)
         Me.Shell.Name = "Shell"
-        Me.Shell.Size = New System.Drawing.Size(639, 414)
+        Me.Shell.Size = New System.Drawing.Size(639, 451)
         Me.Shell.TabIndex = 2
         Me.Shell.Text = "Shell"
         Me.Shell.UseVisualStyleBackColor = True
@@ -636,7 +647,7 @@ Partial Class Configurator
         Me.Hardware.Controls.Add(Me.probeQuiet)
         Me.Hardware.Location = New System.Drawing.Point(4, 24)
         Me.Hardware.Name = "Hardware"
-        Me.Hardware.Size = New System.Drawing.Size(639, 414)
+        Me.Hardware.Size = New System.Drawing.Size(639, 451)
         Me.Hardware.TabIndex = 3
         Me.Hardware.Text = "Hardware"
         Me.Hardware.UseVisualStyleBackColor = True
@@ -685,7 +696,7 @@ Partial Class Configurator
         Me.Others.Controls.Add(Me.tdCorner)
         Me.Others.Location = New System.Drawing.Point(4, 24)
         Me.Others.Name = "Others"
-        Me.Others.Size = New System.Drawing.Size(639, 414)
+        Me.Others.Size = New System.Drawing.Size(639, 451)
         Me.Others.TabIndex = 4
         Me.Others.Text = "Others"
         Me.Others.UseVisualStyleBackColor = True
@@ -867,7 +878,7 @@ Partial Class Configurator
         Me.Localization.Controls.Add(Me.Label7)
         Me.Localization.Location = New System.Drawing.Point(4, 24)
         Me.Localization.Name = "Localization"
-        Me.Localization.Size = New System.Drawing.Size(639, 414)
+        Me.Localization.Size = New System.Drawing.Size(639, 451)
         Me.Localization.TabIndex = 5
         Me.Localization.Text = "Localization"
         Me.Localization.UseVisualStyleBackColor = True
@@ -912,7 +923,7 @@ Partial Class Configurator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(660, 479)
+        Me.ClientSize = New System.Drawing.Size(660, 484)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -962,7 +973,6 @@ Partial Class Configurator
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents textColor As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents CheckBox5 As System.Windows.Forms.CheckBox
     Friend WithEvents RootPwd As System.Windows.Forms.MaskedTextBox
     Friend WithEvents demo As System.Windows.Forms.CheckBox
     Friend WithEvents RootPC As System.Windows.Forms.CheckBox
@@ -1019,4 +1029,6 @@ Partial Class Configurator
     Friend WithEvents FullParseMode As CheckBox
     Friend WithEvents LogFTPIP As CheckBox
     Friend WithEvents LogFTPUsr As CheckBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents ErrorColor As ComboBox
 End Class

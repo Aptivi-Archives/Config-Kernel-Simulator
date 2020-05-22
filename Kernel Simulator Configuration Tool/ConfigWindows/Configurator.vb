@@ -66,6 +66,7 @@ Public Class Configurator
             CmdHelpColor.Enabled = True
             DefHelpColor.Enabled = True
             StageColor.Enabled = True
+            ErrorColor.Enabled = True
             Button1.Enabled = True
         Else
             CheckBox5.Checked = False
@@ -80,6 +81,7 @@ Public Class Configurator
             CmdHelpColor.Enabled = False
             DefHelpColor.Enabled = False
             StageColor.Enabled = True
+            ErrorColor.Enabled = False
             Button1.Enabled = False
         End If
 
@@ -95,6 +97,7 @@ Public Class Configurator
         CmdHelpColor.Text = configReader.Sections("Colors").Keys("Listed command in help Color").Value
         DefHelpColor.Text = configReader.Sections("Colors").Keys("Definition of command in Help Color").Value
         StageColor.Text = configReader.Sections("Colors").Keys("Kernel Stage Color").Value
+        ErrorColor.Text = configReader.Sections("Colors").Keys("Error Text Color").Value
         Started = True
 
         'General Section
@@ -303,49 +306,18 @@ Public Class Configurator
         CmdHelpColor.Items.AddRange(Colors.ToArray) : CmdHelpColor.Items.Remove("Black") : CmdHelpColor.Text = "DarkYellow"
         DefHelpColor.Items.AddRange(Colors.ToArray) : DefHelpColor.Items.Remove("Black") : DefHelpColor.Text = "DarkGray"
         StageColor.Items.AddRange(Colors.ToArray) : StageColor.Items.Remove("Black") : StageColor.Text = "Green"
+        ErrorColor.Items.AddRange(Colors.ToArray) : ErrorColor.Items.Remove("Black") : ErrorColor.Text = "Red"
 
     End Sub
 
-    Private Sub CheckBox5_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles CheckBox5.CheckedChanged
-
-        If CheckBox5.Checked Then
-            textColor.Enabled = True
-            licenseColor.Enabled = True
-            contError.Enabled = True
-            userNameColor.Enabled = True
-            hostNameColor.Enabled = True
-            uncontError.Enabled = True
-            backgroundColor.Enabled = True
-            inputColor.Enabled = True
-            CmdHelpColor.Enabled = True
-            DefHelpColor.Enabled = True
-            StageColor.Enabled = True
-            Button1.Enabled = True
-        Else
-            textColor.Enabled = False
-            licenseColor.Enabled = False
-            contError.Enabled = False
-            userNameColor.Enabled = False
-            hostNameColor.Enabled = False
-            uncontError.Enabled = False
-            backgroundColor.Enabled = False
-            inputColor.Enabled = False
-            CmdHelpColor.Enabled = False
-            DefHelpColor.Enabled = False
-            StageColor.Enabled = True
-            Button1.Enabled = False
-        End If
-
-    End Sub
-
-    Private Sub SaveSettingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveSettingsToolStripMenuItem.Click
+    Private Sub SaveSettingsToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles SaveSettingsToolStripMenuItem.Click
         Try
             'Save file before doing anything
             My.Computer.FileSystem.WriteAllText(confPath, "", False)
             Dim ksconf As New IniFile()
 
             'Set to default password if there is no password for "root"
-            If (RootPwd.Text = "") Then
+            If RootPwd.Text = "" Then
                 RootPwd.Text = "toor"
             End If
 
@@ -357,7 +329,6 @@ Public Class Configurator
                     New IniKey(ksconf, "Change Root Password", RootPC.Checked),
                     New IniKey(ksconf, "Set Root Password to", RootPwd.Text),
                     New IniKey(ksconf, "Create Demo Account", demo.Checked),
-                    New IniKey(ksconf, "Customized Colors on Boot", CheckBox5.Checked),
                     New IniKey(ksconf, "Check for Updates on Startup", UpdateStart.Checked),
                     New IniKey(ksconf, "Language", SaveLocalization)))
 
@@ -374,7 +345,8 @@ Public Class Configurator
                     New IniKey(ksconf, "Input Color", inputColor.Text),
                     New IniKey(ksconf, "Listed command in Help Color", CmdHelpColor.Text),
                     New IniKey(ksconf, "Definition of command in Help Color", DefHelpColor.Text),
-                    New IniKey(ksconf, "Kernel Stage Color", StageColor.Text)))
+                    New IniKey(ksconf, "Kernel Stage Color", StageColor.Text),
+                    New IniKey(ksconf, "Error Text Color", ErrorColor.Text)))
 
             'The Hardware Section
             ksconf.Sections.Add(
@@ -387,7 +359,8 @@ Public Class Configurator
                 New IniSection(ksconf, "Login",
                     New IniKey(ksconf, "Show MOTD on Log-in", motdShow.Checked),
                     New IniKey(ksconf, "Clear Screen on Log-in", clslogin.Checked),
-                    New IniKey(ksconf, "Host Name", HostName.Text)))
+                    New IniKey(ksconf, "Host Name", HostName.Text),
+                    New IniKey(ksconf, "Show available usernames", UsersShow.Checked)))
 
             'The Shell Section
             ksconf.Sections.Add(
@@ -426,36 +399,36 @@ Public Class Configurator
 
     End Sub
 
-    Private Sub RootPC_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RootPC.CheckedChanged
-        If (RootPC.Checked = True) Then
+    Private Sub RootPC_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles RootPC.CheckedChanged
+        If RootPC.Checked Then
             RootPwd.Enabled = True
         Else
             RootPwd.Enabled = False
         End If
     End Sub
 
-    Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
+    Private Sub ExitToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ExitToolStripMenuItem.Click
         Environment.Exit(0)
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
         Button1.Enabled = False
         LiveColor.Show()
     End Sub
 
-    Private Sub ReadyLiveColor(ByVal sender As Object, ByVal e As System.EventArgs) Handles DefHelpColor.SelectedValueChanged, CmdHelpColor.SelectedValueChanged, backgroundColor.SelectedValueChanged, inputColor.SelectedValueChanged, userNameColor.SelectedValueChanged, hostNameColor.SelectedValueChanged, uncontError.SelectedValueChanged, contError.SelectedValueChanged, licenseColor.SelectedValueChanged, textColor.SelectedValueChanged
-        If (Started = True) Then
+    Private Sub ReadyLiveColor(ByVal sender As Object, ByVal e As EventArgs) Handles DefHelpColor.SelectedValueChanged, CmdHelpColor.SelectedValueChanged, backgroundColor.SelectedValueChanged, inputColor.SelectedValueChanged, userNameColor.SelectedValueChanged, hostNameColor.SelectedValueChanged, uncontError.SelectedValueChanged, contError.SelectedValueChanged, licenseColor.SelectedValueChanged, textColor.SelectedValueChanged
+        If Started Then
             LiveColor.LoadColors()
             LiveColor.MakeBrightReadable()
             LiveColor.CorrectColors()
         End If
     End Sub
 
-    Private Sub HelpToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HelpToolStripMenuItem.Click
+    Private Sub HelpToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles HelpToolStripMenuItem.Click
         Help.Show()
     End Sub
 
-    Private Sub OpenSourceLibrariesUsedToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenSourceLibrariesUsedToolStripMenuItem.Click
+    Private Sub OpenSourceLibrariesUsedToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles OpenSourceLibrariesUsedToolStripMenuItem.Click
         Libs.Show()
     End Sub
 
@@ -469,4 +442,37 @@ Public Class Configurator
                 End If
         End Select
     End Sub
+
+    Private Sub colorShell_CheckedChanged(sender As Object, e As EventArgs) Handles colorShell.CheckedChanged
+        If colorShell.Checked Then
+            textColor.Enabled = True
+            licenseColor.Enabled = True
+            contError.Enabled = True
+            userNameColor.Enabled = True
+            hostNameColor.Enabled = True
+            uncontError.Enabled = True
+            backgroundColor.Enabled = True
+            inputColor.Enabled = True
+            CmdHelpColor.Enabled = True
+            DefHelpColor.Enabled = True
+            StageColor.Enabled = True
+            ErrorColor.Enabled = True
+            Button1.Enabled = True
+        Else
+            textColor.Enabled = False
+            licenseColor.Enabled = False
+            contError.Enabled = False
+            userNameColor.Enabled = False
+            hostNameColor.Enabled = False
+            uncontError.Enabled = False
+            backgroundColor.Enabled = False
+            inputColor.Enabled = False
+            CmdHelpColor.Enabled = False
+            DefHelpColor.Enabled = False
+            StageColor.Enabled = False
+            ErrorColor.Enabled = False
+            Button1.Enabled = False
+        End If
+    End Sub
+
 End Class
