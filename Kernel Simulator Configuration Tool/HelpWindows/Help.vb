@@ -35,10 +35,12 @@ Public Class Help
             RichTextBox1.Rtf = My.Resources.Hardware
         ElseIf (Sections.SelectedItem = "Shell") Then
             RichTextBox1.Rtf = My.Resources.Shell
-        ElseIf (Sections.SelectedItem = "Others") Then
-            RichTextBox1.Rtf = My.Resources.Others
         ElseIf (Sections.SelectedItem = "Localization") Then
             RichTextBox1.Rtf = My.Resources.Localization
+        ElseIf (Sections.SelectedItem = "Network") Then
+            RichTextBox1.Rtf = My.Resources.Network
+        ElseIf (Sections.SelectedItem = "Others") Then
+            RichTextBox1.Rtf = My.Resources.Others
         End If
     End Sub
 

@@ -78,7 +78,6 @@ Partial Class Configurator
         Me.textColor = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.RootPwd = New System.Windows.Forms.MaskedTextBox()
-        Me.demo = New System.Windows.Forms.CheckBox()
         Me.RootPC = New System.Windows.Forms.CheckBox()
         Me.MaintMode = New System.Windows.Forms.CheckBox()
         Me.BootPrompt = New System.Windows.Forms.CheckBox()
@@ -94,30 +93,33 @@ Partial Class Configurator
         Me.Hardware = New System.Windows.Forms.TabPage()
         Me.slotProbe = New System.Windows.Forms.CheckBox()
         Me.probeQuiet = New System.Windows.Forms.CheckBox()
-        Me.Others = New System.Windows.Forms.TabPage()
-        Me.LogFTPIP = New System.Windows.Forms.CheckBox()
-        Me.LogFTPUsr = New System.Windows.Forms.CheckBox()
-        Me.HiddenFiles = New System.Windows.Forms.CheckBox()
-        Me.LongTimeDate = New System.Windows.Forms.CheckBox()
-        Me.StartScroll = New System.Windows.Forms.CheckBox()
-        Me.FullParseMode = New System.Windows.Forms.CheckBox()
-        Me.RetryDownload = New System.Windows.Forms.TextBox()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.DebugNPrefix = New System.Windows.Forms.TextBox()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.DebugMax = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.DebugPort = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Screensave = New System.Windows.Forms.ComboBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.tdCorner = New System.Windows.Forms.CheckBox()
         Me.Localization = New System.Windows.Forms.TabPage()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Languages = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.NetworkTab = New System.Windows.Forms.TabPage()
+        Me.FirstFTPProfile = New System.Windows.Forms.CheckBox()
+        Me.LogFTPIP = New System.Windows.Forms.CheckBox()
+        Me.LogFTPUsr = New System.Windows.Forms.CheckBox()
+        Me.RetryDownload = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.DebugNPrefix = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.DebugPort = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Others = New System.Windows.Forms.TabPage()
+        Me.HiddenFiles = New System.Windows.Forms.CheckBox()
+        Me.LongTimeDate = New System.Windows.Forms.CheckBox()
+        Me.StartScroll = New System.Windows.Forms.CheckBox()
+        Me.FullParseMode = New System.Windows.Forms.CheckBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.DebugMax = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Screensave = New System.Windows.Forms.ComboBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.tdCorner = New System.Windows.Forms.CheckBox()
         Me.ScreenOpen = New System.Windows.Forms.OpenFileDialog()
+        Me.VersionLabel = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.General.SuspendLayout()
@@ -125,8 +127,9 @@ Partial Class Configurator
         Me.LogIn.SuspendLayout()
         Me.Shell.SuspendLayout()
         Me.Hardware.SuspendLayout()
-        Me.Others.SuspendLayout()
         Me.Localization.SuspendLayout()
+        Me.NetworkTab.SuspendLayout()
+        Me.Others.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -150,13 +153,13 @@ Partial Class Configurator
         'SaveSettingsToolStripMenuItem
         '
         Me.SaveSettingsToolStripMenuItem.Name = "SaveSettingsToolStripMenuItem"
-        Me.SaveSettingsToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.SaveSettingsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SaveSettingsToolStripMenuItem.Text = "Save Settings"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'HelpToolStripMenuItem
@@ -177,8 +180,9 @@ Partial Class Configurator
         Me.TabControl1.Controls.Add(Me.LogIn)
         Me.TabControl1.Controls.Add(Me.Shell)
         Me.TabControl1.Controls.Add(Me.Hardware)
-        Me.TabControl1.Controls.Add(Me.Others)
         Me.TabControl1.Controls.Add(Me.Localization)
+        Me.TabControl1.Controls.Add(Me.NetworkTab)
+        Me.TabControl1.Controls.Add(Me.Others)
         Me.TabControl1.Location = New System.Drawing.Point(8, 32)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -190,7 +194,6 @@ Partial Class Configurator
         Me.General.Controls.Add(Me.UpdateStart)
         Me.General.Controls.Add(Me.GroupBox1)
         Me.General.Controls.Add(Me.RootPwd)
-        Me.General.Controls.Add(Me.demo)
         Me.General.Controls.Add(Me.RootPC)
         Me.General.Controls.Add(Me.MaintMode)
         Me.General.Controls.Add(Me.BootPrompt)
@@ -240,9 +243,9 @@ Partial Class Configurator
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.textColor)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(5, 109)
+        Me.GroupBox1.Location = New System.Drawing.Point(5, 89)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(628, 305)
+        Me.GroupBox1.Size = New System.Drawing.Size(628, 325)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Colors"
@@ -373,7 +376,7 @@ Partial Class Configurator
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(12, 268)
+        Me.Label9.Location = New System.Drawing.Point(12, 283)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(584, 30)
         Me.Label9.TabIndex = 18
@@ -503,18 +506,6 @@ Partial Class Configurator
         Me.RootPwd.TabIndex = 7
         Me.RootPwd.UseSystemPasswordChar = True
         '
-        'demo
-        '
-        Me.demo.AutoSize = True
-        Me.demo.Checked = True
-        Me.demo.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.demo.Location = New System.Drawing.Point(10, 87)
-        Me.demo.Name = "demo"
-        Me.demo.Size = New System.Drawing.Size(106, 19)
-        Me.demo.TabIndex = 3
-        Me.demo.Text = "Demo Account"
-        Me.demo.UseVisualStyleBackColor = True
-        '
         'RootPC
         '
         Me.RootPC.AutoSize = True
@@ -555,7 +546,7 @@ Partial Class Configurator
         Me.LogIn.Location = New System.Drawing.Point(4, 24)
         Me.LogIn.Name = "LogIn"
         Me.LogIn.Padding = New System.Windows.Forms.Padding(3)
-        Me.LogIn.Size = New System.Drawing.Size(639, 451)
+        Me.LogIn.Size = New System.Drawing.Size(639, 420)
         Me.LogIn.TabIndex = 1
         Me.LogIn.Text = "Log in"
         Me.LogIn.UseVisualStyleBackColor = True
@@ -614,7 +605,7 @@ Partial Class Configurator
         Me.Shell.Controls.Add(Me.colorShell)
         Me.Shell.Location = New System.Drawing.Point(4, 24)
         Me.Shell.Name = "Shell"
-        Me.Shell.Size = New System.Drawing.Size(639, 451)
+        Me.Shell.Size = New System.Drawing.Size(639, 420)
         Me.Shell.TabIndex = 2
         Me.Shell.Text = "Shell"
         Me.Shell.UseVisualStyleBackColor = True
@@ -647,7 +638,7 @@ Partial Class Configurator
         Me.Hardware.Controls.Add(Me.probeQuiet)
         Me.Hardware.Location = New System.Drawing.Point(4, 24)
         Me.Hardware.Name = "Hardware"
-        Me.Hardware.Size = New System.Drawing.Size(639, 451)
+        Me.Hardware.Size = New System.Drawing.Size(639, 420)
         Me.Hardware.TabIndex = 3
         Me.Hardware.Text = "Hardware"
         Me.Hardware.UseVisualStyleBackColor = True
@@ -674,203 +665,6 @@ Partial Class Configurator
         Me.probeQuiet.Text = "Quiet Probe"
         Me.probeQuiet.UseVisualStyleBackColor = True
         '
-        'Others
-        '
-        Me.Others.Controls.Add(Me.LogFTPIP)
-        Me.Others.Controls.Add(Me.LogFTPUsr)
-        Me.Others.Controls.Add(Me.HiddenFiles)
-        Me.Others.Controls.Add(Me.LongTimeDate)
-        Me.Others.Controls.Add(Me.StartScroll)
-        Me.Others.Controls.Add(Me.FullParseMode)
-        Me.Others.Controls.Add(Me.RetryDownload)
-        Me.Others.Controls.Add(Me.Label20)
-        Me.Others.Controls.Add(Me.DebugNPrefix)
-        Me.Others.Controls.Add(Me.Label19)
-        Me.Others.Controls.Add(Me.Label18)
-        Me.Others.Controls.Add(Me.DebugMax)
-        Me.Others.Controls.Add(Me.Label12)
-        Me.Others.Controls.Add(Me.DebugPort)
-        Me.Others.Controls.Add(Me.Label11)
-        Me.Others.Controls.Add(Me.Screensave)
-        Me.Others.Controls.Add(Me.Label17)
-        Me.Others.Controls.Add(Me.tdCorner)
-        Me.Others.Location = New System.Drawing.Point(4, 24)
-        Me.Others.Name = "Others"
-        Me.Others.Size = New System.Drawing.Size(639, 451)
-        Me.Others.TabIndex = 4
-        Me.Others.Text = "Others"
-        Me.Others.UseVisualStyleBackColor = True
-        '
-        'LogFTPIP
-        '
-        Me.LogFTPIP.AutoSize = True
-        Me.LogFTPIP.Location = New System.Drawing.Point(10, 310)
-        Me.LogFTPIP.Name = "LogFTPIP"
-        Me.LogFTPIP.Size = New System.Drawing.Size(126, 19)
-        Me.LogFTPIP.TabIndex = 29
-        Me.LogFTPIP.Text = "Log FTP IP Address"
-        Me.LogFTPIP.UseVisualStyleBackColor = True
-        '
-        'LogFTPUsr
-        '
-        Me.LogFTPUsr.AutoSize = True
-        Me.LogFTPUsr.Location = New System.Drawing.Point(10, 285)
-        Me.LogFTPUsr.Name = "LogFTPUsr"
-        Me.LogFTPUsr.Size = New System.Drawing.Size(123, 19)
-        Me.LogFTPUsr.TabIndex = 28
-        Me.LogFTPUsr.Text = "Log FTP username"
-        Me.LogFTPUsr.UseVisualStyleBackColor = True
-        '
-        'HiddenFiles
-        '
-        Me.HiddenFiles.AutoSize = True
-        Me.HiddenFiles.Location = New System.Drawing.Point(10, 260)
-        Me.HiddenFiles.Name = "HiddenFiles"
-        Me.HiddenFiles.Size = New System.Drawing.Size(223, 19)
-        Me.HiddenFiles.TabIndex = 27
-        Me.HiddenFiles.Text = "Show hidden files when listing locally"
-        Me.HiddenFiles.UseVisualStyleBackColor = True
-        '
-        'LongTimeDate
-        '
-        Me.LongTimeDate.AutoSize = True
-        Me.LongTimeDate.Location = New System.Drawing.Point(10, 235)
-        Me.LongTimeDate.Name = "LongTimeDate"
-        Me.LongTimeDate.Size = New System.Drawing.Size(111, 19)
-        Me.LongTimeDate.TabIndex = 26
-        Me.LongTimeDate.Text = "Long Time/Date"
-        Me.LongTimeDate.UseVisualStyleBackColor = True
-        '
-        'StartScroll
-        '
-        Me.StartScroll.AutoSize = True
-        Me.StartScroll.Location = New System.Drawing.Point(10, 210)
-        Me.StartScroll.Name = "StartScroll"
-        Me.StartScroll.Size = New System.Drawing.Size(259, 19)
-        Me.StartScroll.TabIndex = 25
-        Me.StartScroll.Text = "Scroll the kernel introduction text on startup"
-        Me.StartScroll.UseVisualStyleBackColor = True
-        '
-        'FullParseMode
-        '
-        Me.FullParseMode.AutoSize = True
-        Me.FullParseMode.Location = New System.Drawing.Point(10, 185)
-        Me.FullParseMode.Name = "FullParseMode"
-        Me.FullParseMode.Size = New System.Drawing.Size(366, 19)
-        Me.FullParseMode.TabIndex = 24
-        Me.FullParseMode.Text = "Parse entire directory on size when listing files and folders locally"
-        Me.FullParseMode.UseVisualStyleBackColor = True
-        '
-        'RetryDownload
-        '
-        Me.RetryDownload.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.RetryDownload.Location = New System.Drawing.Point(138, 156)
-        Me.RetryDownload.MaxLength = 3
-        Me.RetryDownload.Name = "RetryDownload"
-        Me.RetryDownload.Size = New System.Drawing.Size(149, 23)
-        Me.RetryDownload.TabIndex = 23
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(7, 159)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(123, 15)
-        Me.Label20.TabIndex = 22
-        Me.Label20.Text = "Download retry times:"
-        '
-        'DebugNPrefix
-        '
-        Me.DebugNPrefix.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.DebugNPrefix.Location = New System.Drawing.Point(138, 127)
-        Me.DebugNPrefix.MaxLength = 30
-        Me.DebugNPrefix.Name = "DebugNPrefix"
-        Me.DebugNPrefix.Size = New System.Drawing.Size(149, 23)
-        Me.DebugNPrefix.TabIndex = 21
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(7, 130)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(103, 15)
-        Me.Label19.TabIndex = 20
-        Me.Label19.Text = "Debug nick prefix:"
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(252, 101)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(35, 15)
-        Me.Label18.TabIndex = 19
-        Me.Label18.Text = "bytes"
-        '
-        'DebugMax
-        '
-        Me.DebugMax.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.DebugMax.Location = New System.Drawing.Point(138, 98)
-        Me.DebugMax.MaxLength = 30
-        Me.DebugMax.Name = "DebugMax"
-        Me.DebugMax.Size = New System.Drawing.Size(107, 23)
-        Me.DebugMax.TabIndex = 18
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(7, 101)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(125, 15)
-        Me.Label12.TabIndex = 17
-        Me.Label12.Text = "Debug maximum size:"
-        '
-        'DebugPort
-        '
-        Me.DebugPort.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.DebugPort.Location = New System.Drawing.Point(138, 69)
-        Me.DebugPort.MaxLength = 5
-        Me.DebugPort.Name = "DebugPort"
-        Me.DebugPort.Size = New System.Drawing.Size(149, 23)
-        Me.DebugPort.TabIndex = 16
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(7, 72)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(70, 15)
-        Me.Label11.TabIndex = 15
-        Me.Label11.Text = "Debug port:"
-        '
-        'Screensave
-        '
-        Me.Screensave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Screensave.FormattingEnabled = True
-        Me.Screensave.Items.AddRange(New Object() {"colorMix", "colorMix255", "disco", "disco255", "matrix", "glitterMatrix", "glitterColor", "glitterColor255", "lines", "lines255", "aptErrorSim", "hackuserFromAD", "Custom (by mods)"})
-        Me.Screensave.Location = New System.Drawing.Point(138, 38)
-        Me.Screensave.Name = "Screensave"
-        Me.Screensave.Size = New System.Drawing.Size(149, 23)
-        Me.Screensave.TabIndex = 14
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(7, 41)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(106, 15)
-        Me.Label17.TabIndex = 13
-        Me.Label17.Text = "Select Screensaver:"
-        '
-        'tdCorner
-        '
-        Me.tdCorner.AutoSize = True
-        Me.tdCorner.Location = New System.Drawing.Point(10, 13)
-        Me.tdCorner.Name = "tdCorner"
-        Me.tdCorner.Size = New System.Drawing.Size(235, 19)
-        Me.tdCorner.TabIndex = 12
-        Me.tdCorner.Text = "Show Time/Date on Upper Right Corner"
-        Me.tdCorner.UseVisualStyleBackColor = True
-        '
         'Localization
         '
         Me.Localization.Controls.Add(Me.Label8)
@@ -878,7 +672,7 @@ Partial Class Configurator
         Me.Localization.Controls.Add(Me.Label7)
         Me.Localization.Location = New System.Drawing.Point(4, 24)
         Me.Localization.Name = "Localization"
-        Me.Localization.Size = New System.Drawing.Size(639, 451)
+        Me.Localization.Size = New System.Drawing.Size(639, 420)
         Me.Localization.TabIndex = 5
         Me.Localization.Text = "Localization"
         Me.Localization.UseVisualStyleBackColor = True
@@ -911,6 +705,223 @@ Partial Class Configurator
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Select your language on the list:"
         '
+        'NetworkTab
+        '
+        Me.NetworkTab.Controls.Add(Me.FirstFTPProfile)
+        Me.NetworkTab.Controls.Add(Me.LogFTPIP)
+        Me.NetworkTab.Controls.Add(Me.LogFTPUsr)
+        Me.NetworkTab.Controls.Add(Me.RetryDownload)
+        Me.NetworkTab.Controls.Add(Me.Label20)
+        Me.NetworkTab.Controls.Add(Me.DebugNPrefix)
+        Me.NetworkTab.Controls.Add(Me.Label19)
+        Me.NetworkTab.Controls.Add(Me.DebugPort)
+        Me.NetworkTab.Controls.Add(Me.Label11)
+        Me.NetworkTab.Location = New System.Drawing.Point(4, 24)
+        Me.NetworkTab.Name = "NetworkTab"
+        Me.NetworkTab.Size = New System.Drawing.Size(639, 420)
+        Me.NetworkTab.TabIndex = 6
+        Me.NetworkTab.Text = "Network"
+        Me.NetworkTab.UseVisualStyleBackColor = True
+        '
+        'FirstFTPProfile
+        '
+        Me.FirstFTPProfile.AutoSize = True
+        Me.FirstFTPProfile.Location = New System.Drawing.Point(16, 157)
+        Me.FirstFTPProfile.Name = "FirstFTPProfile"
+        Me.FirstFTPProfile.Size = New System.Drawing.Size(169, 19)
+        Me.FirstFTPProfile.TabIndex = 38
+        Me.FirstFTPProfile.Text = "Return only first FTP profile"
+        Me.FirstFTPProfile.UseVisualStyleBackColor = True
+        '
+        'LogFTPIP
+        '
+        Me.LogFTPIP.AutoSize = True
+        Me.LogFTPIP.Location = New System.Drawing.Point(16, 132)
+        Me.LogFTPIP.Name = "LogFTPIP"
+        Me.LogFTPIP.Size = New System.Drawing.Size(126, 19)
+        Me.LogFTPIP.TabIndex = 37
+        Me.LogFTPIP.Text = "Log FTP IP Address"
+        Me.LogFTPIP.UseVisualStyleBackColor = True
+        '
+        'LogFTPUsr
+        '
+        Me.LogFTPUsr.AutoSize = True
+        Me.LogFTPUsr.Location = New System.Drawing.Point(16, 107)
+        Me.LogFTPUsr.Name = "LogFTPUsr"
+        Me.LogFTPUsr.Size = New System.Drawing.Size(123, 19)
+        Me.LogFTPUsr.TabIndex = 36
+        Me.LogFTPUsr.Text = "Log FTP username"
+        Me.LogFTPUsr.UseVisualStyleBackColor = True
+        '
+        'RetryDownload
+        '
+        Me.RetryDownload.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.RetryDownload.Location = New System.Drawing.Point(144, 73)
+        Me.RetryDownload.MaxLength = 3
+        Me.RetryDownload.Name = "RetryDownload"
+        Me.RetryDownload.Size = New System.Drawing.Size(149, 23)
+        Me.RetryDownload.TabIndex = 35
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(13, 76)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(123, 15)
+        Me.Label20.TabIndex = 34
+        Me.Label20.Text = "Download retry times:"
+        '
+        'DebugNPrefix
+        '
+        Me.DebugNPrefix.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.DebugNPrefix.Location = New System.Drawing.Point(144, 44)
+        Me.DebugNPrefix.MaxLength = 30
+        Me.DebugNPrefix.Name = "DebugNPrefix"
+        Me.DebugNPrefix.Size = New System.Drawing.Size(149, 23)
+        Me.DebugNPrefix.TabIndex = 33
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(13, 47)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(103, 15)
+        Me.Label19.TabIndex = 32
+        Me.Label19.Text = "Debug nick prefix:"
+        '
+        'DebugPort
+        '
+        Me.DebugPort.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.DebugPort.Location = New System.Drawing.Point(144, 15)
+        Me.DebugPort.MaxLength = 5
+        Me.DebugPort.Name = "DebugPort"
+        Me.DebugPort.Size = New System.Drawing.Size(149, 23)
+        Me.DebugPort.TabIndex = 31
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(13, 18)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(70, 15)
+        Me.Label11.TabIndex = 30
+        Me.Label11.Text = "Debug port:"
+        '
+        'Others
+        '
+        Me.Others.Controls.Add(Me.HiddenFiles)
+        Me.Others.Controls.Add(Me.LongTimeDate)
+        Me.Others.Controls.Add(Me.StartScroll)
+        Me.Others.Controls.Add(Me.FullParseMode)
+        Me.Others.Controls.Add(Me.Label18)
+        Me.Others.Controls.Add(Me.DebugMax)
+        Me.Others.Controls.Add(Me.Label12)
+        Me.Others.Controls.Add(Me.Screensave)
+        Me.Others.Controls.Add(Me.Label17)
+        Me.Others.Controls.Add(Me.tdCorner)
+        Me.Others.Location = New System.Drawing.Point(4, 24)
+        Me.Others.Name = "Others"
+        Me.Others.Size = New System.Drawing.Size(639, 420)
+        Me.Others.TabIndex = 4
+        Me.Others.Text = "Others"
+        Me.Others.UseVisualStyleBackColor = True
+        '
+        'HiddenFiles
+        '
+        Me.HiddenFiles.AutoSize = True
+        Me.HiddenFiles.Location = New System.Drawing.Point(10, 173)
+        Me.HiddenFiles.Name = "HiddenFiles"
+        Me.HiddenFiles.Size = New System.Drawing.Size(223, 19)
+        Me.HiddenFiles.TabIndex = 27
+        Me.HiddenFiles.Text = "Show hidden files when listing locally"
+        Me.HiddenFiles.UseVisualStyleBackColor = True
+        '
+        'LongTimeDate
+        '
+        Me.LongTimeDate.AutoSize = True
+        Me.LongTimeDate.Location = New System.Drawing.Point(10, 148)
+        Me.LongTimeDate.Name = "LongTimeDate"
+        Me.LongTimeDate.Size = New System.Drawing.Size(111, 19)
+        Me.LongTimeDate.TabIndex = 26
+        Me.LongTimeDate.Text = "Long Time/Date"
+        Me.LongTimeDate.UseVisualStyleBackColor = True
+        '
+        'StartScroll
+        '
+        Me.StartScroll.AutoSize = True
+        Me.StartScroll.Location = New System.Drawing.Point(10, 123)
+        Me.StartScroll.Name = "StartScroll"
+        Me.StartScroll.Size = New System.Drawing.Size(259, 19)
+        Me.StartScroll.TabIndex = 25
+        Me.StartScroll.Text = "Scroll the kernel introduction text on startup"
+        Me.StartScroll.UseVisualStyleBackColor = True
+        '
+        'FullParseMode
+        '
+        Me.FullParseMode.AutoSize = True
+        Me.FullParseMode.Location = New System.Drawing.Point(10, 98)
+        Me.FullParseMode.Name = "FullParseMode"
+        Me.FullParseMode.Size = New System.Drawing.Size(366, 19)
+        Me.FullParseMode.TabIndex = 24
+        Me.FullParseMode.Text = "Parse entire directory on size when listing files and folders locally"
+        Me.FullParseMode.UseVisualStyleBackColor = True
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(252, 70)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(35, 15)
+        Me.Label18.TabIndex = 19
+        Me.Label18.Text = "bytes"
+        '
+        'DebugMax
+        '
+        Me.DebugMax.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.DebugMax.Location = New System.Drawing.Point(138, 67)
+        Me.DebugMax.MaxLength = 30
+        Me.DebugMax.Name = "DebugMax"
+        Me.DebugMax.Size = New System.Drawing.Size(107, 23)
+        Me.DebugMax.TabIndex = 18
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(7, 70)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(125, 15)
+        Me.Label12.TabIndex = 17
+        Me.Label12.Text = "Debug maximum size:"
+        '
+        'Screensave
+        '
+        Me.Screensave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Screensave.FormattingEnabled = True
+        Me.Screensave.Items.AddRange(New Object() {"colorMix", "colorMix255", "disco", "disco255", "matrix", "glitterMatrix", "glitterColor", "glitterColor255", "lines", "lines255", "aptErrorSim", "hackuserFromAD", "Custom (by mods)"})
+        Me.Screensave.Location = New System.Drawing.Point(138, 38)
+        Me.Screensave.Name = "Screensave"
+        Me.Screensave.Size = New System.Drawing.Size(149, 23)
+        Me.Screensave.TabIndex = 14
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(7, 41)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(106, 15)
+        Me.Label17.TabIndex = 13
+        Me.Label17.Text = "Select Screensaver:"
+        '
+        'tdCorner
+        '
+        Me.tdCorner.AutoSize = True
+        Me.tdCorner.Location = New System.Drawing.Point(10, 13)
+        Me.tdCorner.Name = "tdCorner"
+        Me.tdCorner.Size = New System.Drawing.Size(235, 19)
+        Me.tdCorner.TabIndex = 12
+        Me.tdCorner.Text = "Show Time/Date on Upper Right Corner"
+        Me.tdCorner.UseVisualStyleBackColor = True
+        '
         'ScreenOpen
         '
         Me.ScreenOpen.DefaultExt = "SS.m"
@@ -919,11 +930,22 @@ Partial Class Configurator
         Me.ScreenOpen.InitialDirectory = "%USERPROFILE%\KSMods"
         Me.ScreenOpen.Title = "Select a screensaver"
         '
+        'VersionLabel
+        '
+        Me.VersionLabel.AutoSize = True
+        Me.VersionLabel.Location = New System.Drawing.Point(419, 37)
+        Me.VersionLabel.Name = "VersionLabel"
+        Me.VersionLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.VersionLabel.Size = New System.Drawing.Size(237, 15)
+        Me.VersionLabel.TabIndex = 2
+        Me.VersionLabel.Text = "KS Version: K.K.K.K | Config Version: C.C.C.C"
+        '
         'Configurator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(660, 484)
+        Me.Controls.Add(Me.VersionLabel)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -946,10 +968,12 @@ Partial Class Configurator
         Me.Shell.PerformLayout()
         Me.Hardware.ResumeLayout(False)
         Me.Hardware.PerformLayout()
-        Me.Others.ResumeLayout(False)
-        Me.Others.PerformLayout()
         Me.Localization.ResumeLayout(False)
         Me.Localization.PerformLayout()
+        Me.NetworkTab.ResumeLayout(False)
+        Me.NetworkTab.PerformLayout()
+        Me.Others.ResumeLayout(False)
+        Me.Others.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -974,7 +998,6 @@ Partial Class Configurator
     Friend WithEvents textColor As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents RootPwd As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents demo As System.Windows.Forms.CheckBox
     Friend WithEvents RootPC As System.Windows.Forms.CheckBox
     Friend WithEvents MaintMode As System.Windows.Forms.CheckBox
     Friend WithEvents BootPrompt As System.Windows.Forms.CheckBox
@@ -1010,15 +1033,9 @@ Partial Class Configurator
     Friend WithEvents Screensave As ComboBox
     Friend WithEvents Label17 As Label
     Friend WithEvents ScreenOpen As OpenFileDialog
-    Friend WithEvents RetryDownload As TextBox
-    Friend WithEvents Label20 As Label
-    Friend WithEvents DebugNPrefix As TextBox
-    Friend WithEvents Label19 As Label
     Friend WithEvents Label18 As Label
     Friend WithEvents DebugMax As TextBox
     Friend WithEvents Label12 As Label
-    Friend WithEvents DebugPort As TextBox
-    Friend WithEvents Label11 As Label
     Friend WithEvents Label21 As Label
     Friend WithEvents StageColor As ComboBox
     Friend WithEvents UpdateStart As CheckBox
@@ -1027,8 +1044,17 @@ Partial Class Configurator
     Friend WithEvents LongTimeDate As CheckBox
     Friend WithEvents StartScroll As CheckBox
     Friend WithEvents FullParseMode As CheckBox
-    Friend WithEvents LogFTPIP As CheckBox
-    Friend WithEvents LogFTPUsr As CheckBox
     Friend WithEvents Label22 As Label
     Friend WithEvents ErrorColor As ComboBox
+    Friend WithEvents NetworkTab As TabPage
+    Friend WithEvents LogFTPIP As CheckBox
+    Friend WithEvents LogFTPUsr As CheckBox
+    Friend WithEvents RetryDownload As TextBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents DebugNPrefix As TextBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents DebugPort As TextBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents FirstFTPProfile As CheckBox
+    Friend WithEvents VersionLabel As Label
 End Class

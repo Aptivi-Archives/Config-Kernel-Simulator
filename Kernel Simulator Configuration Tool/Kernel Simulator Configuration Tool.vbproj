@@ -185,6 +185,7 @@
     <None Include="Resources\Localization.rtf" />
     <None Include="Resources\Login.rtf" />
     <None Include="Resources\Main.rtf" />
+    <None Include="Resources\Network.rtf" />
     <None Include="Resources\Others.rtf" />
     <None Include="Resources\Shell.rtf" />
   </ItemGroup>

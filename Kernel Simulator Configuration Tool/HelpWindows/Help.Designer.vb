@@ -43,7 +43,7 @@ Partial Class Help
         '
         Me.Sections.FormattingEnabled = True
         Me.Sections.ItemHeight = 15
-        Me.Sections.Items.AddRange(New Object() {"Introduction", "General", "Login", "Shell", "Hardware", "Others", "Localization"})
+        Me.Sections.Items.AddRange(New Object() {"Introduction", "General", "Login", "Shell", "Hardware", "Localization", "Network", "Others"})
         Me.Sections.Location = New System.Drawing.Point(751, 8)
         Me.Sections.Name = "Sections"
         Me.Sections.Size = New System.Drawing.Size(179, 169)

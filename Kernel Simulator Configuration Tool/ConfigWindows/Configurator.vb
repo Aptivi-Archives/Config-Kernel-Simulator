@@ -48,6 +48,8 @@ Public Class Configurator
             End If
         End Try
 
+        VersionLabel.Text = VersionLabel.Text.Replace("K.K.K.K", Ver).Replace("C.C.C.C", Application.ProductVersion)
+
     End Sub
 
     Sub ReadConfig()
@@ -99,7 +101,6 @@ Public Class Configurator
         Started = True
 
         'General Section
-        If (configReader.Sections("General").Keys("Create Demo Account").Value = "True") Then demo.Checked = True Else demo.Checked = False
         If (configReader.Sections("General").Keys("Change Root Password").Value = "True") Then RootPC.Checked = True Else RootPC.Checked = False
         RootPwd.Text = configReader.Sections("General").Keys("Set Root Password to").Value
         If (configReader.Sections("General").Keys("Maintenance Mode").Value = "True") Then MaintMode.Checked = True Else MaintMode.Checked = False
@@ -121,15 +122,18 @@ Public Class Configurator
         If (configReader.Sections("Hardware").Keys("Probe Slots").Value = "True") Then slotProbe.Checked = True Else slotProbe.Checked = False
         If (configReader.Sections("Hardware").Keys("Quiet Probe").Value = "True") Then probeQuiet.Checked = True Else probeQuiet.Checked = False
 
+        'Network Section
+        DebugPort.Text = configReader.Sections("Network").Keys("Debug Port").Value
+        DebugNPrefix.Text = configReader.Sections("Network").Keys("Remote Debug Default Nick Prefix").Value
+        RetryDownload.Text = configReader.Sections("Network").Keys("Download Retry Times").Value
+        If configReader.Sections("Network").Keys("Log FTP username").Value = "True" Then LogFTPUsr.Checked = True Else LogFTPUsr.Checked = False
+        If configReader.Sections("Network").Keys("Log FTP IP address").Value = "True" Then LogFTPIP.Checked = True Else LogFTPIP.Checked = False
+        If configReader.Sections("Network").Keys("Return only first FTP profile").Value = "True" Then FirstFTPProfile.Checked = True Else FirstFTPProfile.Checked = False
+
         'Misc Section
         If (configReader.Sections("Misc").Keys("Show Time/Date on Upper Right Corner").Value = "True") Then tdCorner.Checked = True Else tdCorner.Checked = False
         Screensave.Text = configReader.Sections("Misc").Keys("Screensaver").Value
-        DebugPort.Text = configReader.Sections("Misc").Keys("Debug Port").Value
         DebugMax.Text = configReader.Sections("Misc").Keys("Debug Size Quota in Bytes").Value
-        DebugNPrefix.Text = configReader.Sections("Misc").Keys("Remote Debug Default Nick Prefix").Value
-        RetryDownload.Text = configReader.Sections("Misc").Keys("Download Retry Times").Value
-        If configReader.Sections("Misc").Keys("Log FTP username").Value = "True" Then LogFTPUsr.Checked = True Else LogFTPUsr.Checked = False
-        If configReader.Sections("Misc").Keys("Log FTP IP address").Value = "True" Then LogFTPIP.Checked = True Else LogFTPIP.Checked = False
         If configReader.Sections("Misc").Keys("Size parse mode").Value = "True" Then FullParseMode.Checked = True Else FullParseMode.Checked = False
         If configReader.Sections("Misc").Keys("Marquee on startup").Value = "True" Then StartScroll.Checked = True Else StartScroll.Checked = False
         If configReader.Sections("Misc").Keys("Long Time and Date").Value = "True" Then LongTimeDate.Checked = True Else LongTimeDate.Checked = False
@@ -171,8 +175,6 @@ Public Class Configurator
                 Languages.Text = "Malay (mal)"
             Case "swe"
                 Languages.Text = "Swedish (Switzerland - swe)"
-            Case "tky"
-                Languages.Text = "Turkish (Turkey - tky)"
             Case "cze"
                 Languages.Text = "Czech (cze)"
             Case "cro"
@@ -189,6 +191,10 @@ Public Class Configurator
                 Languages.Text = "Russian (Russia - rus)"
             Case "rus-T"
                 Languages.Text = "Russian (Russia - rus) (Translated)"
+            Case "srb"
+                Languages.Text = "Serbian (Serbia - srb)"
+            Case "srb-T"
+                Languages.Text = "Serbian (Serbia - srb) (Translated)"
             Case "jpn"
                 Languages.Text = "Japanese (Japan - jpn)"
             Case "jpn-T"
@@ -244,8 +250,6 @@ Public Class Configurator
                 Return "mal"
             Case "Swedish (Switzerland - swe)"
                 Return "swe"
-            Case "Turkish (Turkey - tky)"
-                Return "tky"
             Case "Czech (cze)"
                 Return "cze"
             Case "Croatian (Croatia - cro)"
@@ -262,6 +266,10 @@ Public Class Configurator
                 Return "rus"
             Case "Russian (Russia - rus) (Translated)"
                 Return "rus-T"
+            Case "Serbian (Serbia - srb)"
+                Return "srb"
+            Case "Serbian (Serbia - srb) (Translated)"
+                Return "srb-T"
             Case "Japanese (Japan - jpn)"
                 Return "jpn"
             Case "Japanese (Japan - jpn) (Translated)"
@@ -326,7 +334,6 @@ Public Class Configurator
                     New IniKey(ksconf, "Maintenance Mode", MaintMode.Checked),
                     New IniKey(ksconf, "Change Root Password", RootPC.Checked),
                     New IniKey(ksconf, "Set Root Password to", RootPwd.Text),
-                    New IniKey(ksconf, "Create Demo Account", demo.Checked),
                     New IniKey(ksconf, "Check for Updates on Startup", UpdateStart.Checked),
                     New IniKey(ksconf, "Language", SaveLocalization)))
 
@@ -366,17 +373,22 @@ Public Class Configurator
                     New IniKey(ksconf, "Colored Shell", colorShell.Checked),
                     New IniKey(ksconf, "Simplified Help Command", simHelp.Checked)))
 
+            'The Network Section
+            ksconf.Sections.Add(
+                New IniSection(ksconf, "Network",
+                    New IniKey(ksconf, "Debug Port", DebugPort.Text),
+                    New IniKey(ksconf, "Remote Debug Default Nick Prefix", DebugNPrefix.Text),
+                    New IniKey(ksconf, "Download Retry Times", RetryDownload.Text),
+                    New IniKey(ksconf, "Log FTP username", LogFTPUsr.Checked),
+                    New IniKey(ksconf, "Log FTP IP address", LogFTPIP.Checked),
+                    New IniKey(ksconf, "Return only first FTP profile", FirstFTPProfile.Checked)))
+
             'Misc Section
             ksconf.Sections.Add(
                 New IniSection(ksconf, "Misc",
                     New IniKey(ksconf, "Show Time/Date on Upper Right Corner", tdCorner.Checked),
                     New IniKey(ksconf, "Screensaver", Screensave.Text),
-                    New IniKey(ksconf, "Debug Port", DebugPort.Text),
                     New IniKey(ksconf, "Debug Size Quota in Bytes", DebugMax.Text),
-                    New IniKey(ksconf, "Remote Debug Default Nick Prefix", DebugNPrefix.Text),
-                    New IniKey(ksconf, "Download Retry Times", RetryDownload.Text),
-                    New IniKey(ksconf, "Log FTP username", LogFTPUsr.Checked),
-                    New IniKey(ksconf, "Log FTP IP address", LogFTPIP.Checked),
                     New IniKey(ksconf, "Size parse mode", FullParseMode.Checked),
                     New IniKey(ksconf, "Marquee on startup", StartScroll.Checked),
                     New IniKey(ksconf, "Long Time and Date", LongTimeDate.Checked),
@@ -385,7 +397,7 @@ Public Class Configurator
 
             'Save Config
             ksconf.Save(confPath)
-            MsgBox("Settings saved, but remember that your config will not be backwards-compatible with 0.0.5.2 or lower. You can:" + vbNewLine + vbNewLine +
+            MsgBox("Settings saved, but remember that your config will not be backwards-compatible with 0.0.11.0 or lower. You can:" + vbNewLine + vbNewLine +
                    "• Use ""reloadconfig"" on Kernel Simulator to see the changes," + vbNewLine +
                    "• Use ""reboot"" to see the changes, or" + vbNewLine +
                    "• Exit and re-open Kernel Simulator (recommended)", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Settings saved successfully")

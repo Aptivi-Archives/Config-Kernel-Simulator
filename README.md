@@ -4,6 +4,8 @@ A user-friendly configuration tool for Kernel Simulator 0.0.4 or higher that can
 
 Please note that the current version is not final and contains bugs and instabilities. Send us a feedback on GitHub issues.
 
+DEPRECATED: This software is deprecated in favor of 0.0.12's builtin configuration tool.
+
 ## |-----+--> _Prerequisites_ <--+-----|
 
 - Microsoft .NET Framework 4.8
@@ -45,6 +47,8 @@ Please note that dates mentioned here is for development date changes only.
 **4/26/2020 - 0.0.9:** Added languages from 0.0.9, targeted .NET Framework 4.8, migrated to PackageReference
 
 **5/22/2020 - 0.0.10:** Added "Error Text Color" entry from 0.0.10, Fixed extra config entry being made, Fixed missing config entry on save
+
+**8/10/2020 - 0.0.11:** Adapted with config changes from 0.0.11
 
 ## |-----+--> _Credits_ <--+-----|
 
